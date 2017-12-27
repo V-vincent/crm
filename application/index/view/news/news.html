@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{foreach $news as $info}{$info.title}{/foreach}</title>
+    <link rel="stylesheet" type="text/css"  href="__PUBLIC__static/index/news/css/news.css">
+    <style>
+        .content{width: 985px; margin: 100px auto 0;}
+        .content .nav{  margin-top: 50px;  margin-bottom: 30px;}
+        .content .nav>a{  text-decoration: none;  outline: none;  color: #333;  }
+        .content .nav>a:hover{color: #4b6ea8;  }
+        .content .content_left .time{    font-size: 16px;  color: #999999;  line-height: 30px;  padding: 7px 0px}
+        .content .content_left .time>a{color: #4b6ea8;text-decoration: none;  outline: none; }
+    </style>
+</head>
+<body>
+
+<div class="content">
+    <ul class="cate" style="margin-top: 30px;">
+        {foreach $news_cate as $name}
+        <li><a href="{:url('index')}?cate={$name.id}">{$name.name}</a></li>
+        {/foreach}
+    </ul>
+    {foreach $news as $info}
+    <div class="nav"><a href="{:url('index')}">新闻中心</a>><a href="{:url('index')}?cate={$info.cate_id}">
+        {foreach $news_cate as $name}{if $name.id==$info.cate_id}{$name.name}{/if}{/foreach}</a>><a href="javascript:;">{$info.title}</a>
+    </div>
+
+    <div class="content_left">
+        <h1 class="title">{$info.title}</h1>
+        <p class="time"><a href="{:url('index')}?cate={$info.cate_id}">{foreach $news_cate as $name}
+            {if $name.id==$info.cate_id}{$name.name}{/if}{/foreach}</a> {$info.time}</p>
+                {$info.content}
+        <div>
+
+        </div>
+    </div>
+    <div class="content_right">
+        <p class="cate_title">热点</p>
+        {foreach $news_list2 as $key => $info2}
+        {if $key<10}
+        <div class="hotspot">
+            <div class="left">
+                <a href="{:url('news')}?id={$info2.id}">
+                    <img src="__UPLOADS__{$info2.thumb}">
+                </a>
+            </div>
+            <div class="right">
+                <a href="{:url('news')}?id={$info2.id}" class="title">{$info2.title}</a>
+                <p class="time">{$info2.time}</p>
+            </div>
+        </div>
+        {/if}
+        {/foreach}
+    </div>
+    {/foreach}
+</div>
+{include file="footer"}

@@ -1,0 +1,50 @@
+{include file="top"}
+{include file="left_menu"}
+
+<div style="margin: 0 auto!important;width: 80%;">
+	<h2>新闻管理</h2>
+	<table class="table">
+		<tr>
+			<th>编号ID</th>
+			<th>新闻名称</th>
+			<th>新闻内容</th>
+			<th>新闻类型</th>
+			<th>添加时间</th>
+			<th>新闻图片</th>
+			<th>操作</th>
+		</tr>
+		{foreach $news_list as $info}
+		<tr >
+			<td>{$info.id}</td>
+			<td>{$info.title}</td>
+			<td>{$info.content}</td>
+			<td>
+				{foreach $news_cate as $name}
+					{if $name.id==$info.cate_id}
+					{$name.name}
+					{/if}
+				{/foreach}
+			</td>
+			<td>{$info.time}</td>
+			<td><img src="__UPLOADS__{$info.thumb}" alt="" style="height: 100px;"></td>
+			<td>
+				<a href="{:url('edit')}?id={$info.id}" class="btn btn-default">编辑</a>
+				<a href="javascript:;" onclick="del({$info.id})" class="btn btn-danger">删除</a>
+			</td>
+		</tr>
+		{/foreach}
+	</table>
+	<div>
+		{$news_list->render()}
+		<a href="{:url('add')}" class="btn btn-primary" style="float: right;margin: 20px;">添加新闻</a>
+	</div>
+</div>
+<script>
+	function del(id) {
+        if (confirm('你确认要删除吗？')) {
+            location.href="{:url('del')}?id="+id;
+        }
+    }
+</script>
+
+{include file="footer"}

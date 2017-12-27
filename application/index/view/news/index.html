@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{foreach $news_cate as $name}{if !input('cate')}新闻中心{/if}
+        {if input('cate')==$name.id}{$name.name}{/if}{/foreach}</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css"  href="__PUBLIC__static/index/news/css/news.css">
+</head>
+<body>
+<div class="content"  style="width: 985px; margin: 100px auto 0;">
+    {if !input('cate')}
+    <div class="banner" style="width: 100%;height: 276px; background-image:url(__PUBLIC__static/index/news/images/banner_bj.jpg);">
+    </div>
+    {/if}
+    <ul class="cate" style="margin-top: 30px;">
+        {foreach $news_cate as $name}
+        <li><a href="{:url('index')}?cate={$name.id}">{$name.name}</a></li>
+        {/foreach}
+    </ul>
+    <div class="content_left">
+        <p class="cate_title">{foreach $news_cate as $name}{if input('cate')==$name.id}{$name.name}{/if}{/foreach}</p>
+        {foreach $news_list as $info}
+        <div class="new">
+            <div class="left">
+                <a href="{:url('news')}?id={$info.id}">
+                    <img src="__UPLOADS__{$info.thumb}">
+                </a>
+            </div>
+            <div class="right">
+                <a href="{:url('news')}?id={$info.id}" class="title">{$info.title}</a>
+                <p class="time">{$info.time}</p>
+                {$info.content}
+            </div>
+        </div>
+        {/foreach}
+        <div>
+            {$news_list->render()}
+        </div>
+    </div>
+
+    <div class="content_right">
+        <p class="cate_title">热点</p>
+        {foreach $news_list2 as $key => $info2}
+        {if $key<10}
+        <div class="hotspot">
+            <div class="left">
+                <a href="{:url('news')}?id={$info2.id}">
+                    <img src="__UPLOADS__{$info2.thumb}">
+                </a>
+            </div>
+            <div class="right">
+                <a href="{:url('news')}?id={$info2.id}" class="title">{$info2.title}</a>
+                <p class="time">{$info2.time}</p>
+            </div>
+        </div>
+        {/if}
+        {/foreach}
+    </div>
+</div>
+{include file="footer"}
