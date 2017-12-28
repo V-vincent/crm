@@ -145,7 +145,6 @@ return [
         '__PUBLIC__' =>'/github/crm/public/',
         '__STATIC__' => '/github/crm/public/static',
         '__UPLOADS__' => '/github/crm/public/uploads/',
-        '__ADMIN__'=>'github/crm/public/static/admin/',
     ],
     // 默认跳转页面对应的模板文件
     'dispatch_success_tmpl'  => THINK_PATH . 'tpl' . DS . 'dispatch_jump.tpl',

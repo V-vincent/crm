@@ -1,0 +1,30 @@
+@charset "gb2312";
+/* CSS Document */
+body,th,td{font-family:Microsoft YaHei;}
+
+/*banner*/
+#banner{ text-align:center; margin:70px auto 0px ; clear:both; background-image:url(../img/bannerzzbbj.png); background-repeat:repeat-x; background-position:top; background-image:#12bebe;}
+/*bannerend*/
+
+
+/*center*/
+#center{width:980px; height:auto; margin:0px auto; clear:both;}
+.left{float:left; width:53%;}
+.right{float:left; width:47%;}
+.bt1{ font-size:28px ; color:#2f2f2f; background:url(../img/line_06.png) no-repeat left center; padding-left:20px; margin:65px 0px 40px;}
+.left img,.right img{padding-top:15px; padding-left:20px; }
+.gd{ height:2px; width:960px; border-bottom:1px solid #e5e1db; margin:35px auto 0px; clear:both; }
+#zj{ border-bottom:1px solid #e5e1db; text-align:center; width:960px; height:365px; margin:0px auto 65px; clear:both;}
+
+#jg{ width:890px; height:245px; margin:0px auto; background:url(../img/jg.png) no-repeat left center; padding-left:70px;}
+.jiage{width:405px; float:left; height:235px; text-align:center; margin-left:40px; padding-top:10px;}
+.red{background-color:#eb433a; font-size:23px ; color:#f9a19c; line-height:60px;}
+.bs{color:#ffffff; font-size:30px ; line-height:60px;}
+.big{font-size:91px ; line-height:110px; color:#ffffff;}
+.small{font-size:40px ; color:#ffffff;}
+
+#wd{width:846px;  margin:45px auto; background:url(../img/app_wd.png) no-repeat left center; padding-left:114px; }
+
+#wd p{font-size:18px ; color:#9b9b9b;  background-color:#f7f7f7; line-height:45px; padding-top:20px; padding-left:40px; border:1px solid #dddddd;}
+#wd p span{font-size:24px ; color:#333333; padding-right:10px; line-height:35px; padding-left:20px;}
+#wd p a{ text-decoration:underline; color:#2e2e2e; font-weight:bold;}

@@ -1,0 +1,380 @@
+﻿
+
+
+
+
+h2 span{
+	font-size: 36px;
+	padding: 0 5px 3px;
+}
+
+h3 font{
+	font-family: "microsoft yahei";
+}
+
+.row{
+	font-family: "microsoft yahei";
+}
+
+header{
+	background: url(../img/login_bg.jpg) no-repeat center top;
+	background-size: 100% auto;
+	width: 100%;
+	height: 100%;
+	min-width: 100%;
+	min-height: 100%;
+	text-align: center;
+	position: relative;
+	display: block;
+	overflow: hidden;
+	margin-top: 70px;
+	font-family: "microsoft yahei";
+}
+
+.m-t-65{
+	margin-top: 65px;
+}
+.m-b-20{
+	margin-bottom: 20px;
+}
+
+.m-b-35{
+	margin-bottom: 35px;
+}
+
+.form-group{
+	margin-bottom: 20px;
+}
+
+.col-sm-7{
+	padding-left: 70px;
+}
+
+.col-sm-7 > img{
+	padding-left: 20px;
+}
+.col-sm-5{
+	padding-right: 100px;
+}
+
+ul.text-left {
+	padding-top: 30px;
+	width: 560px;
+	margin: 0px auto;
+}
+.text-left li{
+	position: relative;
+	margin-left: 50px;
+	margin-top: 25px;
+    margin-bottom:50px;
+}
+
+.android:before,
+.ios:before,
+.pc:before{
+	content: "";
+    width: 22px;
+    height: 28px;
+    display: inline;
+    position: absolute;    
+    
+}
+
+.android:before{
+	background: url(../img/cus_icon1.png) no-repeat;
+	top: 0;
+    left: -50px;
+}
+
+.ios:before{
+	background: url(../img/cus_icon2.png) no-repeat;
+	top: 12px;
+    left: -50px;
+}
+
+.pc:before{
+	background: url(../img/cus_icon3.png) no-repeat;
+	top: 18px;
+    left: -50px;
+}
+
+
+.btn-android,
+.btn-android:hover{
+	color: #7ab3eb;
+	background: rgba(2,126,243,0.5);
+	border-radius: 15px;
+	padding: 3px 39px;
+	margin-right: 50px;
+	font-size: 15px;
+}
+
+.btn-android:last-child{
+	margin-right: 0px;
+}
+
+.android img{
+	margin-right: 55px;
+
+	margin-top: 5px;
+}
+
+.android img:last-child{
+	margin-right: 0px;
+}
+
+.ios{
+	color: #E0E0E0;
+	font-size: 14px;
+	line-height: 2;
+}
+
+.pc{
+	font-size: 14px;
+	color: #E0E0E0;
+	 
+}
+
+.pc img{
+	padding-left: 20px;
+	padding-bottom: 5px;
+}
+
+.pc a{
+	color: #FFFFFF;
+	
+}
+
+.pc a:hover{
+	color:#858585;
+}
+
+.login-box{
+	border-radius: 5px;
+	background: #FFFFFF;
+	margin: 20px auto;
+	width: 415px;
+	min-height: 350px;
+	height: auto;
+	border: 1px solid #dfdfdf;
+}
+
+.nav-tabs>li{
+	width: 33.3%;
+}
+
+.nav-tabs>li>a{
+	font-size: 15px;
+	margin-right: 0px;
+	padding: 15px 0px;
+}
+
+
+
+.nav-tabs>li>a:hover{
+	color: #000000;
+}
+
+.nav-tabs>li.active>a{
+	font-size: 16px;
+	font-weight: bold;
+	color: #000000;
+}
+
+
+#profile{
+	padding-top: 20px;
+}
+
+#profile p{
+	padding:5px 0px;
+}
+
+form#login,
+form#login2{
+    margin:0 10px;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.form-control{
+	padding: 10px;
+}
+
+.checkbox-inline{
+	font-size: 13px;
+}
+
+.btn-blue{
+	width: 100%;
+	background: #027bf1;
+	color: #FFFFFF;
+	padding: 12px;
+	margin-top: 25px;
+	font-size: 16px;
+	word-spacing: 1em;
+}
+
+.btn-blue:hover{
+	background: #0556a6;
+	color: #FFFFFF;
+}
+
+.qq,
+.ying{
+	border-radius: 100%;
+    padding: 5px 9px 10px;
+    margin: 10px 15px;
+}
+.wx{
+	border-radius: 100%;
+    padding: 5px 7px 10px;
+    margin: 10px 15px;
+}
+.checkbox-inline{
+	color: #999999;
+}
+
+.qq{
+	background-color: #c4cbff;
+}
+
+.qq:hover{
+	background-color: #a7afeb;
+}
+.ying{
+	background-color: #c4cbff;
+}
+
+.ying:hover{
+	background-color: #a7afeb;
+}
+
+.wx{
+	background-color: #c4cbff;
+}
+
+.wx:hover{
+	background-color: #a7afeb;
+}
+.colorTip { display: block;
+				margin-top: 10px;
+				background-color: rgba(253,0,0,0.1);
+				font-family:"Microsoft YaHei";
+	            color:red;
+				font-size: 14px;
+				text-align: center;
+				-moz-border-radius: 4px;
+				-webkit-border-radius: 4px;
+				border-radius: 4px;
+			}
+
+			.pointyTip,
+			.pointyTipShadow {
+				border: 7px solid transparent;
+				top: -13px;
+				height: 0;
+				left: 80%;
+				margin-left: -6px;
+				position: absolute;
+				width: 0;
+			}
+			.pointyTipShadow {
+				border-width: 6px;
+				bottom: -14px;
+				margin-left: -7px;
+			}
+			.colorTipContainer {
+				position: relative;
+				text-decoration: none !important;
+			}
+			.yellow .pointyTip {
+				border-bottom-color: #f9f2ba;
+			}
+			.yellow .pointyTipShadow {
+				border-bottom-color: #eecc83;
+			}
+			.yellow .colorTip {
+				background-color: #fffde8;
+				border: 1px solid #eecc83;
+				color: #DD2026;
+				left: -10px;
+				width: 280px;
+				top: 45px;
+				text-align: left;
+				font-size: 12px;
+				line-height: 22px;
+			}
+
+footer{
+	font-size: 13px;
+	text-align: center;
+	font-family: "MicroSoft YaHei";
+	background: #FFFFFF;
+	line-height: 220%;
+	color: #8d8d8d;
+	padding: 36px 0 30px;
+}
+
+footer font{color: #000000;}
+
+.color1{
+	color: #0b4490;
+}
+
+footer span{
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.box{
+	width: 100%;
+	
+	text-align: left;
+	border: 1px dashed #9dccf6;
+	border-radius: 5px;
+	padding: 10px;
+	color: ;
+}
+
+.box p{
+	margin: 0;
+	padding: 0;
+}
+.text{
+	font-size: 13px;
+	color: #84a7bd;
+}
+
+footer > .container-fluid{
+	padding-left: 40px;
+	padding-right: 40px;
+	padding-top: 24px;
+}
+@media only screen and (min-width: 415px) and (max-width: 767px){
+	
+	.margin_60{
+		margin:20px;
+	}
+	
+	.box{
+		float: none;
+		width: 100%;
+	}
+	
+	
+	}
+
+@media only screen and (min-width: 320px) and (max-width: 414px){
+	
+	.margin_60{
+		margin:0;
+	}
+	
+	.box{
+		float: none;
+		width: 100%;
+	}
+	
+	
+	}
