@@ -1,0 +1,132 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+.cate{
+    overflow: hidden;
+    display: flex;
+}
+.cate li{
+    flex: auto;
+    margin-right: 50px;
+    text-align: center;
+    background-color: #6a778f;
+    padding: 10px 0;
+}
+.cate li>a{
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 20px;
+}
+.content_left{
+    float: left;
+    width: 645px;
+    height: auto;
+    overflow: hidden;
+    padding-bottom: 30px;
+}
+
+.cate_title{
+    color: #135aac;
+    font-size: 26px;
+}
+.content{  overflow: hidden;}
+.content_left .new{
+    overflow: hidden;
+    height: 160px;
+    width: 100%;
+    border-bottom: 1px dashed #e5e1db;
+    margin-top: 20px;
+    font-family: Microsoft YaHei,微软雅黑;
+}
+.content_left .new .left{
+    float: left;
+}
+.content_left .new .left img{
+    width: 221px;
+    height: 147px;
+    box-shadow: 1px 1px 1px #ccc;
+}
+.content_left .new .right{
+    float: left;
+    margin-left: 20px;
+    width: 404px;
+}
+.content_left .new .right .title{
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    outline: none;
+    color: #333;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-height: 44px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.content_left .new .right .title:hover{
+    color: #4b6ea8;
+}
+.content_left .new .right .time{
+    font-size: 12px;
+    color: #999999;
+    line-height: 30px;
+}
+.content_left .new .right p:nth-child(3){
+    color: #666666;
+    line-height: 25px;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 75px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+.content_right{
+    width: 285px;
+    float: right;
+}
+.hotspot{
+    overflow: hidden;
+    height: 85px;
+    width: 100%;
+    border-bottom: 1px dashed #e5e1db;
+    margin-top: 15px;
+}
+.hotspot .left{
+    float: left;
+}
+.hotspot .left img {
+    border: 0;
+    width: 100px;
+    height: 67px;
+}
+.hotspot .right{
+    float: right;
+    width: 170px;
+}
+.hotspot .right .title{
+    font-size: 14px;
+    color: #3b3b3b;
+    line-height: 24px;
+    text-decoration: none;
+    outline: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 48px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.hotspot .right .title:hover{
+    color: #4b6ea8;
+}
+.hotspot .right .time{
+    font-size: 12px;
+    color: #999999;
+    line-height: 30px;
+}
