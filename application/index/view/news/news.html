@@ -32,7 +32,25 @@
             {if $name.id==$info.cate_id}{$name.name}{/if}{/foreach}</a> {$info.time}</p>
                 {$info.content}
         <div>
-
+            {foreach $news_list2 as $key => $info2}
+    {if $info2.id==$_REQUEST['id']}
+    <?php $len=count($news_list2);?>
+    <div class="linkf">
+        {if $key>=1}
+        <a href= "{:url('news')}?id={$news_list2[$key-1]['id']}" class="pro">上一篇 ： {$news_list2[$key-1]['title']}</a>
+        {/if}
+        {if $key==0}
+        <p class="pro">上一篇 ： 没有了</p >
+        {/if}
+        {if $key<$len-1}
+        <a href= "{:url('news')}?id={$news_list2[$key+1]['id']}" class="next">下一篇 ： {$news_list2[$key+1]['title']}</a>
+        {/if}
+        {if $key==$len-1}
+        <p class="next">下一篇 ： 没有了</p >
+        {/if}
+    </div>
+    {/if}
+    {/foreach}
         </div>
     </div>
     <div class="content_right">
