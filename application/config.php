@@ -143,7 +143,7 @@ return [
     // 视图输出字符串内容替换
     'view_replace_str'       => [
         '__PUBLIC__' =>'/github/crm/public/',
-        '__STATIC__' => '/github/crm/public/static',
+        '__STATIC__' => '/github/crm/public/static',//之后统一用这个路径
         '__UPLOADS__' => '/github/crm/public/uploads/',
     ],
     // 默认跳转页面对应的模板文件
