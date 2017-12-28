@@ -11,6 +11,9 @@ body{
 p{
     line-height: 200%;
 }
+.row{
+    margin-right: 0 !important; 
+}
 /*登录注册*/
 .head{
     width: 100%;
@@ -118,6 +121,7 @@ p{
 .container1 .stack{
     width: 100%;
     height: 600px;
+    position: relative;
     overflow: hidden;
     margin-top: 70px;
 }
@@ -249,7 +253,7 @@ p{
 .container1 .stack .stack_7{
     z-index: 206;
     display: inline-block;
-    top: 55%;
+    top: 40%;
     right: 24%;
 }
 .container1 .stack .stack_7 img{
@@ -268,7 +272,7 @@ p{
 .fluid .innovations{
     background: url("../images/innovations.png") repeat;
 }
-.fluid .row{
+.fluid .row2{
     width: 130px;
     height: 60px;
     background: #0452b0;
@@ -277,16 +281,16 @@ p{
     position: relative;
     padding-top: 10px;
 }
-.fluid .row span{
+.fluid .row2 span{
     font-family: fzzqhjt;
     font-size: 36px;
     line-height: 90%;
 }
-.fluid .row p{
+.fluid .row2 p{
     font-size: 13px;
     line-height: 130%;
 }
-.fluid .row:after{
+.fluid .row2:after{
     content: " ";
     width: 0;
     height: 0;
@@ -422,7 +426,7 @@ p{
     position: relative;
     text-align: center;
 }
-.bg-img .row{
+.bg-img .row3{
     width: 130px;
     height: 60px;
     background: #0452b0;
@@ -431,10 +435,10 @@ p{
     padding-top: 10px;
     margin: auto;
 }
-.bg-img .row i{
+.bg-img .row3 i{
     font-size: 32px;
 }
-.bg-img .row:after{
+.bg-img .row3:after{
     content: " ";
     width: 0;
     height: 0;
