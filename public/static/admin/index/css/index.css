@@ -1,0 +1,38 @@
+.container .item{background: #fff;overflow: hidden;padding: 10px;0;border-radius: 15px;margin-bottom: 15px;}
+.container .item ul li{float: left;margin-left: 50px;}
+.container .item ul li a{width: 100px;height: 100px;display: 
+	block;background: #7490E0;
+	border-radius: 50%;text-align: center;line-height: 100px;}
+	.container .item ul li a p{color: white;}
+	.container .add{right: 50px;bottom: 50px;width: 80px;height: 80px;position: fixed;background: #4c5667;
+	border-radius: 50%;text-align: center;line-height: 80px;font-size: 30px;color: white;
+	cursor: pointer;}
+	.container .add p{font-size: 30px;margin-top: 10px;}
+	.container .content{display: flex;flex-direction: row;justify-content: space-between;}
+	.container .content .news{background:#fff;height: 400px;}
+	.container .content .news .title h3{float: left;font-size: 16px;}
+	.container .content .news .title a{float: right;margin-top: 12px;}
+	.container .content .news .title {overflow: hidden;}
+	.container .content .news .cont{overflow: hidden;}
+	.container .content .news .cont .bz{width: 30px;height: 30px;float: left;border-radius: 50%;
+	border:1px #ccc solid;text-align: center;margin-top: 10px;}
+	.container .content .news .cont p a{margin-top: 5px;}
+	.container .content .news .cont .text{float: right;font-size: 8px;}
+	.container .content .task{background: #fff;overflow: hidden;height: 400px;padding: 15px;0}
+	.container .content .task .title{float: left;}
+	.container .content .task ul{float:right;overflow: hidden;}
+	.container .content .task ul li{float: left;padding: 0 5px;font-size: 8px;}
+	.container .content .remind{overflow: hidden;background: #fff;height: 400px;padding: 15px;0}
+	.container .content .remind .title{float: left;}
+	.container .content .remind ul{float: left;overflow: hidden;margin-left: 30px;}
+	.container .content .remind ul li{float: left;margin-left: 2px;font-size: 8px;}
+	.container .content .remind .left{float: right;}
+	.container .add_info{width: 400px;height: 300px;position: fixed;right: 40px;bottom: 40px;
+		background: rgba(0,0,0,0.3);padding: 10px;display: none;}
+		.container .add_info .top{overflow: hidden;}
+    .container .add_info .top h5{font-size: 20px;float: left;}
+    .container .add_info .top a{float: right;}
+    .container .add_info .top a:hover{text-decoration: none;}
+
+
+
