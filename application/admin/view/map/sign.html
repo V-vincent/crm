@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>签到表</title>
+</head>
+<body>
+	<table>
+			<tr>
+				<th>用户ID</th>
+				<th>签到时间</th>
+				<th>操作</th>
+			</tr>
+			{foreach $signlist as $info}
+			<tr>
+				<td>{$info.id}</td>
+				<td>{$info.time|date="Y-m-d H:i:s",###}</td>
+				<td><!-- <a href="javascript:;" onclick="showPosition('{$info.lng}','{$info.lat}')"> -->定位<!-- </a> --></td>
+			</tr>
+			{/foreach}
+		</table>	
+</body>
+</html>

@@ -164,7 +164,7 @@
                 </a>
             </li>
             <li>
-                <a href="#" class="glyphicon glyphicon-star">
+                <a href="{:url("admin/map/sign")}" class="glyphicon glyphicon-star">
                     <p>考勤</p>
                 </a>
             </li>
@@ -189,11 +189,6 @@
         <p style="text-align: center;margin-top: 15 px"> <strong>打天下工作台-定位用户最近位置：</strong>
             图中定位点取用时间最新的数据(包含：拜访定位、照片定位、轨迹定位和考勤定位)
         </p>
-        <div>
-            经度：
-            <input type="text" id="lng" name="lng">
-            纬度：
-            <input type="text" id="lat" name="lat"></div>
         <div class="container"  style="width:100%;height:500px; margin-top:20px; border: 1px solid #ccc;background: #fff" >
             <div class="container" style="width:98.5%;height:460px;border: 1px solid #ccc; margin-top: 20px;overflow: hidden" >
                 <div style="width:100%;height:100%">
@@ -261,13 +256,15 @@
         marker2.addEventListener("click",saveAttr);
         function getAttr(){
             var p = marker2.getPosition();       //获取marker的位置
-            document.getElementById('lng').value=p.lng;
-            document.getElementById('lat').value=p.lat
+          
         };
         function saveAttr(){
-            var p = marker2.getPosition();       //获取marker的位置
-            confirm("亲爱的boss"+"您目前的经度为："+p.lng+",纬度为："+p.lat+"确认签到吗");     
+            var p = marker2.getPosition();
+            if(confirm("亲爱的boss,"+"您目前的经度为："+p.lng+",纬度为："+p.lat+"确认签到吗")){
+                    $.get('{:url("admin/map/addmap")}',{lng:p.lng,lat:p.lat});
+            }//获取marker的位置         
     }
+
 })
 </script>
 </html>
