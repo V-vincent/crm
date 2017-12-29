@@ -69,9 +69,9 @@
 <div class="add_info">
 	<div class="top"><h5>速建</h5><a href="#" class="glyphicon glyphicon-minus"></a></div>
 	<a href="#client" data-toggle="modal" class="btn btn-primary">客户</a>
-	<a href=":{url('task/daily')}" data-toggle="modal" class="btn btn-primary">日报</a>
 	</div>
 </div>
+<!-- 模态框开始 -->
 <div class="modal fade" id="client" style="padding: 30px;">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -121,14 +121,14 @@
             <div class="form-group">
                 <label>选择客户类型</label>
                 <select name="companycate_id" class="form-control">
-                    <option value="">请选择</option>
+                    <option value="index.html">请选择</option>
                     {foreach $list as $info}
                     <option value="{$info.id}">{$info.company_cate}</option>
                     {/foreach}
                 </select>
             </div>
             <div class="form-group" style="margin:25px 0 0 220px;">
-				<a href="" class="true_tj"><input type="submit" class="btn btn-primary"></a>
+				<a href="" id="true_tj"><input type="submit" class="btn btn-primary"></a>
 				<a href="" class="btn btn-danger">取消</a>
 			</div>
              </form>
@@ -136,5 +136,6 @@
 		</div>
 	</div>
 </div>
+<!-- 模态框结束 -->
 <script type="text/javascript" src="__STATIC__/admin/index/js/index.js?126"></script>
 {include file="foot"}

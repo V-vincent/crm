@@ -1,7 +1,9 @@
-{include file="top"}
-{include file="left"}
-<link rel="stylesheet" type="text/css" href="__STATIC__/admin/crm/css/index.css?100">
-<div class="container">
+{include file="top"} {include file="left"}
+<!-- 页面css样式 -->
+<link rel="stylesheet" type="text/css" href="__STATIC__/admin/crm/css/index.css?200">
+<!-- 时间插件样式 -->
+<link rel="stylesheet" type="text/css" href="__STATIC__/library/dist/zane-calendar.min.css?113">
+<div class="container"  id="mtk">
     <div class="title row">
         <div class="col-md-1"><a href="javascript:" style="border-bottom: 2px gray solid">全部客户</a></div>
         <div class="col-md-1"><a href="javascript:">潜在客户</a></div>
@@ -11,33 +13,32 @@
     </div>
     <div class="search row">
         <form action="{:url('index')}" class="form">
-        <div class="col-md-2">
-            
-            <p class="glyphicon glyphicon-glass pull-left" style="margin-top: 8px;"></p>
-            <!-- 公司分类选择 -->
-            <div class="pull-right" style="margin-right:30px;">
-            <select class="form-control pull-right" name="companycate_id" onchange="$('#basic-addon2').click()">
-                <option value="">全部数据</option>
-                {foreach $companycate_list as $companycate_info}
-                <option value="{$companycate_info.id}">{$companycate_info.company_cate}</option>
-                {/foreach}
-            </select>
+            <div class="col-md-2">
+                <p class="glyphicon glyphicon-glass pull-left" style="margin-top: 8px;"></p>
+                <!-- 公司分类选择 -->
+                <div class="pull-right" style="margin-right:30px;">
+                    <select class="form-control pull-right" name="companycate_id" onchange="$('#basic-addon2').click()">
+                        <option value="">全部数据</option>
+                        {foreach $companycate_list as $companycate_info}
+                        <option value="{$companycate_info.id}">{$companycate_info.company_cate}</option>
+                        {/foreach}
+                    </select>
+                </div>
             </div>
-        </div>
-
-       
-        <div class="col-md-3">
-             <p class="glyphicon glyphicon-search pull-left" style="margin: 8px 5px 0 0;"></p>
-            <div class="input-group row">       
-            <input type="text" class="form-control pull-left" placeholder="输入客户名称" aria-describedby="basic-addon2" name="company_name">
-            
-</div>
-</div>
-<div class="col-md-1" style="padding: 0px;margin-left:-95px; "><input type="submit" class="btn btn-group pull-right" id="basic-addon2" style="cursor: pointer;" value="搜索"></div>
-</form>
+            <div class="col-md-3">
+                <p class="glyphicon glyphicon-search pull-left" style="margin: 8px 5px 0 0;"></p>
+                <div class="input-group row">
+                    <input type="text" class="form-control pull-left" placeholder="输入客户名称" aria-describedby="basic-addon2" name="company_name">
+                </div>
+            </div>
+            <div class="col-md-1" style="padding: 0px;margin-left:-95px; ">
+                <input type="submit" class="btn btn-group pull-right" id="basic-addon2" style="cursor: pointer;" value="搜索">
+            </div>
+        </form>
     </div>
     <div class="info">
-        <div><p class="pull-left" style="margin-right: 5px;">客户基本信息</p><span style="color: #ccc">共2条</span></div>
+        <div>
+            <p class="pull-left" style="margin-right: 5px;">客户基本信息</p><span style="color: #ccc">共2条</span></div>
     </div>
     <table class="table table-bordered">
         <tr class="success">
@@ -58,16 +59,126 @@
             <td>{$info.company_cate}</td>
             <td>{$info.user_name}</td>
             <td>{$info.user_phone}</td>
-            <td>{$info.remark}</td>
+            <td>{$info.time}</td>
             <td>
-                <a class="glyphicon glyphicon-list-alt" title="视图"  data-placement="bottom"></a>
-                <a class="glyphicon glyphicon-pencil" title="编辑"  data-placement="bottom"></a>                
-                <a class="glyphicon glyphicon-remove" title="删除"  data-placement="bottom" href="{:url('delete',['id'=>$info.id])}"></a>
+                <a class="glyphicon glyphicon-list-alt" title="视图" data-placement="bottom"></a>
+                <a class="glyphicon glyphicon-pencil" title="编辑" data-placement="bottom" data-toggle="modal" href="#client" @click="getInfo({$info.id})">
+                    </a>
+                </a>
+                <a class="glyphicon glyphicon-remove" title="删除" data-placement="bottom" href="{:url('delete',['id'=>$info.id])}"></a>
             </td>
         </tr>
         {/foreach}
     </table>
+    <!-- 编辑模态框开始 -->
+    <div class="modal fade" id="client" style="padding: 30px;">
+        <div class="modal-dialog">
+            <div class="modal-content edit">
+                <!-- 模态框标题 -->
+                <div class="modal-header">客户基本信息
+                    <div class="pull-right">
+                        <input type="submit" class="btn btn-info">
+                    </div>
+                </div>
+                <!-- 模态框内容 -->
+                <div class="modal-body">
+                    <!-- 表单开始 -->
+                    <form action="{:url('index')}" class="form">
+                        <!-- 基本信息 -->
+                        <p class="text-center">基本信息</p>
+                        <div class="form-group" style="margin-bottom: 10px;overflow: hidden;">
+                            <label for="lastname" class="col-sm-2 control-label">客户名称</label>
+                            <div class="col-sm-10">
+                                <input type="text" v-model="edit.company_name" class="form-control" id="lastname" placeholder="客户名称" name="company_name">
+                            </div>
+                        </div>
+                        <!-- 第二列 -->
+                        <div class="row form-inline" style="margin-left:5px;">
+                            <div class="form-group col-md-6">
+                                <label for="lastname" class="control-label">简称</label>
+                                <input type="text" class="form-control"  v-model="edit.company_name"placeholder="请输入姓" name="company_name">
+                            </div>
+                            <!-- 种类 -->
+                            <div class="form-group col-md-6">
+                                <label for="lastname" class="control-label">种类</label>
+                                <select class="form-control" name="companycate_id" style="width: 200px;">
+                                    <option value="">全部数据</option>
+                                    {foreach $companycate_list as $companycate_info}
+                                    <option value="{$companycate_info.id}">{$companycate_info.company_cate}</option>
+                                    {/foreach}
+                                </select>
+                            </div>
+                        </div>
+                        <!-- 第二行结束 -->
+                        <!-- 第三行开始 -->
+                        <div class="row form-inline">
+                            <div class="form-group">
+                                <label for="lastname" class="control-label">编号</label>
+                                <input type="text" class="form-control" id="lastname" name="company_name">
+                            </div>
+                            <!-- 种类 -->
+                            <div class="form-group">
+                                <label for="lastname" class="control-label">上级客户</label>
+                                <input type="text" class="form-control" id="lastname" name="company_name" placeholder="上级客户">
+                            </div>
+                        </div>
+                        <!-- 第三行结束 -->
+                        <!-- 生命周期 -->
+                        <p class="text-center">生命周期</p>
+                        <div class="form-inline">
+                            <div>
+                                <label class="radio-inline">
+                                    <input type="radio" name="optionsRadiosinline" id="optionsRadios3" value="option1" checked>潜在
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="optionsRadiosinline" id="optionsRadios4" value="option2">签约
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="optionsRadiosinline" id="optionsRadios4" value="option2">重复购买
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="optionsRadiosinline" id="optionsRadios4" value="option2">失效
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastname" class="control-label">首次签约</label>
+                                <input type="" name="" id="zane-calendar">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+zane-calendar
+<!-- 编辑模态框结束-->
+</div>
+<script type="text/javascript" src="__STATIC__/library/dist/zane-calendar.min.js?113"></script>
 <script type="text/javascript">
+
+//时间插件
+zaneDate({
+    elem: '#zane-calendar',
+})
+//编辑框赋值
+new Vue({
+    el: "#mtk",
+    data:{
+        edit: []
+    },
+    methods: {
+        getInfo:function (id) {
+            var that = this;
+            $.get("{:url('edit')}?id="+id, function(rtnData) {
+                that.edit=rtnData;
+                console.log(that.edit);
+            });
+
+        }
+    }
+
+
+})
 </script>
 {include file="foot"}

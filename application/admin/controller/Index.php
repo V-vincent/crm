@@ -11,7 +11,12 @@ class Index extends \think\Controller
     }
     //添加客户
     public function save(){
-        db('userinfo')->insert(input());
+        
+        $time=date('y-m-d');
+        $time="20".$time;
+        $data=input();
+        $data['time']=$time;
+        db('userinfo')->insert($data);
         $this->success('添加成功','index');
     }
 }

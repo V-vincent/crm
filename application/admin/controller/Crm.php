@@ -19,7 +19,7 @@ class Crm extends \think\Controller
             $where_data['companycate_id'] = input('companycate_id');
         }
         $list = db('userinfo')->alias('u')//给userinfo表设置简写u
-                              ->field('u.id, u.companycate_id, u.company_name, u.user_name, u.user_phone, u.remark, c.company_cate')//解决ID排序问题
+                              ->field('u.id, u.companycate_id, u.company_name, u.user_name, u.user_phone, u.remark, u.time, c.company_cate')//解决ID排序问题
                               ->join('companycate c','u.companycate_id=c.id','left')//设置公司分类表简写为c，用u的id和c的id比较
                               ->order('u.id desc')//设置排序为从大到小
                               ->where($where_data)
@@ -27,6 +27,7 @@ class Crm extends \think\Controller
         $this->assign('list',$list);
         return $this->fetch();
     }
+    //保存客户信息
     public function save(){
         db('userinfo')->insert(input());
     }
@@ -36,5 +37,12 @@ class Crm extends \think\Controller
     	if($id>0){
     		db('userinfo')->where("id=$id")->delete();
     	}
+    }
+    //编辑客户信息
+    public function edit(){
+         //编辑查询一条信息,编辑
+        $id = input('id');
+        $info = db('userinfo')->where("id=$id")->find();
+        return $info;
     }
 }
