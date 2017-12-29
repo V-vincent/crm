@@ -1,32 +1,32 @@
-github版本控制，肯定要把每一次提交的代码有一个注释
+github掳忙卤戮驴脴脰脝拢卢驴脧露篓脪陋掳脩脙驴脪禄麓脦脤谩陆禄碌脛麓煤脗毛脫脨脪禄赂枚脳垄脢脥
  
-   创建仓库：彭
+   麓麓陆篓虏脰驴芒拢潞脜铆
 
-	第一步：new reponsity
+	碌脷脪禄虏陆拢潞new reponsity
 
-	第二步：需要安装github，在windows装Git-2.13.3-64-bit
+	碌脷露镁虏陆拢潞脨猫脪陋掳虏脳掳github拢卢脭脷windows脳掳Git-2.13.3-64-bit
 
-	第三步：找到项目目录，点击右键，找git bash here，按照github官网每一步都执行
+	碌脷脠媒虏陆拢潞脮脪碌陆脧卯脛驴脛驴脗录拢卢碌茫禄梅脫脪录眉拢卢脮脪git bash here拢卢掳麓脮脮github鹿脵脥酶脙驴脪禄虏陆露录脰麓脨脨
 
-	第四步：以后添加新增加的文件，git add ./ （添加当前目录所有的目录和文件）以此类推,git add application（只提交application下面的目录和文件）
+	碌脷脣脛虏陆拢潞脪脭潞贸脤铆录脫脨脗脭枚录脫碌脛脦脛录镁拢卢git add ./ 拢篓脤铆录脫碌卤脟掳脛驴脗录脣霉脫脨碌脛脛驴脗录潞脥脦脛录镁拢漏脪脭麓脣脌脿脥脝,git add application拢篓脰禄脤谩陆禄application脧脗脙忙碌脛脛驴脗录潞脥脦脛录镁拢漏
 
 
-	第五步：git commit -m '这次提交的代码注释，改了什么东西，修复了bug'
+	碌脷脦氓虏陆拢潞git commit -m '脮芒麓脦脤谩陆禄碌脛麓煤脗毛脳垄脢脥拢卢赂脛脕脣脢虏脙麓露芦脦梅拢卢脨脼赂麓脕脣bug'
 
-	第六步：git push -u origin master
+	碌脷脕霉虏陆拢潞git push -u origin master
 
-   提交更新:组员、组长
+   脤谩陆禄赂眉脨脗:脳茅脭卤隆垄脳茅鲁陇
 
-	第一步：去组长提供的仓库右上角找到clone的地址复制出来，去另外一个目录通过右键的git bash here进去，
+	碌脷脪禄虏陆拢潞脠楼脳茅鲁陇脤谩鹿漏碌脛虏脰驴芒脫脪脡脧陆脟脮脪碌陆clone碌脛碌脴脰路赂麓脰脝鲁枚脌麓拢卢脠楼脕铆脥芒脪禄赂枚脛驴脗录脥篓鹿媒脫脪录眉碌脛git bash here陆酶脠楼拢卢
 
-	第二步：执行 git clone 仓库地址
+	碌脷露镁虏陆拢潞脰麓脨脨 git clone 虏脰驴芒碌脴脰路
 
-	更新：git pull
+	赂眉脨脗拢潞git pull
 
-	提交：
+	脤谩陆禄拢潞
 	
-	1、git add 指定的目录/指定的文件
+	1隆垄git add 脰赂露篓碌脛脛驴脗录/脰赂露篓碌脛脦脛录镁
 
-	2、git commit -m '这次提交的代码注释，改了什么东西，修复了bug'
+	2隆垄git commit -m '脮芒麓脦脤谩陆禄碌脛麓煤脗毛脳垄脢脥拢卢赂脛脕脣脢虏脙麓露芦脦梅拢卢脨脼赂麓脕脣bug'
 
-	3、git push -u origin master
+	3隆垄git push -u origin master
