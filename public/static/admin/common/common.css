@@ -30,10 +30,23 @@
   header .user span{color: white;position: absolute;left: 7px;top: 7px;}
   .left_menu{width:80px;height: 1500px;background: #36404a;position: fixed;overflow: hidden;}
   .left_menu ul li{padding: 10px;text-align: center;border-left: #36404a 4px solid}
-  .left_menu ul li a{color: white;font-size: 30px;text-align: center;}
+  .left_menu ul li a{color: white;font-size: 30px;text-align: center}
   .left_menu ul li a:hover{text-decoration: none;text-align: center;}
   .left_menu ul li p{font-size: 12px;color: white;margin-top: 5px;}
+  .left_menu.lbs ul li:hover{
+    border-left: #94c4fb 2px solid;
+  }
+  .left_menu.lbs ul li:hover .glyphicon{
+    color:#94c4fb;
+  }
+  .left_menu.lbs ul li:hover p{
+    color:#94c4fb;
+  }
+  .left_menu.lbs ul li a{
+    text-decoration:none;
+  }
   .container{background: #f4f8fb;height: 800px;}
+  #allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
 
 
   
