@@ -45,3 +45,9 @@
     margin: 20px;
     background: -webkit-gradient(linear, 0 0, 0 100%, from(#008cfc), to(#0372eb));
 }
+.top ul li>a{
+    text-decoration: none;
+    outline: none;
+    color: #333;
+}
+.top ul li>a:hover{ color: #618ccc;}
