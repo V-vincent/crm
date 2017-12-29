@@ -1,0 +1,53 @@
+.top{
+    height: 70px;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    transition: all 0.8s ease-in-out;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1999;
+}
+.top .logo{
+    float: left;
+    line-height: 20px;
+    font-size: 18px;
+    height: 60px;
+    margin: 0;
+    padding: 15px 0 0 20px;
+}
+.top ul{
+    float: right;
+    margin-bottom: 0px;
+}
+.top ul li{
+    float: left;
+    display: block;
+    font-size: 16px;
+    height: 70px;
+    line-height: 70px;
+    padding: 0 30px;
+    text-decoration: none;
+    border-bottom: 1px solid #eee;
+    outline: none;
+    background: inherit;
+}
+.top .contact-btn{
+    float: right;
+    cursor: pointer;
+    line-height: 30px;
+    font-size: 16px;
+    padding: 0 20px;
+    color: #FFFFFF;
+    border-radius: 3px;
+    border: 1px solid #076bd2;
+    margin: 20px;
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#008cfc), to(#0372eb));
+}
+.top ul li>a{
+    text-decoration: none;
+    outline: none;
+    color: #333;
+}
+.top ul li>a:hover{ color: #618ccc;}
