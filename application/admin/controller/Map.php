@@ -20,5 +20,23 @@ class Map extends \think\Controller
     	$addData['uid'] = 1;
     	db('sign')->insert($addData);
     }
+    public function business(){
+    	return $this->fetch();
+    }
+    public function visit(){
+    	return $this->fetch();
+    }
+    public function field(){
+    	return $this->fetch();
+    }
+    public function photo(){
+    	return $this->fetch();
+    }
+    public function check(){
+    	return $this->fetch();
+    }
+    public function set(){
+    	return $this->fetch();
+    }
 }
 
