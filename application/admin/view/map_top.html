@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!-- CSS公共样式 -->
+    <link rel="stylesheet" type="text/css" href="__STATIC__/admin/common/common.css?99">
+    <!-- 引入bootstarp -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <!-- 引入jquery -->
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
+    <!-- 引入bootstarpJS -->
+    <script type="text/javascript" src="https://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <!-- 引入vue.js -->
+    <script type="text/javascript" src="https://cdn.bootcss.com/vue/2.5.13/vue.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="row">
+            <div class="left col-md-10">
+                <div class="logo pull-left">
+                    <a href="{:url('index/index')}">
+                        <img src="__PUBLIC__static/admin/index/images/logo.png" alt=""></a>
+                </div>
+                <div class="title pull-left">
+                    <div class="dropdown">
+                        <button type="button" class="btn dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+                            <span>LBS</span>
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="{:url('crm/index')}">
+                                    <div>
+                                        <span class="glyphicon glyphicon-user pull-left"></span>
+                                        <div class="pull-left">
+                                            <h4>CRM客户管理关系</h4>
+                                            <p>给销售团队一颗云大脑</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="{:url('map/index')}">
+                                    <div>
+                                        <span class="glyphicon glyphicon-map-marker pull-left"></span>
+                                        <div class="pull-left">
+                                            <h4>LBS打天下</h4>
+                                            <p>基于定位的外勤管理</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="{:url('acc/index')}">
+                                    <div>
+                                        <span class="glyphicon glyphicon-list-alt pull-left"></span>
+                                        <div class="pull-left">
+                                            <h4>ACC电子账本</h4>
+                                            <p>为老板设计，省财务心力</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation" tabindex="-1" href="#">
+                                <a role="menuitem" tabindex="-1" href="#">
+                                    <div>
+                                        <span class="glyphicon glyphicon-th-list pull-left"></span>
+                                        <div class="pull-left">
+                                            <h4>Salary薪资管理</h4>
+                                            <p>老板和财务最爱，奖金和业绩联动</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation" tabindex="-1" href="#">
+                                <a role="menuitem" tabindex="-1" href="#">
+                                    <div>
+                                        <span class="glyphicon glyphicon-phone pull-left"></span>
+                                        <div class="pull-left">
+                                            <h4>CTI集信</h4>
+                                            <p>固话、手机、邮件全通信采集</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation" tabindex="-1" href="#">
+                                <a role="menuitem" tabindex="-1" href="#">
+                                    <div>
+                                        <span class="glyphicon glyphicon-globe pull-left"></span>
+                                        <div class="pull-left">
+                                            <h4>集客</h4>
+                                            <p>用集客为自己扩展客源</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation" tabindex="-1" href="#">
+                                <a role="menuitem" tabindex="-1" href="#">
+                                    <div>
+                                        <span class="glyphicon glyphicon-asterisk pull-left"></span>
+                                        <div class="pull-left">
+                                            <h4>SFA：销售自动化</h4>
+                                            <p>主动推进和人工推进的完美结合</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="breach pull-left col-lg-3">
+
+                    <div class="input-group">
+                        <div class="input-group-btn"></div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-2 pull-left user_info">
+                <div class="user">
+                    <span class="glyphicon glyphicon-user"></span>
+                </div>
+                <span class="user_name">Boss</span>
+
+            </div>
+        </div>
+    </header>
+    <div class="top" style="height: 60px;width: 100%;"></div>
