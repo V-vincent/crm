@@ -15,44 +15,46 @@
     <link rel="stylesheet" href="__PUBLIC__static/index/login/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="__PUBLIC__static/index/login/css/free.css"/>
     <link rel="stylesheet" href="__PUBLIC__static/index/login/css/css.css"/>
+    <script type="text/javascript" src="https://cdn.bootcss.com/vue/2.5.13/vue.min.js"></script>
 </head>
 {include file="top"}
 <header id="one">
-	<div class="container-fluid">
+	<div id="container-fluid">
 		<div class="col-sm-5 col-lg-offset-4">
 			<p class="text-center m-t-65 m-b-35">
 				<img src="__PUBLIC__static/index/login/img/login_img.png"></p>
 			<div class="login-box">
 				<ul class="nav nav-tabs" role="tablist" id="myTabs">
 					<li role="presentation" class="active">
-						<a href="#form_1" aria-controls="form_1" role="tab" data-toggle="tab">密码登陆</a>
+						<a href="#form_1" aria-controls="form_1" role="tab" data-toggle="tab">账号登陆</a>
 					</li>
 					<li role="presentation" class="">
 						<a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">USBkey</a>
 					</li>
 					<li role="presentation" class="">
-						<a href="#form_3" aria-controls="form_3" role="tab" data-toggle="tab">OTPkey</a>
+						<a href="#form_3" aria-controls="form_3" role="tab" data-toggle="tab">注册账号</a>
 					</li>
 				</ul>
 				<!-- Tab panes -->
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane active" id="form_1">
-						<form action="/login/loginok.xt" method="POST" id="login" autocomplete="off">
-							<input type="hidden" value="" name="cr">
-							<input type="hidden" value="" name="nc">
+						<form action="{:url('index/login/loginin')}" method="POST" id="login" autocomplete="off" onsubmit="return false">
+						
+							<input type="hidden" value="">
+							<input type="hidden" value="">
 							<div class="form-group">
-								<input type="text" class="form-control" id="user" name="user" value="" placeholder="用户名" autocomplete="off"></div>
+								<input type="text" class="form-control" id="user" name="user_name" v-model="logininfo" placeholder="用户名" autocomplete="off"></div>
 							<div class="form-group">
-								<input type="text" class="form-control" id="com" name="com" value="" placeholder="公司登录名" autocomplete="off"></div>
+								<input type="text" class="form-control" id="com" name="company_name" v-model="logincompany" placeholder="公司登录名" autocomplete="off"></div>
 							<div class="form-group">
-								<input type="text" onfocus='this.type="password"' class="form-control" id="pass" name="pass" placeholder="密码" onpaste="return false;" autocomplete="off"></div>
+								<input type="text" onfocus='this.type="password"' class="form-control" id="pass" name="password" placeholder="密码" onpaste="return false;" autocomplete="off" v-model="loginpassword"></div>
 							<div class="text-left">
 								<label class="checkbox-inline">
-									<input type="checkbox" id="inlineCheckbox1" checked value="1" name="save">保存用户信息</label>
+									<input type="checkbox" id="inlineCheckbox1" checked value="1" >保存用户信息</label>
 								<label class="checkbox-inline">
-									<input type="checkbox" id="inlineCheckbox2" name="n_isspeedtest" value="1">登录后先测速</label>
+									<input type="checkbox" id="inlineCheckbox2"  value="1">登录后先测速</label>
 							</div>
-							<button type="submit" class="btn btn-blue" id="B1" name="B1">登录</button>
+							<button @click="loginin()" class="btn btn-blue" id="B1" >登录</button>
 							<span class="colorTip colorTip1">
 								<span style="display: none;" id="error_1">
 									错误提示
@@ -82,22 +84,16 @@
 					<p>不支持Plus版</p>
 				</div>
 				<div role="tabpanel" class="tab-pane" id="form_3">
-					<form id="login2" action="https://www.xtcrm.com/login/otploginok.xt" method="POST">
+					<form id="login2" action="{:url('index/login/reg')}" method="POST"   onsubmit="return check2()">
 						<div class="form-group">
-							<input type="text" class="form-control" id="user2" name="user" value="" placeholder="用户名" autocomplete="off"></div>
+							<input type="text" class="form-control" id="user2" name="user_name" value="" placeholder="用户名" autocomplete="off"></div>
 						<div class="form-group">
-							<input type="text" class="form-control" id="com2" name="com" value="" placeholder="公司登录名" autocomplete="off"></div>
+							<input type="text" class="form-control" id="com2" name="company_name" value="" placeholder="公司登录名" autocomplete="off"></div>
 						<div class="form-group">
-							<input type="password" class="form-control" id="pass2" name="pass" placeholder="OTP密码" onpaste="return false;"></div>
-						<div class="form-group">
-							<input type="text" class="form-control" id="num2" name="num" placeholder="OTP显示码"></div>
-						<div class="text-left">
-							<label class="checkbox-inline">
-								<input type="checkbox" id="inlineCheckbox1" checked value="1" name="save">保存用户信息</label>
-							<label class="checkbox-inline">
-								<input type="checkbox" id="inlineCheckbox2" name="n_isspeedtest" value="1">登录后先测速</label>
-						</div>
-						<button type="submit" class="btn btn-blue" id="B2" name="B2" value="">登录</button>
+							<input type="password" class="form-control" id="pass2" name="password" placeholder="密码" onpaste="return false;"></div>
+							<div class="form-group">
+							<input type="password" class="form-control" id="pass3"  placeholder="再次输入密码" onpaste="return false;"></div>
+						<button type="submit" class="btn btn-blue"  value="">注册</button>
 						<span class="colorTip colorTip2">
 							<span style="display: none;" id="error_2">
 								错误提示
@@ -146,11 +142,32 @@ XTools企业维生素 <sup>&reg;</sup>
 </div>
 </footer>
 
-<body>
+
 
 <script src="__PUBLIC__static/index/login/js/jquery-1.8.2.min.js"></script>
 <script src="__PUBLIC__static/index/login/js/bootstrap.min.js"></script>
 <script type="text/javascript">
+var login = new Vue({
+   el: '#container-fluid',
+   data: {
+   	logininfo:'',
+   	logincompany:'',
+   	loginpassword:'',
+   },
+   methods:
+   {
+   	loginin:function(){
+      $.get('{:url("index/login/loginin")}',{user_name:this.logininfo,company_name:this.logincompany,password:this.loginpassword},(rtnData)=>{
+      	if(rtnData===true){
+      		alert("登录成功");
+      		window.location.href="{:url('admin/index/index')}";
+      	}
+      	else
+      		alert("登录失败,请重新登录");
+      });
+   	}
+   }
+})
 
     $(function () {
         var errorinfo = '';
@@ -166,6 +183,33 @@ XTools企业维生素 <sup>&reg;</sup>
             }
         }
     });
+
+     function check2(){
+    var name = document.getElementById("user2").value;
+    var company = document.getElementById("com2").value;
+    var psw1 = document.getElementById("pass2").value;
+    var psw2 = document.getElementById("pass3").value;
+    if(name ==  null || name == ''){
+         alert("用户名不能为空");
+         return false;
+    }
+    if(company ==  null || company == ''){
+         alert("公司登录名不能为空");
+         return false;
+    }
+    if(psw1 ==  null || psw1 == ''){
+         alert("密码不能为空");
+         return false;
+    }
+    if(psw1 !=  psw2){
+         alert("两次输入密码不同!");
+         return false;
+    }
+
+    return true;
+ }
+
+     
 </script>
 
 </body>
