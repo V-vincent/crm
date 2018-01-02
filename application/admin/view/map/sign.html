@@ -1,13 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>签到表</title>
-</head>
-<body>
-	<table>
-			<tr>
-				<th>用户ID</th>
+{include file="map_top"}
+{include file="map_left"}
+<style>
+	.Mapleft{
+		margin-left: 70px;
+	}
+	.tab{
+		margin-top: 20px;
+		width: 700px;
+	}
+	.tab .col{
+		border: 1px solid #ebeff2 ;
+		height: 42px;
+		background: #ebeff2;
+	}
+</style>
+	<div class="col-md-5 Mapleft">
+		<p>考勤表</p>
+		<table class="tab">
+			<tr class="col">
+				<th>ID</th>
 				<th>签到时间</th>
 				<th>操作</th>
 			</tr>
@@ -15,9 +26,65 @@
 			<tr>
 				<td>{$info.id}</td>
 				<td>{$info.time|date="Y-m-d H:i:s",###}</td>
-				<td><!-- <a href="javascript:;" onclick="showPosition('{$info.lng}','{$info.lat}')"> -->定位<!-- </a> --></td>
+				<td> <a href="javascript:" onclick="showPosition('{$info.lng}','{$info.lat}')"> 定位 </a> </td>
 			</tr>
 			{/foreach}
-		</table>	
-</body>
-</html>
+		</table>
+	</div>
+<div class="col-md-6">
+	<div class="container" style="width:98.5%;height:460px;border: 1px solid #ccc; margin-top: 20px;overflow: hidden" >
+		<div style="width:100%;height:100%">
+			<div id="allmap"></div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=RLG68MPH7d0OZMp6GM21BMWrPOqVRXFZ"></script>
+<script type="text/javascript">
+    function showPosition(lng,lat){
+        console.log(lat,lng)
+        map.clearOverlays();
+        var new_point = new BMap.Point(lng,lat);
+        map.centerAndZoom(new BMap.Point(new_point), 18);  //
+        var marker = new BMap.Marker(new_point);  // 创建标注
+        map.addOverlay(marker);
+        map.panTo(new_point);
+        marker.enableDragging();
+
+    }
+    // 百度地图API功能
+    var map = new BMap.Map("allmap");    // 创建Map实例
+    map.setMapStyle({style:'hardedge'});
+    var geolocation = new BMap.Geolocation();
+    map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);  // 初始化地图,设置中心点坐标和地图级别
+    //添加地图类型控件
+    map.setCurrentCity("北京");          // 设置地图显示的城市 此项是必须设置的
+    map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+   /* geolocation.getCurrentPosition(function(r){
+        var top_left_control = new BMap.ScaleControl({anchor: BMAP_ANCHOR_TOP_LEFT});// 左上角，添加比例尺
+        var top_left_navigation = new BMap.NavigationControl();  //左上角，添加默认缩放平移控件
+        var top_right_navigation = new BMap.NavigationControl({anchor: BMAP_ANCHOR_TOP_RIGHT, type: BMAP_NAVIGATION_CONTROL_SMALL}); //右上角，仅包含平移和缩放按钮
+        var overView = new BMap.OverviewMapControl();
+        var overViewOpen = new BMap.OverviewMapControl({isOpen:true, anchor: BMAP_ANCHOR_BOTTOM_RIGHT});
+        map.addControl(top_left_control);
+        map.addControl(top_left_navigation);
+        map.addControl(top_right_navigation);
+        map.addControl(overView);          //添加默认缩略地图控件
+        map.addControl(overViewOpen);      //右下角，打开
+        map.centerAndZoom(new BMap.Point(r.longitude, r.latitude), 20);  //
+        var marker = new BMap.Marker(new BMap.Point(r.longitude, r.latitude));
+        map.addOverlay(marker);
+        marker.enableDragging();
+        marker.addEventListener("dragging",getAttr);
+        marker.addEventListener("click",saveAttr);
+        function getAttr(){
+            var p = marker.getPosition();       //获取marker的位置
+
+        };
+        function saveAttr(){
+            var p = marker.getPosition();
+            if(confirm("亲爱的boss,"+"您目前的经度为："+p.lng+",纬度为："+p.lat+"确认签到吗")){
+                $.get('{:url("admin/map/addmap")}',{lng:p.lng,lat:p.lat});
+            }//获取marker的位置
+        }
+    })*/
+</script>

@@ -11,14 +11,13 @@
         <p> <strong>定位用户：</strong>
             <a href="">boss</a>
         </p>
-        <p style="text-align: center;margin-top: 15 px"> <strong>打天下工作台-定位用户最近位置：</strong>
+        <p style="text-align: center;margin-top: 15px"> <strong>打天下工作台-定位用户最近位置：</strong>
             图中定位点取用时间最新的数据(包含：拜访定位、照片定位、轨迹定位和考勤定位)
         </p>
         <div class="container"  style="width:100%;height:500px; margin-top:20px; border: 1px solid #ccc;background: #fff" >
             <div class="container" style="width:98.5%;height:460px;border: 1px solid #ccc; margin-top: 20px;overflow: hidden" >
                 <div style="width:100%;height:100%">
-                    <div id="allmap" style="height: 100%;"></div>
-
+                    <div id="allmap"></div>
                 </div>
             </div>
         </div>
@@ -53,11 +52,6 @@
     var geolocation = new BMap.Geolocation();
     map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);  // 初始化地图,设置中心点坐标和地图级别
     //添加地图类型控件
-    map.addControl(new BMap.MapTypeControl({
-        mapTypes:[
-            BMAP_NORMAL_MAP,
-            BMAP_HYBRID_MAP
-        ]}));
     map.setCurrentCity("北京");          // 设置地图显示的城市 此项是必须设置的
     map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
     geolocation.getCurrentPosition(function(r){
@@ -72,16 +66,14 @@
         map.addControl(overView);          //添加默认缩略地图控件
         map.addControl(overViewOpen);      //右下角，打开
         map.centerAndZoom(new BMap.Point(r.longitude, r.latitude), 20);  //
-        var pt = new BMap.Point(r.longitude, r.latitude);
-        var marker = new BMap.Marker(new BMap.Point(116.404, 39.915));
-        var marker2 = new BMap.Marker(pt,{marker});
+        var marker2 = new BMap.Marker(new BMap.Point(r.longitude, r.latitude));
         map.addOverlay(marker2);
         marker2.enableDragging();
         marker2.addEventListener("dragging",getAttr);
         marker2.addEventListener("click",saveAttr);
         function getAttr(){
             var p = marker2.getPosition();       //获取marker的位置
-          
+
         };
         function saveAttr(){
             var p = marker2.getPosition();
