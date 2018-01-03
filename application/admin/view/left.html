@@ -1,5 +1,6 @@
 
 <div class="left_menu">
+	{if "{:request()->controller()}"=="Crm"}
 	<ul>
 		<li><a href="#" class="glyphicon glyphicon-calendar"><p>工作台</p></a></li>
 		<li><a href="#" class="glyphicon glyphicon-cog"><p>设置</p></a></li>
@@ -8,4 +9,15 @@
 		<li><a href="#"><p>APP</p></a></li>
 		<li><a href="#" class="glyphicon glyphicon-download-alt"><p>下载</p></a></li>
 	</ul>
+	{/if}
+	{if "{:request()->controller()}"=="Task"}
+	11
+	{/if}
 </div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	var a="{:request()->controller()}";
+	console.log(a);
+});
+</script>
