@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__static/admin/crm/css/userinfo.css?199">
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <div class="pull-left">
+                <p class="pull-left">客户视图</p><a class="glyphicon glyphicon-user"></a></div>
+            <div class="pull-right">ID:{$info.id}</div>
+        </div>
+        <div class="top">
+            <h3 class="username text-center" style="position: relative;">{$info.company_name}<span class="sup-btn">潜在</span></h3>
+            <p class="text-center">更新:2天前 创建:{$info.time}</p>
+        </div>
+        <div class="content row">
+            <div class="col-md-4 left">
+                <!-- 左一价值开始 -->
+                <div class="value">
+                    <div class="value-top" style="overflow: hidden;">
+                        <p class="pull-left"><i class="glyphicon glyphicon-star"></i>三定一节点</p>
+                        <div class="pull-right">停滞1天</div>
+                    </div>
+                    <div class="text-center row">
+                        <div class="first col-md-3 col-md-offset-1">
+                            <div><img src="__PUBLIC__static/admin/crm/images/userinfo/first.png" alt=""></div>
+                            <p>有价值</p>
+                        </div>
+                        <div class="second col-md-3 col-md-offset-1">
+                            <div><img src="__PUBLIC__static/admin/crm/images/userinfo/emoji.png" alt=""></div>
+                            <p>无价值</p>
+                        </div>
+                        <div class="second col-md-3 col-md-offset-1">
+                            <div><img src="__PUBLIC__static/admin/crm/images/userinfo/edit.png" alt=""></div>
+                            <p>本月</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 左一价值结束 -->
+                <!-- 基本信息开始 -->
+                <div class="info">
+                    <h6><i class="glyphicon glyphicon-list-alt"></i>  基本信息</h6>
+                    <div style="overflow: hidden;">
+                        <p class="pull-left">助记简称 <span>{$info.company_name}</span></p>
+                        <p class="pull-left" style="margin-left: 8px;">种类 <span>{$info.company_cate}</span></p>
+                        <p class="pull-left" style="margin-left: 8px;">来源 <span>{$info.user_source}</span></p>
+                    </div>
+                    <div class="remark">
+                        <p>备注<span>{$info.remark}</span></p>
+                    </div>
+                    <p style="margin-top:20px;font-size: 10px;"><img src="__PUBLIC__static/admin/crm/images/userinfo/tyc2.png" alt="" style="width: 3%;">工商信息(由天眼查提供)</p>
+                </div>
+                <!-- 基本信息结束 -->
+                <!-- 用户画像开始 -->
+                <div class="draw">
+                    <p><span class="glyphicon glyphicon-headphones"></span>&nbsp用户画像&nbsp<i class="glyphicon glyphicon-cog"></i></p>
+                    <h3 style="color: red;">敬请期待.......</h3>
+                </div>
+                <!-- 用户画像结束 -->
+                <!-- 联系人开始 -->
+                <div class="contact">
+                    <div class="title">
+                        <div class="pull-left">
+                            <p class="glyphicon glyphicon-phone-alt">联系人</p>
+                        </div>
+                        <div class="pull-right">
+                            <label class="radio-inline" id="btn-down">
+                                <input type="radio" name="optionsRadiosinline" value="option1" checked><i class="glyphicon glyphicon-chevron-down"></i>
+                            </label>
+                            <label class="radio-inline" id="btn-up">
+                                <input type="radio" name="optionsRadiosinline" value="option2"><i class="glyphicon glyphicon-chevron-up"></i>
+                            </label </div>
+                        </div>
+                    </div>
+                    <div class="content" style="margin-top: 5px;">
+                        <div class="row" id="big">
+                            <div class="col-md-4" style="padding: 0 0 0 30px;">
+                                <p style="font-size: 30px;"><i class="glyphicon glyphicon-user"></i></p>
+                            </div>
+                            <div class="col-md-4">
+                                <p>手机：{$info.user_phone}</p>
+                                <p>电话：{$info.user_telephone}</p>
+                                <p>邮箱：{1}</p>
+                                <p>QQ：{1}</p>
+                                <p>微信：{1}</p>
+                            </div>
+                        </div>
+                        <div id="small" style="display: none;padding-left: 50px;">
+                            <p class="glyphicon glyphicon-user">:{$info.user_phone}</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 联系人结束 -->
+                <!-- 销售金额开始 -->
+                <div class="money">
+                    <p class="pull-left"><i class="glyphicon glyphicon-usd"></i>销售金额</p>
+                    <p class="pull-right"><i class="glyphicon glyphicon-yen">00</i></p>
+                </div>
+                <!-- 销售金额结束 -->
+                <!-- 地址开始 -->
+                <div class="address">
+                    <p><i class="glyphicon glyphicon-map-marker"></i>地址</p>
+                </div>
+                <!-- 地址结束 -->
+                <!-- 下级客户开始 -->
+                <div class="xj">
+                    <p><i class="glyphicon glyphicon-flag"></i>下级客户</p>
+                </div>
+                <!-- 下级客户结束 -->
+            </div>
+            <!-- 左边结束 -->
+            <div class="right col-md-6">
+                <div class="title">
+                    <p><i class="glyphicon glyphicon-earphone"></i>跟单时间线</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+$(document).ready(function() {
+    $('#btn-up').click(function() {
+        $('#big').slideUp();
+        $('#small').slideDown();
+    })
+    $('#btn-down').click(function() {
+        $('#big').slideDown();
+        $('#small').slideUp();
+    })
+
+});
+</script>
+
+</html>

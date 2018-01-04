@@ -1,0 +1,26 @@
+*{margin: 0;padding: 0;}
+body{background: #f4f8fb;}
+.container{width: 80%;}
+.container .title{overflow: hidden;}
+.container .title .pull-left a{padding-left: 5px;}
+.container .top h3{font-size: 20px;font-weight: normal;color: #505458;}
+.container .top h3 .sup-btn{border-radius: 3px;border: 1px solid;padding: 1px 2px;font-size: 12px;margin-right: 
+	5px;color: #ccc;margin-top: 20px;position: absolute;top: -30px;
+}
+.container .top p{color:#98a6ad;font-size: 12px;}
+.content .left .value{background: white;padding: 10px;}
+.content .left .value .text-center img{width: 60%;margin-top: 8px;}
+.content .left .value .text-center div div:hover{background: white;}
+.content .left .value .first div{border-radius: 50%;border: 1px solid #000;height: 50px;background: #000;}
+.content .left .value .second div{border-radius: 50%;border: 1px solid #000;height: 50px;background: #000;}
+.content .left .value .first div{border-radius: 50%;border: 1px solid #000;height: 50px;background: #000;}
+.content .left .info{padding: 10px;margin-top: 10px;background: white;}
+.content .left .info div p{color: #ccc;font-size: 15px;}
+.content .left .info div p span{font-size: 8px;color: black;}
+.content .left .info .remark{margin-top:15px;}
+.content .left .draw{padding: 10px;margin-top: 10px;background: white;height: 100px;}
+.content .left .contact{padding: 10px;margin-top: 10px;background: white;}
+.content .left .money{padding: 10px;margin-top: 10px;background: white;overflow: hidden;}
+.content .left .address{padding: 10px;margin-top: 10px;background: white;overflow: hidden;}
+.content .left .xj{padding: 10px;margin-top: 10px;background: white;overflow: hidden;}
+.content .right{background: white;overflow: hidden;}

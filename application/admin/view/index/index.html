@@ -92,10 +92,19 @@
              </div>
 
              <div class="col-md-5 pull-right">
-             <div class="input-group">
-               <span class="input-group-addon" id="basic-addon1">来源</span>
-                <input type="text" class="form-control" placeholder="客户介绍" aria-describedby="basic-addon1">
-             </div>
+
+<div class="form-inline">
+                <select name="usersource_id" class="form-control" style="width: 90%;">
+                    <option value="index.html">客户来源</option>
+                    {foreach $user_source as $info}
+                    <option value="{$info.id}">{$info.user_source}</option>
+                    {/foreach}
+                </select>
+                <a class="glyphicon glyphicon-book" title="数据字典" data-placement="bottom" href="{:url('crm/usersource')}"></a>
+            </div>
+
+
+           
              </div>
 </div>
 <div class="row" style="margin-top: 25px;">
@@ -109,7 +118,7 @@
              <div class="col-md-5 pull-right">
              <div class="input-group">
                <span class="input-group-addon" id="basic-addon1">电话</span>
-                <input type="text" class="form-control" placeholder="电话号码" aria-describedby="basic-addon1">
+                <input type="text" class="form-control" placeholder="电话号码" aria-describedby="basic-addon1" name="user_telephone">
              </div>
              </div>
 </div>
@@ -118,14 +127,17 @@
                 <input type="text" class="form-control" placeholder="备注" aria-describedby="basic-addon1" name="remark">
              </div>
 <!-- 选择客户类型 -->
-            <div class="form-group">
+            <div class="form-inline">
+            	
                 <label>选择客户类型</label>
-                <select name="companycate_id" class="form-control">
+                <select name="companycate_id" class="form-control" style="width: 95%;">
                     <option value="index.html">请选择</option>
                     {foreach $list as $info}
                     <option value="{$info.id}">{$info.company_cate}</option>
                     {/foreach}
                 </select>
+    
+                <a class="glyphicon glyphicon-book" title="数据字典" data-placement="bottom" href="{:url('crm/companycate')}"></a>
             </div>
             <div class="form-group" style="margin:25px 0 0 220px;">
 				<a href="" id="true_tj"><input type="submit" class="btn btn-primary"></a>
