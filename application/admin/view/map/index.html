@@ -1,5 +1,5 @@
 {include file="map_top"}
-{include file="map_left"}
+{include file="left"}
 <div class="container" style="width:90%;margin-left:6.75%;background: #fff">
     <h3 style="">欢迎使用打天下</h3>
     <p>
@@ -181,10 +181,10 @@ geolocation.getCurrentPosition(function(r) {
         document.getElementById('lng').value = p.lng;
         document.getElementById('lat').value = p.lat
     };
-
     function saveAttr() {
         var p = marker2.getPosition(); //获取marker的位置
         confirm("亲爱的boss" + "您目前的经度为：" + p.lng + ",纬度为：" + p.lat + "确认签到吗");
+<<<<<<< HEAD
                 <br>
                 Copyright © 2004-2017 &nbsp;北京沃力森信息技术有限公司&nbsp;&nbsp;  Beijing Volitation Information Technology Co.,ltd
             </footer>
@@ -227,9 +227,12 @@ geolocation.getCurrentPosition(function(r) {
             if(confirm("亲爱的boss,"+"您目前的经度为："+p.lng+",纬度为："+p.lat+"确认签到吗")){
                     $.get('{:url("admin/map/addmap")}',{lng:p.lng,lat:p.lat});
             }//获取marker的位置      
+=======
+                    $.get('{:url("admin/map/addmap")}',{lng:p.lng,lat:p.lat});
+            }//获取marker的位置         
+>>>>>>> 517c793780ed96fd688c4c0e83de08edbd5a0348
     }
 
 })
 </script>
-
 </html>

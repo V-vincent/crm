@@ -1,6 +1,5 @@
 {include file="map_top"}
-{include file="map_left"}
-
+{include file="left"}
 <style>
 	.Mapleft{
 		margin-left: 70px;
@@ -15,41 +14,39 @@
 		background: #ebeff2;
 	}
 </style>
-
-
-<body>
-	<div class="container">
-    <div class="col-md-5 Mapleft">
-        <table class="tab">
-            <tr class="col">
-                <th>ID</th>
-                <th>签到时间</th>
+    <div class="container">
+        <div class="col-md-5 Mapleft">
+            <table class="tab">
+                <tr class="col">
+                    <th>ID</th>
+                    <th>签到时间</th>
                 </div>
-
-	<table>
-			<tr>
-				<th>用户ID</th>
-				<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;签到时间</th>
-				<th>操作</th>
-			</tr>
-			{foreach $signlist as $info}
-			<tr>
-				<td>{$info.id}</td>
-				<td>{$info.time|date="Y-m-d H:i:s",###}</td>
-				<td> <a href="javascript:" onclick="showPosition('{$info.lng}','{$info.lat}')"> 定位 </a> </td>
-			</tr>
-			{/foreach}
-		</table>
-        </table>
-
-	</div>
-<div class="col-md-6">
-	<div class="container" style="width:98.5%;height:460px;border: 1px solid #ccc; margin-top: 20px;overflow: hidden" >
-		<div style="width:100%;height:100%">
-			<div id="allmap"></div>
-		</div>
-	</div>
-</div>
+                <table>
+                    <tr>
+                        <th>用户ID</th>
+                        <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;签到时间</th>
+                        <th>操作</th>
+                    </tr>
+                    {foreach $signlist as $info}
+                    <tr>
+                        <td>{$info.id}</td>
+                        <td>{$info.time|date="Y-m-d H:i:s",###}</td>
+                        <td>
+                            <a href="javascript:" onclick="showPosition('{$info.lng}','{$info.lat}')">定位</a>
+                        </td>
+                    </tr>
+                    {/foreach}
+                </table>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <div class="container" style="width:98.5%;height:460px;border: 1px solid #ccc; margin-top: 20px;overflow: hidden" >
+                <div style="width:100%;height:100%">
+                    <div id="allmap"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=RLG68MPH7d0OZMp6GM21BMWrPOqVRXFZ"></script>
 <script type="text/javascript">
     function showPosition(lng,lat){
@@ -100,7 +97,6 @@
         }
     })*/
 </script>
-
 </div>	
 </body>
 </html>

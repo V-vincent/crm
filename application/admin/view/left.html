@@ -1,7 +1,5 @@
-
-<div class="left_menu">
-	{if "{:request()->controller()}"=="Crm"}
-	<ul>
+<div class="left_menu lbs" id="left_menu">
+	<ul v-if="controller!='Map'">
 		<li><a href="#" class="glyphicon glyphicon-calendar"><p>工作台</p></a></li>
 		<li><a href="#" class="glyphicon glyphicon-cog"><p>设置</p></a></li>
 		<li><a href="#"><p>全功能</p></a></li>
@@ -9,15 +7,30 @@
 		<li><a href="#"><p>APP</p></a></li>
 		<li><a href="#" class="glyphicon glyphicon-download-alt"><p>下载</p></a></li>
 	</ul>
-	{/if}
-	{if "{:request()->controller()}"=="Task"}
-	11
-	{/if}
+	<ul v-if="controller=='Map'" class="Maplist">
+		<li><a href="{:url('admin/map/index')}" class="glyphicon glyphicon-home"><p>工作台</p></a></li>
+		<li><a href="{:url('admin/map/visit')}" class="glyphicon glyphicon-user"><p>客户拜访</p></a></li>
+		<li><a href="{:url('admin/map/field')}" class="glyphicon glyphicon-inbox"><p>外勤工单</p></a></li>
+		<li><a href="{:url('admin/map/business')}" class="glyphicon glyphicon-plane"><p>出差管理</p></a></li>
+		<li><a href="{:url('admin/map/photo')}" class="glyphicon glyphicon-camera"><p>实景照片</p></a></li>
+		<li><a href="{:url('admin/map/check')}" class="glyphicon glyphicon-map-marker"><p>轨迹查询</p></a></li>
+		<li><a href="{:url('admin/map/sign')}" class="glyphicon glyphicon-star"><p>考勤</p></a></li>
+		<li><a href="{:url('admin/map/set')}" class="glyphicon glyphicon-cog"><p>设置</p></a></li>
+	</ul>
 </div>
-
 <script type="text/javascript">
-$(document).ready(function(){
-	var a="{:request()->controller()}";
-	console.log(a);
-});
+ new Vue({
+        el:'#left_menu',
+        data:{
+           controller:"Index"
+        },
+        created(){
+        	this.init();
+        },
+        methods:{
+        	init(){
+                this.controller="{:request()->controller()}";
+        	}
+        }
+    })
 </script>
