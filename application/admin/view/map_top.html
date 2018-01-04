@@ -3,9 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>智慧云办公系统管理</title>
+    <title>Document</title>
     <!-- CSS公共样式 -->
-    <link rel="stylesheet" type="text/css" href="__STATIC__/admin/common/common.css?99">
+    <link rel="stylesheet" type="text/css" href="__STATIC__/admin/common/common.css">
     <!-- 引入bootstarp -->
     <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
     <!-- 引入jquery -->
@@ -14,12 +14,6 @@
     <script type="text/javascript" src="https://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <!-- 引入vue.js -->
     <script type="text/javascript" src="https://cdn.bootcss.com/vue/2.5.13/vue.min.js"></script>
-     <!-- 引入样式 -->
-     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-     <!-- 引入组件库 -->
-     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
-     <!-- 引入 vue路由-->
-     <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
 </head>
 
 <body>
@@ -27,37 +21,25 @@
         <div class="row">
             <div class="left col-md-10">
                 <div class="logo pull-left">
-                    <a href="{:url('index/index')}"><img src="__STATIC__/admin/index/images/logo.png" alt=""></a>
+                    <a href="{:url('index/index')}">
+                        <img src="__PUBLIC__static/admin/index/images/logo.png" alt=""></a>
                 </div>
                 <div class="title pull-left">
                     <div class="dropdown">
                         <button type="button" class="btn dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
-                            <span>CRM</span>
+                            <span>LBS</span>
                             <span class="caret"></span>
                         </button>
                         {include file="list"}
                     </div>
                 </div>
                 <div class="breach pull-left col-lg-3">
+
                     <div class="input-group">
-                        <div class="input-group-btn">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                客户
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="#">客户</a>
-                                </li>
-                                <li>
-                                    <a href="#">联系人</a>
-                                </li>
-                                <li>
-                                    <a href="#">设置</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <input type="text" class="form-control" aria-label="..." placeholder="支持拼音字头"></div>
+                        <div class="input-group-btn"></div>
+
+                    </div>
+
                 </div>
             </div>
             <div class="col-md-2 pull-left user_info">

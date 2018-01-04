@@ -11,14 +11,14 @@
   sub{ vertical-align:text-bottom; }
   legend { color:#000;}
   /*设置提交表单的间距*/
-  .spacing(margin-top: 5px;)
+  .spacing{margin-top: 5px;}
   fieldset, img { border:0; }
   button, input, select, textarea { font-size:100%; }
   table { border-collapse:collapse; border-spacing:0; }
-  header{left: 0px;position: fixed;right: 0;top: 0px;z-index: 999;height: 60px;background: #FDFAFA;}
+  header{left: 0px;position: fixed;right: 0;top: 0px;z-index: 999;height: 60px;background: #f3f3f3;}
   header .logo{padding: 10px;}
-  header .title .dropdown .btn{height: 60px;background: #FDFAFA;}
-  header .title .dropdown .btn span{font-size: : 24px;}
+  header .title .dropdown .btn{height: 60px;background: #f3f3f3;}
+  header .title .dropdown .btn span{font-size: 16px;}
   header .title ul li a{font-weight: 400;overflow: hidden;width: 300px;}
   header .title ul li span{padding-top: 10px;color: #337ab7;padding-right: 5px;}
   header .title ul li h4{font-size: 15px;color: #505458;}
@@ -30,9 +30,11 @@
   header .user span{color: white;position: absolute;left: 7px;top: 7px;}
   .left_menu{width:80px;height: 1500px;background: #36404a;position: fixed;overflow: hidden;}
   .left_menu ul li{padding: 10px;text-align: center;border-left: #36404a 4px solid}
-  .left_menu ul li a{color: white;font-size: 30px;text-align: center}
+  .left_menu ul li a{color: white;font-size: 30px;text-align: center;}
   .left_menu ul li a:hover{text-decoration: none;text-align: center;}
   .left_menu ul li p{font-size: 12px;color: white;margin-top: 5px;}
+  .left_menu.lbs .Maplist{margin-top: 50px}
+  .left_menu.lbs .Maplist li a{font-size: 18px}
   .left_menu.lbs ul li:hover{
     border-left: #94c4fb 2px solid;
   }
