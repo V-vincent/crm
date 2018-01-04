@@ -1,7 +1,8 @@
-{include file="top"}
-{include file="left"}
-<link rel="stylesheet" type="text/css" href="__STATIC__/admin/crm/css/index.css?100">
-<div class="container">
+{include file="top"} {include file="left"}
+<!-- 页面css样式 -->
+<link rel="stylesheet" type="text/css" href="__STATIC__/admin/crm/css/index.css?199">
+<!-- 时间插件样式 -->
+<div class="container" id="mtk" style="width: 80%;">
     <div class="title row">
         <div class="col-md-1">
             <a href="javascript:" style="border-bottom: 2px gray solid">全部客户</a>
@@ -21,6 +22,25 @@
     </div>
     <div class="search row">
         <form action="{:url('index')}" class="form">
+<<<<<<< HEAD
+            <div class="col-md-3 form-inline" style="overflow: hidden;">
+                <p class="glyphicon glyphicon-glass pull-left" style="margin-top: 8px;"></p>
+                <!-- 公司分类选择 -->
+                <div class="pull-left">
+                    <select class="form-control pull-right" name="companycate_id" onchange="$('#basic-addon2').click()" style="width: 100%;">
+                        <option value="">全部数据</option>
+                        <option :value="inf.id" v-for="inf in c_list">{{inf.company_cate}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4 form-inline">
+                <p class="glyphicon glyphicon-search pull-left" style="margin: 8px 5px 0 0;"></p>
+                <div class="input-group pull-left">
+                    <input type="text" class="form-control pull-left" placeholder="输入客户名称" aria-describedby="basic-addon2" name="company_name">
+                </div>
+                <input type="submit" class="btn btn-group pull-left" id="basic-addon2" style="cursor: pointer;" value="搜索" style="margin-left:-100px; ">
+            </div>
+=======
             <div class="col-md-2">
 
                 <p class="glyphicon glyphicon-glass pull-left" style="margin-top: 8px;"></p>
@@ -41,12 +61,21 @@
             </div>
             <div class="col-md-1" style="padding: 0px;margin-left:-95px; ">
                 <input type="submit" class="btn btn-group pull-right" id="basic-addon2" style="cursor: pointer;" value="搜索"></div>
+>>>>>>> 614309442b24dc63ee67f2147f34e1b9ff7710ad
         </form>
     </div>
     <div class="info">
         <div>
+<<<<<<< HEAD
+            <p class="pull-left" style="margin: 0 5px 0 0;padding-top: 6px;">客户基本信息</p>
+            <div class="pull-left">
+                <span style="color: #ccc">共2条</span>
+                <a href="{:url('index')}" class="btn btn-default">清除搜索</a><span class="glyphicon glyphicon-trash"></span>
+            </div>
+=======
             <p class="pull-left" style="margin-right: 5px;">客户基本信息</p>
             <span style="color: #ccc">共2条</span>
+>>>>>>> 614309442b24dc63ee67f2147f34e1b9ff7710ad
         </div>
     </div>
     <table class="table table-bordered">
@@ -68,15 +97,287 @@
             <td>{$info.company_cate}</td>
             <td>{$info.user_name}</td>
             <td>{$info.user_phone}</td>
-            <td>{$info.remark}</td>
+            <td>{$info.time}</td>
             <td>
+<<<<<<< HEAD
+                <a class="glyphicon glyphicon-list-alt" title="视图" data-placement="bottom" href="{:url('crm/userinfo',['id'=>$info.id])}"></a>
+                <a class="glyphicon glyphicon-pencil" title="编辑" data-placement="bottom" data-toggle="modal" href="#client" @click="getInfo({$info.id})">
+                    </a>
+                </a>
+                <a class="glyphicon glyphicon-remove" title="删除" data-placement="bottom" href="{:url('delete',['id'=>$info.id])}"></a>
+=======
                 <a class="glyphicon glyphicon-list-alt" title="视图"  data-placement="bottom"></a>
                 <a class="glyphicon glyphicon-pencil" title="编辑"  data-placement="bottom"></a>
                 <a class="glyphicon glyphicon-remove" title="删除"  data-placement="bottom" href="{:url('delete',['id'=>$info.id])}"></a>
+>>>>>>> 614309442b24dc63ee67f2147f34e1b9ff7710ad
             </td>
         </tr>
         {/foreach}
     </table>
+    <!-- 编辑模态框开始 -->
+    <div class="modal fade" id="client" style="padding: 130px;">
+        <div class="modal-dialog text-center">
+            <div class="modal-content edit" style="width: 150%;">
+                <!-- 模态框标题 -->
+                <div class="modal-header">客户基本信息
+                    <div class="pull-right">
+                        <input type="submit" class="btn btn-info">
+                    </div>
+                </div>
+                <!-- 模态框内容 -->
+                <div class="modal-body" style="padding: 31px;">
+                    <!-- 表单开始 -->
+                    <form action="{:url('index')}" class="form" method="post" enctype="multipart/form-data">
+                        <!-- 基本信息 -->
+                        <p class="text-center">基本信息</p>
+                        <div id="text-center-b" style="display: block;height: 1px;width: 40%;background: rgba(0,0,0,0.2);margin-bottom: 10px;margin-left: 30%;"></div>
+                        <div class="form-group form-inline" style="margin-bottom: 10px;overflow: hidden;">
+                            <label for="lastname" class="control-label">客户名称</label>
+                            <input type="text" v-model="edit.company_name" class="form-control" id="lastname" placeholder="客户名称" name="company_name" style="width: 90%;">
+                        </div>
+                        <!-- 第二列 -->
+                        <div class="row form-inline" style="margin-bottom: 10px;">
+                            <div class="form-group col-md-6">
+                                <label for="lastname" class="control-label">简称</label>
+                                <input type="text" class="form-control" v-model="edit.company_name" placeholder="请输入姓" name="company_name" style="width: 87%;">
+                            </div>
+                            <!-- 种类 -->
+                            <div class="form-group col-md-6">
+                                <label for="lastname" class="control-label" style="margin-right: 7%;">种类</label>
+                                <select class="form-control" name="companycate_id" style="width: 80%;">
+                                    <option value="">全部数据</option>
+                                    <!-- 编辑时显示客户种类 -->
+                                    <option :value="inf.id" v-for="inf in c_list" :selected="inf.id==edit.companycate_id">{{inf.company_cate}}</option>
+                                </select>
+                                <a class="glyphicon glyphicon-book" title="数据字典" data-placement="bottom" href="{:url('crm/companycate')}"></a>
+                            </div>
+                        </div>
+                        <!-- 第二行结束 -->
+                        <!-- 第三行开始 -->
+                        <div class="row form-inline row">
+                            <div class="form-group col-md-6">
+                                <label for="lastname" class="control-label">编号</label>
+                                <input type="text" class="form-control" v-model="edit.id" id="lastname" name="company_name" style="width: 87%;">
+                            </div>
+                            <!-- 种类 -->
+                            <div class="form-group col-md-6">
+                                <label for="lastname" class="control-label">上级客户</label>
+                                <input type="text" class="form-control" id="lastname" name="company_name" placeholder="上级客户" style="width: 80%;">
+                            </div>
+                        </div>
+                        <!-- 第三行结束 -->
+                        <!-- 生命周期 -->
+                        <p class="text-center" style="margin-top: 30px;">生命周期</p>
+                        <div id="text-center-b" style="display: block;height: 1px;width: 40%;background: rgba(0,0,0,0.2);margin-bottom: 10px;margin-left: 30%;"></div>
+                        <div class="form-inline row" style="overflow: hidden;">
+                            <div class="pull-left col-md-6" style="margin-top: 8px;">
+                                <label class="radio-inline">
+                                    <input type="radio" name="optionsRadiosinline" id="optionsRadios3" value="option1" checked>潜在
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="optionsRadiosinline" id="optionsRadios4" value="option2">签约
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="optionsRadiosinline" id="optionsRadios4" value="option2">重复购买
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="optionsRadiosinline" id="optionsRadios4" value="option2">失效
+                                </label>
+                            </div>
+                            <!-- 时间插件 -->
+                            <div class="pull-right col-md-6">
+                                <template>
+                                    <div class="block">
+                                        <span class="demonstration" style="margin-right: 7%;font-weight: bold;">签约</span>
+                                        <el-date-picker v-model="value1" type="date" placeholder="选择日期" style="width: 80%;">
+                                        </el-date-picker>
+                                    </div>
+                                </template>
+                            </div>
+                        </div>
+                        <!-- 商务特征开始 -->
+                        <p class="text-center" style="margin-top: 30px;">商务特征</p>
+                        <div id="text-center-b" style="display: block;height: 1px;width: 40%;background: rgba(0,0,0,0.2);margin-bottom: 10px;margin-left: 30%;"></div>
+                        <!-- 第一行 -->
+                        <div class="form-inline row">
+                            <div class="form-group col-md-6" style="position: relative;">
+                                <label for="lastname" class="control-label">三一客</label>
+                                <input type="text" class="form-control" name="company_name" style="width: 82%;">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm" style="position: absolute;right: 35px;">选择</button>
+                                <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+                                    <div class="modal-dialog modal-sm" role="document">
+                                        <div class="modal-content">
+                                            <div class="form-group">
+                                                <label for="lastname" class="control-label">阶段</label>
+                                                <select class="form-control" name="companycate_id">
+                                                    <option value="">全部数据</option>
+                                                    <option :value="inf.id" v-for="inf in c_list" :selected="inf.id==edit.companycate_id">{{inf.company_cate}}</option>
+                                                </select>
+                                                <a class="glyphicon glyphicon-book" title="数据字典" data-placement="bottom" href="{:url('crm/companycate')}"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group pull-right col-md-6">
+                                <label for="lastname" class="control-label" style="margin-right: 7%">阶段</label>
+                                <select class="form-control" name="companycate_id" style="width: 80%;">
+                                    <option value="">全部数据</option>
+                                    <option :value="inf.id" v-for="inf in c_list" :selected="inf.id==edit.companycate_id">{{inf.company_cate}}</option>
+                                </select>
+                                <a class="glyphicon glyphicon-book" title="数据字典" data-placement="bottom" href="{:url('crm/companycate')}"></a>
+                            </div>
+                        </div>
+                        <!-- 第二行 -->
+                        <div class="form-inline row" style="margin-top:10px;">
+                            <div class="form-group col-md-6">
+                                <label for="lastname" class="control-label" style="margin-right: 3%">来源</label>
+                                <select class="form-control" name="companycate_id" style="width: 84%;">
+                                    <option value="">全部数据</option>
+                                    <option :value="inf.id" v-for="inf in c_list" :selected="inf.id==edit.companycate_id">{{inf.company_cate}}</option>
+                                </select>
+                                <a class="glyphicon glyphicon-book" title="数据字典" data-placement="bottom" href="{:url('crm/companycate')}"></a>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="lastname" class="control-label">关系等级</label>
+                                <select class="form-control" name="companycate_id" style="width: 80%;">
+                                    <option value="">全部数据</option>
+                                    <option :value="inf.id" v-for="inf in c_list" :selected="inf.id==edit.companycate_id">{{inf.company_cate}}</option>
+                                </select>
+                                <a class="glyphicon glyphicon-book" title="数据字典" data-placement="bottom" href="{:url('crm/companycate')}"></a>
+                            </div>
+                        </div>
+                        <!-- 第三行 -->
+                        <div class="form-inline row" style="overflow: hidden; margin-top:10px;">
+                            <div class="pull-left col-md-6" style="margin-top: 8px;">
+                                <p class="pull-left">信用等级</p>
+                                <label class="radio-inline">
+                                    <input type="radio" name="optionsRadiosinline" id="optionsRadios3" value="option1" checked>高
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="optionsRadiosinline" id="optionsRadios4" value="option2">中
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="optionsRadiosinline" id="optionsRadios4" value="option2">低
+                                </label>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="lastname" class="control-label">结款方式</label>
+                                <select class="form-control" name="companycate_id" style="width: 80%;">
+                                    <option value="">全部数据</option>
+                                    <option :value="inf.id" v-for="inf in c_list" :selected="inf.id==edit.companycate_id">{{inf.company_cate}}</option>
+                                </select>
+                                <a class="glyphicon glyphicon-book" title="数据字典" data-placement="bottom" href="{:url('crm/companycate')}"></a>
+                            </div>
+                        </div>
+                        <!-- 客观特征 -->
+                        <p class="text-center" style="margin-top: 30px;">客观特征</p>
+                        <div id="text-center-b" style="display: block;height: 1px;width: 40%;background: rgba(0,0,0,0.2);margin-bottom: 10px;margin-left: 30%;"></div>
+                        <div class="form-inline row" style="margin-top:10px;">
+                            <div class="form-group col-md-6">
+                                <label for="lastname" class="control-label" style="margin-right: 3%">行业</label>
+                                <select class="form-control" name="companycate_id" style="width: 84%;">
+                                    <option value="">全部数据</option>
+                                    <option :value="inf.id" v-for="inf in c_list" :selected="inf.id==edit.companycate_id">{{inf.company_cate}}</option>
+                                </select>
+                                <a class="glyphicon glyphicon-book" title="数据字典" data-placement="bottom" href="{:url('crm/companycate')}"></a>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="lastname" class="control-label">人员规模</label>
+                                <select class="form-control" name="companycate_id" style="width: 80%;">
+                                    <option value="">全部数据</option>
+                                    <option :value="inf.id" v-for="inf in c_list" :selected="inf.id==edit.companycate_id">{{inf.company_cate}}</option>
+                                </select>
+                                <a class="glyphicon glyphicon-book" title="数据字典" data-placement="bottom" href="{:url('crm/companycate')}"></a>
+                            </div>
+                        </div>
+                        <div class="form-inline row" style="margin-top:10px;">
+                            <div class="form-group col-md-12">
+                                <label for="lastname" class="control-label">公司简介:</label>
+                                <textarea class="form-control" style="width: 93%;margin-left: 5%;"></textarea>
+                            </div>
+                        </div>
+                        <!-- 联系方式 -->
+                        <p class="text-center" style="margin-top: 30px;">联系方式</p>
+                        <div id="text-center-b" style="display: block;height: 1px;width: 40%;background: rgba(0,0,0,0.2);margin-bottom: 10px;margin-left: 30%;"></div>
+                        <div class="row form-inline" style="margin-bottom: 10px;">
+                            <div class="form-group col-md-6">
+                                <label for="lastname" class="control-label">电话</label>
+                                <input type="text" class="form-control" v-model="edit.user_phone" placeholder="请输入姓" name="company_name" style="width: 87%;">
+                            </div>
+                            <!-- 种类 -->
+                            <div class="form-group col-md-6">
+                                <label for="lastname" class="control-label">传真</label>
+                                <input type="text" class="form-control" v-model="edit.user_telephone" placeholder="请输入姓" name="company_name" style="width: 88%;">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname" class="control-label pull-left">网址</label>
+                            <input type="text" class="form-control pull-left" v-model="edit.user_phone" placeholder="请输入姓" name="company_name" style="width: 95%;">
+                        </div>
+                        <div class="form-group">
+                            <label for="address">地区</label>
+                            <div class="bs-chinese-region flat dropdown" data-submit-type="id" data-min-level="1" data-max-level="3">
+                                <input type="text" class="form-control" name="address" id="address" placeholder="选择你的地区" data-toggle="dropdown" readonly="" value="440103">
+                                <div class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                    <div>
+                                        <ul class="nav nav-tabs" role="tablist">
+                                            <li role="presentation" class="active"><a href="#province" data-next="city" role="tab" data-toggle="tab">省份</a></li>
+                                            <li role="presentation"><a href="#city" data-next="district" role="tab" data-toggle="tab">城市</a></li>
+                                            <li role="presentation"><a href="#district" data-next="street" role="tab" data-toggle="tab">县区</a></li>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div role="tabpanel" class="tab-pane active" id="province">--</div>
+                                            <div role="tabpanel" class="tab-pane" id="city">--</div>
+                                            <div role="tabpanel" class="tab-pane" id="district">--</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<!-- 编辑模态框结束-->
+</div>
+<<<<<<< HEAD
+<script type="text/javascript">
+//时间插件
+
+//编辑框赋值
+new Vue({
+    el: "#mtk",
+    data: {
+        edit: [],
+        // 显示编辑内容
+        c_list: JSON.parse('{$companycate_list}'),
+        // 时间插件
+        pickerOptions1: {
+            disabledDate(time) {
+                return time.getTime() > Date.now();
+            }
+        },
+        value1: '',
+        value2: ''
+    },
+    methods: {
+        getInfo: function(id) {
+            var that = this;
+            $.get("{:url('edit')}?id=" + id, function(rtnData) {
+                that.edit = rtnData;
+                console.log(that.edit);
+            });
+
+        }
+    }
+
+
+})
+</script>
+=======
 <script type="text/javascript"></script>
+>>>>>>> 614309442b24dc63ee67f2147f34e1b9ff7710ad
 {include file="foot"}

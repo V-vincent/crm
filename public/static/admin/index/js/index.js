@@ -14,8 +14,4 @@ $(document).ready(function(){
     var $target = $(e.target);
     $('#text').text($target.text())
 })
-    //选择注册时间
-   $('.ture_tj').click(function(){
-   	console.log(1);
-   })
 });
