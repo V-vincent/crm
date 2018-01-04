@@ -30,6 +30,5 @@ class Login extends \think\Controller
         }
         else
         	return false;
-
     }
 }

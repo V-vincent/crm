@@ -1,10 +1,12 @@
+<<<<<<< HEAD
+{include file="map_top"}
+{include file="map_left"}
+=======
 {include file="top"}
 {include file="left"}
 
+>>>>>>> 53cc08cd9a0364c54dcb6060b193e65d50fb7bc9
 <style>
-	.Mapleft{
-		margin-left: 70px;
-	}
 	.tab{
 		margin-top: 20px;
 		width: 700px;
@@ -17,23 +19,24 @@
 </style>
 
 
+<<<<<<< HEAD
+<body>
+    <div class="col-md-5">
+=======
 
     <div class="col-md-5 Mapleft">
+>>>>>>> 53cc08cd9a0364c54dcb6060b193e65d50fb7bc9
         <table class="tab">
             <tr class="col">
                 <th>ID</th>
+                <th>用户ID</th>
                 <th>签到时间</th>
-            </div>
-
-            <table>
-                <tr>
-                    <th>用户ID</th>
-                    <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;签到时间</th>
-                    <th>操作</th>
-                </tr>
+                <th>操作</th>
+            </tr>
                 {foreach $signlist as $info}
                 <tr>
                     <td>{$info.id}</td>
+                    <td>{$info.uid}</td>
                     <td>{$info.time|date="Y-m-d H:i:s",###}</td>
                     <td>
                         <a href="javascript:" onclick="showPosition('{$info.lng}','{$info.lat}')">定位</a>
@@ -41,8 +44,6 @@
                 </tr>
                 {/foreach}
             </table>
-        </table>
-
     </div>
     <div class="col-md-6">
         <div class="container" style="width:98.5%;height:460px;border: 1px solid #ccc; margin-top: 20px;overflow: hidden" >
@@ -102,7 +103,7 @@
     })*/
 </script>
 
-</div>	
+</div>
 </body>
 </html>
 
