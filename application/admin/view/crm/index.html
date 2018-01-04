@@ -22,7 +22,7 @@
     </div>
     <div class="search row">
         <form action="{:url('index')}" class="form">
-<<<<<<< HEAD
+
             <div class="col-md-3 form-inline" style="overflow: hidden;">
                 <p class="glyphicon glyphicon-glass pull-left" style="margin-top: 8px;"></p>
                 <!-- 公司分类选择 -->
@@ -40,7 +40,7 @@
                 </div>
                 <input type="submit" class="btn btn-group pull-left" id="basic-addon2" style="cursor: pointer;" value="搜索" style="margin-left:-100px; ">
             </div>
-=======
+
             <div class="col-md-2">
 
                 <p class="glyphicon glyphicon-glass pull-left" style="margin-top: 8px;"></p>
@@ -61,21 +61,21 @@
             </div>
             <div class="col-md-1" style="padding: 0px;margin-left:-95px; ">
                 <input type="submit" class="btn btn-group pull-right" id="basic-addon2" style="cursor: pointer;" value="搜索"></div>
->>>>>>> 614309442b24dc63ee67f2147f34e1b9ff7710ad
+
         </form>
     </div>
     <div class="info">
         <div>
-<<<<<<< HEAD
+
             <p class="pull-left" style="margin: 0 5px 0 0;padding-top: 6px;">客户基本信息</p>
             <div class="pull-left">
                 <span style="color: #ccc">共2条</span>
                 <a href="{:url('index')}" class="btn btn-default">清除搜索</a><span class="glyphicon glyphicon-trash"></span>
             </div>
-=======
+
             <p class="pull-left" style="margin-right: 5px;">客户基本信息</p>
             <span style="color: #ccc">共2条</span>
->>>>>>> 614309442b24dc63ee67f2147f34e1b9ff7710ad
+
         </div>
     </div>
     <table class="table table-bordered">
@@ -99,17 +99,17 @@
             <td>{$info.user_phone}</td>
             <td>{$info.time}</td>
             <td>
-<<<<<<< HEAD
+
                 <a class="glyphicon glyphicon-list-alt" title="视图" data-placement="bottom" href="{:url('crm/userinfo',['id'=>$info.id])}"></a>
                 <a class="glyphicon glyphicon-pencil" title="编辑" data-placement="bottom" data-toggle="modal" href="#client" @click="getInfo({$info.id})">
                     </a>
                 </a>
                 <a class="glyphicon glyphicon-remove" title="删除" data-placement="bottom" href="{:url('delete',['id'=>$info.id])}"></a>
-=======
+
                 <a class="glyphicon glyphicon-list-alt" title="视图"  data-placement="bottom"></a>
                 <a class="glyphicon glyphicon-pencil" title="编辑"  data-placement="bottom"></a>
                 <a class="glyphicon glyphicon-remove" title="删除"  data-placement="bottom" href="{:url('delete',['id'=>$info.id])}"></a>
->>>>>>> 614309442b24dc63ee67f2147f34e1b9ff7710ad
+
             </td>
         </tr>
         {/foreach}
@@ -343,7 +343,7 @@
 </div>
 <!-- 编辑模态框结束-->
 </div>
-<<<<<<< HEAD
+
 <script type="text/javascript">
 //时间插件
 
@@ -377,7 +377,7 @@ new Vue({
 
 })
 </script>
-=======
+
 <script type="text/javascript"></script>
->>>>>>> 614309442b24dc63ee67f2147f34e1b9ff7710ad
+
 {include file="foot"}
