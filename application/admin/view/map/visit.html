@@ -1,3 +1,39 @@
 {include file="top"}
 {include file="left"}
-客户访问页面
+
+<div class="top" style="height: 60px;width: 80%;margin-left:12.5%;margin-top:30px" id="mtk" >
+	<div class=" col-md-6">
+		<template>
+			<div class="block" class="col-md-4">
+				<p>查询</p>
+				<el-date-picker  type="date" v-model="value1" placeholder="选择日期" style="width: 40%;"></el-date-picker>
+				到
+				<el-date-picker  type="date" v-model="value2" placeholder="选择日期" style="width: 40%;"></el-date-picker>
+				<p>用户<el-input class="userinput" style="width:20%;display: block;" v-model="value3"></el-input></p>
+			</div>
+			<el-button type="info">查询</el-button>
+		</template>
+	</div>
+	<script>
+		new Vue({
+    el: "#mtk",
+    data: {
+        // 显示编辑内容
+        // 时间插件
+        pickerOptions1: {
+            disabledDate(time) {
+                return time.getTime() > Date.now();
+            }
+        },
+        value1: '',
+        value2: '',
+        value3:'',
+    },
+    methods: {
+        
+    }
+
+
+})
+	</script>
+	
