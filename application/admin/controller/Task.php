@@ -7,5 +7,9 @@ class Task extends \think\Controller
     {
         return $this->fetch();
     }    
+	public function write()
+    {
+        return $this->fetch();
+    }      
 }
 
