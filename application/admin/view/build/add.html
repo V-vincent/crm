@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/admin/build/css/add.css?2">
+    <script src="https://cdn.bootcss.com/vue/2.5.13/vue.js"></script>
+    <!-- CDNJS :: Sortable (https://cdnjs.com/) -->
+    <script src="//cdn.jsdelivr.net/npm/sortablejs@1.7.0/Sortable.min.js"></script>
+    <!-- CDNJS :: Vue.Draggable (https://cdnjs.com/) -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.16.0/vuedraggable.min.js"></script>
+</head>
+<body>
+<div class="header">
+    <span class="left">集客•H5采集页编辑器</span>
+    <div class="title">采集页名称: <input type="text"></div>
+    <a href="{:url('save')}" class="right">编辑完成</a>
+</div>
+<div class="content" id="content">
+    <div class="content-left">
+        <div class="title">采集页内容</div>
+        <div class="table-add">
+            <draggable :list="left_data" class="dragArea" :options="{group:'h5form'}">
+            <div  v-for="(item,index) in left_data" @click="edit(index)">
+                <div class="component" v-if="item.type=='input'">
+                    <label class="valtype" data-valtype="label">{{item.title}}</label>
+                    <input type="text" :placeholder="item.placeholder"  disabled="disabled">
+                </div>
+                <div class="component" v-if="item.type=='textarea'">
+                    <label class="valtype" data-valtype="label" >{{item.title}}</label>
+                    <textarea type=""  disabled="disabled" :placeholder="item.placeholder" data-valtype="placeholder"></textarea>
+                </div>
+            </div>
+            </draggable>
+        </div>
+        <div class="content-left-footer">
+            <a href="javascript:;" class="footer-left">预览</a>
+            <div class="flex">
+                <div class="footer-center">
+                    <a href="javascript:;" class="footer-left">背景色</a>
+                    <a href="javascript:;" class="footer-right">文字基础色</a>
+                </div>
+            </div>
+            <a href="{:url('save')}" class="footer-right">保存</a>
+        </div>
+    </div>
+    <div class="content-right">
+        <div class="title">拖拽下面的组件到左侧</div>
+        <div class="bar-box">
+            <span :class="bar==0 ? 'cur' : ''" @click="bar_c(0)">输入框</span>
+            <span :class="bar==1 ? 'cur' : ''" @click="bar_c(1)">选择框</span>
+            <span :class="bar==2 ? 'cur' : ''" @click="bar_c(2)">文字 / 图片</span>
+            <span :class="bar==3 ? 'cur' : ''" @click="bar_c(3)">定位</span>
+        </div>
+        <div class="active" v-if="bar==0" >
+            <draggable v-model="right_type_data"  class="dragArea" :options="{group:{ name:'h5form',  pull:'clone', put:false }}">
+            <div class="component" @click="addf(elk)"  v-for="(elr,elk) in right_type_data">
+                <label class="valtype" data-valtype="label" v-if="elr.type=='input'">标题</label>
+                <input type="text" placeholder="请输入" v-if="elr.type=='input'"  disabled="disabled">
+                <label class="valtype" data-valtype="label" v-if="elr.type=='textarea'">标题</label>
+                <textarea disabled="disabled" placeholder="请输入内容" v-if="elr.type=='textarea'"> </textarea>
+            </div>
+            </draggable>
+        </div>
+
+        <div class="active" v-if="bar==1">
+            <draggable v-model="right_type_data"  class="dragArea" :options="{group:{ name:'h5form',  pull:'clone', put:false }}">
+            <div class="component"  @click="addf(elk)" v-for="(elr,elk) in right_type_data">
+                <label class="valtype" data-valtype="label"  v-if="elr.type=='select'">标题</label>
+                <div class="controls"  v-if="elr.type=='select'">
+                    <select data-valtype="option" class="option"></select>
+                </div>
+
+                <label class="valtype" data-valtype="label"  v-if="elr.type=='checkbox'">标题</label>
+                <div class="controls" data-valtype="checkboxes"  v-if="elr.type=='checkbox'">
+                    <label class="checkbox">
+                        <input type="checkbox">
+                        选项1
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox">
+                        选项2
+                    </label>
+                </div>
+
+                <label class="valtype" data-valtype="label"  v-if="elr.type=='radio'">标题</label>
+                <div class="controls" data-valtype="radios"  v-if="elr.type=='radio'">
+                    <label class="radio">
+                        <input type="radio" value="选项1">
+                        选项1
+                    </label>
+                    <label class="radio">
+                        <input type="radio" value="选项2">
+                        选项2
+                    </label>
+                </div>
+            </div>
+            </draggable>
+        </div>
+
+        <div class="active" v-if="bar==2">
+            <draggable v-model="right_type_data"  class="dragArea" :options="{group:{ name:'h5form',  pull:'clone', put:false }}">
+            <div class=" component">
+                <div class="controls">
+                    <div>文字内容</div>
+                    <div class=" valtype2" data-valtype="url">照片展示</div>
+                    <div class="vedio valtype2" data-valtype="audio">腾讯视频</div>
+                    <div>HTML源码块</div>
+                </div>
+            </div>
+            </draggable>
+        </div>
+
+    </div>
+    <div class="mark" :class="mark ? 'block' :''">
+        <div class="mark"></div>
+        <div class="edit">
+            <div class="edit-header">
+                <h3 v-if="edit_data.type=='input'">单行输入</h3>
+                <h3 v-if="edit_data.type=='textarea'">多行输入</h3>
+                <h3 v-if="edit_data.type=='select'">单选下拉框</h3>
+                <h3 v-if="edit_data.type=='checkbox'">多选按钮</h3>
+                <h3 v-if="edit_data.type=='radio'">单选按钮</h3>
+            </div>
+            <div class="edit-title">
+                <label class="valtype">标题</label>
+                <input type="text" v-model="edit_data.title">
+            </div>
+            <div class="placeholder" v-if="edit_data.type=='input'||edit_data.type=='textarea'">
+                <label class="valtype">输入缺省显示</label>
+                <input type="text" v-model="edit_data.placeholder">
+            </div>
+            <div class="btn-box">
+                <a href="javascript:;" class="btn1" @click="det">确定</a>
+                <a href="javascript:;" class="btn2" @click="cancel">取消</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var content=new Vue({
+        el:"#content",
+        data:{
+            left_data:[],
+            right_type_data:[{title:'标题',placeholder:'请输入',type:'input'},
+                {title:'标题',placeholder:'请输入内容',type:'textarea'},
+                {title:'标题',placeholder:['选择1','选择2','选择3'],type:'select'},
+                {title:'标题',placeholder:['选项1','选项2'],type:'checkbox'},
+                {title:'标题',placeholder:['选项1','选项2'],type:'radio'}],
+            bar:0,
+            mark:false,
+            edit_data:{},
+            edit_data2:{},
+            editleft:'',
+            edittop:''
+        },
+        methods:{
+            bar_c:function (id) {
+                this.bar=id;
+            },
+            addf:function (type) {
+                var info=this.right_type_data[type];
+                this.left_data.push({title:'标题',placeholder:info.placeholder,type:info.type});
+            },
+            edit:function (num) {
+                this.mark=!this.mark;
+                this.edit_data=this.left_data[num];
+                this.edit_data2=JSON.parse(JSON.stringify(this.edit_data));
+                this.edit_data2.num=num;
+            },
+            det:function () {
+                this.mark=!this.mark;
+                console.log(this.left_data);
+            },
+            cancel:function () {
+                this.mark=!this.mark;
+                this.edit_data.title=this.edit_data2.title;
+                this.edit_data.placeholder=this.edit_data2.placeholder;
+                this.edit_data.type=this.edit_data2.type;
+            },
+
+        }
+
+    })
+</script>
+<script>
+    window.onload=function () {
+        var edit= document.querySelector(".edit");
+        edit.style.left=(document.body.offsetWidth-edit.offsetWidth)/2+"px";
+        edit.style.top=(document.body.offsetHeight-edit.offsetHeight)/2+"px";
+        console.log(edit);
+    };
+</script>
+</body>
+</html>

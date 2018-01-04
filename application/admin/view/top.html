@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>智慧云办公系统管理</title>
@@ -14,31 +13,110 @@
     <script type="text/javascript" src="https://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <!-- 引入vue.js -->
     <script type="text/javascript" src="https://cdn.bootcss.com/vue/2.5.13/vue.min.js"></script>
-     <!-- 引入样式 -->
-     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-     <!-- 引入组件库 -->
-     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
-     <!-- 引入 vue路由-->
-     <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <!-- 引入 vue路由-->
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
 </head>
 
 <body>
-    <header>
+    <header id="top_menu">
         <div class="row">
             <div class="left col-md-10">
                 <div class="logo pull-left">
-                    <a href="{:url('index/index')}"><img src="__STATIC__/admin/index/images/logo.png" alt=""></a>
+                    <a href="{:url('index/index')}">
+                        <img src="__STATIC__/admin/index/images/logo.png" alt=""></a>
                 </div>
                 <div class="title pull-left">
                     <div class="dropdown">
                         <button type="button" class="btn dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
-                            <span>CRM</span>
+                            <span>{{cur}}</span>
                             <span class="caret"></span>
                         </button>
-                        {include file="list"}
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="{:url('crm/index')}">
+                                    <div>
+                                        <span class="glyphicon glyphicon-user pull-left"></span>
+                                        <div class="pull-left">
+                                            <h4>CRM客户管理关系</h4>
+                                            <p>给销售团队一颗云大脑</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="{:url('map/index')}">
+                                    <div>
+                                        <span class="glyphicon glyphicon-map-marker pull-left"></span>
+                                        <div class="pull-left">
+                                            <h4>LBS打天下</h4>
+                                            <p>基于定位的外勤管理</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="{:url('task/index')}">
+                                    <div>
+                                        <span class="glyphicon glyphicon-list-alt pull-left"></span>
+                                        <div class="pull-left">
+                                            <h4>Task作业管理</h4>
+                                            <p>学生作业批改</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation" tabindex="-1" href="#">
+                                <a role="menuitem" tabindex="-1" href="#">
+                                    <div>
+                                        <span class="glyphicon glyphicon-th-list pull-left"></span>
+                                        <div class="pull-left">
+                                            <h4>Salary薪资管理</h4>
+                                            <p>老板和财务最爱，奖金和业绩联动</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation" tabindex="-1" href="#">
+                                <a role="menuitem" tabindex="-1" href="#">
+                                    <div>
+                                        <span class="glyphicon glyphicon-phone pull-left"></span>
+                                        <div class="pull-left">
+                                            <h4>CTI集信</h4>
+                                            <p>固话、手机、邮件全通信采集</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation" tabindex="-1" href="#">
+                                <a role="menuitem" tabindex="-1" href="{:url('build/index')}">
+                                    <div>
+                                        <span class="glyphicon glyphicon-globe pull-left"></span>
+                                        <div class="pull-left">
+                                            <h4>集客</h4>
+                                            <p>用集客为自己扩展客源</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation" tabindex="-1" href="#">
+                                <a role="menuitem" tabindex="-1" href="#">
+                                    <div>
+                                        <span class="glyphicon glyphicon-asterisk pull-left"></span>
+                                        <div class="pull-left">
+                                            <h4>SFA：销售自动化</h4>
+                                            <p>主动推进和人工推进的完美结合</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-                <div class="breach pull-left col-lg-3">
+                <div class="breach pull-left col-lg-3" v-if="controller=='Index' || controller=='Crm'">
                     <div class="input-group">
                         <div class="input-group-btn">
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -65,8 +143,34 @@
                     <span class="glyphicon glyphicon-user"></span>
                 </div>
                 <span class="user_name">Boss</span>
-
             </div>
         </div>
     </header>
     <div class="top" style="height: 60px;width: 100%;"></div>
+<script type="text/javascript">
+ new Vue({
+        el:'#top_menu',
+        data:{
+           controller:"Index",
+           cur:'CRM'
+        },
+        created(){
+            this.init();
+        },
+        methods:{
+            init(){
+                this.controller="{:request()->controller()}";
+                
+                if(this.controller=='Index' || this.controller=='Crm'){
+                    this.cur='CRM';
+                }else if(this.controller=='Map' ){
+                    this.cur='LBS';
+                }else if(this.controller=='Task' ){
+                    this.cur='TASK';
+                }else if(this.controller=='Build' ){
+                    this.cur='集客';
+                }
+            }
+        }
+    })
+</script>

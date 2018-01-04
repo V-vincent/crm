@@ -1,0 +1,53 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+html{  background: #EBEFF2;  color: rgb(51, 51, 51);}
+.content{
+    width: 94%;
+    margin: 0 auto;
+}
+.content .content-left{
+    width: 60%;
+    float: left;
+}
+.content .content-left .add{
+    height: 90px;
+    text-decoration: none;
+    color: #333;
+    outline: none;
+    text-align: center;
+    line-height: 90px;
+    float: left;
+    width: 30%;
+    margin-right: 5%;
+    background: #fff;
+    position: relative;
+}
+.content .content-left .add:nth-child(3n){
+    margin-right: 0;
+}
+.content .content-left .add>h2{  font-weight: 500;  font-size: 25px;  }
+.content .content-left .add>h2::before{
+    content: "+";
+    font-size: 50px;
+    position: absolute;
+    left: calc(50% - 125px);;
+    top: -5px;
+}
+.content .content-left .add .left{
+    line-height:normal;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-weight: 700;
+}
+.content .content-left .add .right{
+    line-height:normal;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: #98a6ad;
+}
+.content .content-left .add>h3{  font-size: 24px;  font-weight: 400;}
