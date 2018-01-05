@@ -1,7 +1,27 @@
 {include file="top"}
 {include file="left"}
-<link rel="stylesheet" type="text/css" href="__STATIC__/admin/task/css/index.css">
-<div class="container">
-	学生作业批改页面
+<link rel="stylesheet" type="text/css" href="__STATIC__/admin/task/css/index.css?9">
+<div class="task">
+	<div class="task_left"></div>
+	<div class="task_box">
+		<div class="task_title">
+			<span class="glyphicon glyphicon-list-alt pull-left"></span>
+			<h4>TASK学生作业管理</h4>
+		</div>
+		<div class="task_content">
+			<ul class="list_top">
+				<li><a href="{:url('write')}"><span class="glyphicon glyphicon-pencil"></span>写作业</a></li>
+				<li><a href="javascript:;"><span class="glyphicon glyphicon-ok"></span>改作业</a></li>
+				<li><a href="javascript:;"><span class="glyphicon glyphicon-tasks"></span>布置作业</a></li>
+			</ul>
+			<ul class="list_bottom">
+				<li><a href="javascript:"><span class="glyphicon glyphicon-folder-open"></span>查看提交情况</a></li>
+				<li><a href="javascript:;"><span class="glyphicon glyphicon-list"></span>汇总</a></li>
+				<li><a href="javascript:;"><span class="glyphicon glyphicon-search"></span>作业查询</a></li>
+				<li><a href="javascript:;"><span class="glyphicon glyphicon-download-alt"></span>作业导出</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="task_right"></div>
 </div>
 {include file="foot"}
