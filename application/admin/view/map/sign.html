@@ -41,10 +41,11 @@
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=RLG68MPH7d0OZMp6GM21BMWrPOqVRXFZ"></script>
 <script type="text/javascript">
     function showPosition(lng,lat){
-        console.log(lat,lng)
+        console.log(lng)
+        console.log(lat)
         map.clearOverlays();
         var new_point = new BMap.Point(lng,lat);
-        map.centerAndZoom(new BMap.Point(new_point), 18);  //
+        map.centerAndZoom(new_point, 16);  //
         var marker = new BMap.Marker(new_point);  // 创建标注
         map.addOverlay(marker);
         map.panTo(new_point);
