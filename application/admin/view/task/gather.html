@@ -1,0 +1,75 @@
+{include file="top"}
+{include file="left"}
+<link rel="stylesheet" type="text/css" href="__STATIC__/admin/task/css/index.css?2">
+<div class="task" id="gather">
+	<div class="task_left"></div>
+	<div class="task_box">
+		<div class="task_title">
+			<span class="glyphicon glyphicon-list-alt pull-left"></span>
+			<h4>作业汇总</h4>
+		</div>
+		<div class="time_list">
+			<a class="btn btn-link">昨天</a>
+			<a class="btn btn-link">本周</a>
+			<a class="btn btn-link">上周</a>
+			<a class="btn btn-link">本月</a>
+			<a class="btn btn-link">上月</a>
+		</div>
+		<div class="time_choice">
+			<span>日期</span>
+			<el-date-picker type="date" v-model="value1" placeholder="2018-01-05" value-format="yyyy-MM-dd" style="width: 15%"></el-date-picker>
+			到
+			<el-date-picker type="date" v-model="value2" placeholder="2018-01-05" value-format="yyyy-MM-dd" style="width: 15%"></el-date-picker>
+			<el-select  placeholder="boss"></el-select>
+			<el-button type="info">查询</el-button>
+		</div>
+		<div class="time_cur">
+			<h4 class="text-center print">
+				<span id="title_start_date" class="demonstration">{{value1}}</span>
+				<small class="text-gray p-20">至</small>
+				<span id="title_end_date" class="demonstration">{{value2}}</span>
+				<a class="btn btn-link no-print">打印</a>
+			</h4>
+		</div>
+		<div class="gather_content">
+			<div class="panel panel-default">
+				<div class="panel-heading time">
+					<h3 class="panel-title">
+						2018-01-05
+						<small>撰写时间：2018-01-05 10:00:26</small>
+					</h3>
+				</div>
+				<div class="panel-body">
+					<p class="text-gray">总结：</p>
+					<p>1</p>
+					<p class="text-gray">次日计划：</p>
+					<p class="text-gray">回复：</p>
+					<p style="padding-bottom:10px">没有回复！</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="task_right"></div>
+</div>
+{include file="foot"}
+<script>
+	new Vue({
+		el: "#gather",
+		data: {
+			pickerOptions1: {
+				disabledDate(time) {
+					return time.getTime() > Date.now();
+				}
+			},
+			value1: '2018-01-05',
+			value2: '2018-01-05'
+		},
+        created(){
+            this.init();
+        },
+		methods: {
+			init(){
+			}
+		}
+	})
+</script>

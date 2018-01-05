@@ -1,4 +1,4 @@
-{include file="map_top"}
+{include file="top"}
 {include file="left"}
 <div class="top" style="height: 60px;width: 80%;margin-left:12.5%;">
     <h3 style="">欢迎使用打天下</h3>
@@ -18,29 +18,29 @@
         <div class="container" style="width:98.5%;height:460px;border: 1px solid #ccc; margin-top: 20px;overflow: hidden" >
             <div style="width:100%;height:100%">
                 <div id="allmap" style="height: 100%;"></div>
-                
-            <footer class="footer" style="text-align: center;margin-top: 50px;">
-                热线: <b>4000-80-4000 400-960-9606</b>
-                &nbsp;&nbsp;网站: <b><a href="http://www.xtools.cn" target="_blank">www.xtools.cn</a></b> 
-                &nbsp;
-                <a class="btn btn-danger btn-xs" href="#" onclick="window.open ('http://www.xtools.cn/about/tousu.html', 'newwindow', 'height=410, width=540,top=100,left=200;toolbar=no, menubar=no, scrollbars=no, resizable=no,status=no');return false;"> <i class="fa fa-whatsapp m-r-5"></i>
-                    投诉&amp;问题
-                </a>
-                &nbsp;&nbsp;
-                <a class="btn btn-default btn-xs" href="#" onclick="showWX(0);return false;"> <i class="fa fa-weixin m-r-5"></i>
-                    微客服
-                </a>
-                &nbsp;&nbsp;
-                <a class="btn btn-primary btn-xs" href="#" onclick="showWX(1);return false;">
-                    <i class="md md-speaker-notes m-r-5"></i>
-                    订阅号
-                </a>
-                <br>
-                Copyright © 2004-2017 &nbsp;北京沃力森信息技术有限公司&nbsp;&nbsp;  Beijing Volitation Information Technology Co.,ltd
-            </footer>
-            <!-- 底部 --> 
+            </div>
         </div>
-        </div>
+        <footer class="footer" style="text-align: center;margin-top: 50px;">
+            热线: <b>4000-80-4000 400-960-9606</b>
+            &nbsp;&nbsp;网站: <b><a href="http://www.xtools.cn" target="_blank">www.xtools.cn</a></b>
+            &nbsp;
+            <a class="btn btn-danger btn-xs" href="#" onclick="window.open ('http://www.xtools.cn/about/tousu.html', 'newwindow', 'height=410, width=540,top=100,left=200;toolbar=no, menubar=no, scrollbars=no, resizable=no,status=no');return false;"> <i class="fa fa-whatsapp m-r-5"></i>
+                投诉&amp;问题
+            </a>
+            &nbsp;&nbsp;
+            <a class="btn btn-default btn-xs" href="#" onclick="showWX(0);return false;"> <i class="fa fa-weixin m-r-5"></i>
+                微客服
+            </a>
+            &nbsp;&nbsp;
+            <a class="btn btn-primary btn-xs" href="#" onclick="showWX(1);return false;">
+                <i class="md md-speaker-notes m-r-5"></i>
+                订阅号
+            </a>
+            <br>
+            Copyright © 2004-2017 &nbsp;北京沃力森信息技术有限公司&nbsp;&nbsp;  Beijing Volitation Information Technology Co.,ltd
+        </footer>
+        <!-- 底部 -->
+    </div>
 </body>
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=RLG68MPH7d0OZMp6GM21BMWrPOqVRXFZ"></script>
 <script type="text/javascript">
@@ -79,7 +79,6 @@
                     $.get('{:url("admin/map/addmap")}',{lng:p.lng,lat:p.lat});
             }//获取marker的位置         
     }
-
 })
 </script>
 </html>

@@ -1,39 +1,70 @@
-{include file="map_top"}
+{include file="top"}
 {include file="left"}
-
 <style>
-	.Mapleft{
-		margin-left: 70px;
-	}
-	.tab{
-		margin-top: 20px;
-		width: 700px;
-	}
-	.tab .col{
-		border: 1px solid #ebeff2 ;
-		height: 42px;
-		background: #ebeff2;
-	}
+    #mtk{
+        margin-left: 86px;
+        margin-top: 20px;
+    }
+    .block{
+        overflow: hidden;
+    }
+    .user{
+        float: left;
+        line-height: 40px;
+    }
+    .userinput{
+        float: left;
+        width: 80%;
+        margin-left: 10px;
+    }
+    .jilu{
+        margin-top: 50px;
+    }
+    .tab{
+        width: 700px;
+    }
+    .tab .col{
+        border: 1px solid #ebeff2 ;
+        height: 42px;
+        background: #ebeff2;
+    }
 </style>
-
-
-
+<body>
+<div class="row" id="mtk" >
+    <div class=" col-md-5">
+        <template>
+            <p>查询</p>
+            <div class="block">
+                <div class="col-md-6">
+                    <span>日期</span>
+                    <el-date-picker type="date" v-model="value1" placeholder="选择日期" style="width: 40%"></el-date-picker>
+                    到
+                    <el-date-picker type="date" v-model="value2" placeholder="选择日期" style="width: 40%"></el-date-picker>
+                </div>
+                <div class="col-md-4">
+                    <span class="user">用户</span><el-input class="userinput" v-model="value3"></el-input>
+                </div>
+                <div class="col-md-2">
+                    <el-button type="info">查询</el-button>
+                </div>
+            </div>
+        </template>
+        <div class="jilu">
+            <p>拜访记录</p>
+            <table class="tab">
+                <tr class="col">
     <div class="col-md-5 Mapleft">
         <table class="tab">
             <tr class="col">
                 <th>ID</th>
+                <th>用户ID</th>
                 <th>签到时间</th>
-            </div>
-
-            <table>
-                <tr>
-                    <th>用户ID</th>
-                    <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;签到时间</th>
-                    <th>操作</th>
-                </tr>
+                <th>操作</th>
+            </tr>
                 {foreach $signlist as $info}
                 <tr>
                     <td>{$info.id}</td>
+                    <td>{$info.uid}</td>
                     <td>{$info.time|date="Y-m-d H:i:s",###}</td>
                     <td>
                         <a href="javascript:" onclick="showPosition('{$info.lng}','{$info.lat}')">定位</a>
@@ -41,8 +72,7 @@
                 </tr>
                 {/foreach}
             </table>
-        </table>
-
+        </div>
     </div>
     <div class="col-md-6">
         <div class="container" style="width:98.5%;height:460px;border: 1px solid #ccc; margin-top: 20px;overflow: hidden" >
@@ -51,23 +81,60 @@
             </div>
         </div>
     </div>
+</div>
+<footer class="footer" style="text-align: center; padding-top:10px; margin-top: 50px; border-top: 1px solid #ccc">
+    热线: <b>4000-80-4000 400-960-9606</b>
+    &nbsp;&nbsp;网站: <b><a href="http://www.xtools.cn" target="_blank">www.xtools.cn</a></b>
+    &nbsp;
+    <a class="btn btn-danger btn-xs" href="#" onclick="window.open ('http://www.xtools.cn/about/tousu.html', 'newwindow', 'height=410, width=540,top=100,left=200;toolbar=no, menubar=no, scrollbars=no, resizable=no,status=no');return false;"> <i class="fa fa-whatsapp m-r-5"></i>
+        投诉&amp;问题
+    </a>
+    &nbsp;&nbsp;
+    <a class="btn btn-default btn-xs" href="#" onclick="showWX(0);return false;"> <i class="fa fa-weixin m-r-5"></i>
+        微客服
+    </a>
+    &nbsp;&nbsp;
+    <a class="btn btn-primary btn-xs" href="#" onclick="showWX(1);return false;">
+        <i class="md md-speaker-notes m-r-5"></i>
+        订阅号
+    </a>
+    <br>
+    Copyright © 2004-2017 &nbsp;北京沃力森信息技术有限公司&nbsp;&nbsp;  Beijing Volitation Information Technology Co.,ltd
+</footer>
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=RLG68MPH7d0OZMp6GM21BMWrPOqVRXFZ"></script>
 <script type="text/javascript">
+    new Vue({
+        el: "#mtk",
+        data: {
+            // 显示编辑内容
+            // 时间插件
+            pickerOptions1: {
+                disabledDate(time) {
+                    return time.getTime() > Date.now();
+                }
+            },
+            value1: '',
+            value2: '',
+            value3:'',
+        },
+        methods: {
+
+        }
+    })
     function showPosition(lng,lat){
-        console.log(lat,lng)
+        console.log(lng)
+        console.log(lat)
         map.clearOverlays();
         var new_point = new BMap.Point(lng,lat);
-        map.centerAndZoom(new BMap.Point(new_point), 18);  //
+        map.centerAndZoom(new_point, 16);  //
         var marker = new BMap.Marker(new_point);  // 创建标注
         map.addOverlay(marker);
         map.panTo(new_point);
         marker.enableDragging();
-
     }
     // 百度地图API功能
     var map = new BMap.Map("allmap");    // 创建Map实例
     map.setMapStyle({style:'hardedge'});
-    var geolocation = new BMap.Geolocation();
     map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);  // 初始化地图,设置中心点坐标和地图级别
     //添加地图类型控件
     map.setCurrentCity("北京");          // 设置地图显示的城市 此项是必须设置的
@@ -102,7 +169,7 @@
     })*/
 </script>
 
-</div>	
+</div>
 </body>
 </html>
 

@@ -1,0 +1,15 @@
+.write_box{
+	width: 90%;
+	margin: 15px auto;
+}
+.write_box .title a{
+	font-size: 22px;
+	line-height: 45px;
+	color: #505458;
+	margin-right: 10px;
+}
+.write_box .title a.return{font-size: 16px;}
+.write_box .time_before{text-align: right;}
+.write_box .time_now{
+	text-align: center;
+}

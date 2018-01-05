@@ -1,1 +1,52 @@
+.task{width:100%;	display: flex;}
+.task .task_left{width: 7%;}
+.task .task_right{width: 2%;}
+.task .task_box{flex: auto;}
 
+.task .task_box .task_title span,.task .task_box .task_title h4{
+	height: 50px;
+	font-size: 22px;
+	line-height: 50px;
+	margin-right: 6px;
+}
+.task .task_box .task_content{
+	background: #f4f8fb;
+	width: 100%;
+	height: auto;
+}
+.task .task_box .task_content .list_top{
+	display: flex;
+	padding: 20px 0;
+}
+.task .task_box .task_content .list_top li{
+	flex: auto;
+	text-align: center;
+	height: 50px;
+	line-height: 50px;
+	font-size: 22px;
+	color: #505458;
+}
+.task .task_box .task_content .list_top li a{color: #505458;text-decoration: none;}
+.task .task_box .task_content  .list_bottom{
+	display: flex;
+	justify-content: center;
+	padding-bottom: 20px;
+}
+.task .task_box .task_content  .list_bottom li{
+	padding: 10px;
+	font-size: 18px;
+}
+.task .task_box .task_content  ul li a span{	margin-right: 5px;}
+
+/*汇总页面的样式*/
+.task .task_box .time_list a{
+	color: #333333;
+	font-size: 14px;
+}
+.task .task_box .time_cur h4{
+	font-size: 22px;
+	line-height: 40px;
+}
+.task .task_box .gather_content .time{
+	background: #f4f8fb;
+}

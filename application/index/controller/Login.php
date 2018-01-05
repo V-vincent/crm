@@ -15,10 +15,10 @@ class Login extends \think\Controller
     	if(empty($have))
     	{
     		db('user')->insert($data);
-    		$this->success('注册成功','index');
+    		return true;
     	}
     	else
-    		$this->success('用户已存在','index');
+    		return false;
     }
     public function loginin(){
     	$data=input();
@@ -30,6 +30,5 @@ class Login extends \think\Controller
         }
         else
         	return false;
-
     }
 }

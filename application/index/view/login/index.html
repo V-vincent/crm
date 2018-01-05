@@ -84,16 +84,17 @@
 					<p>不支持Plus版</p>
 				</div>
 				<div role="tabpanel" class="tab-pane" id="form_3">
-					<form id="login2" action="{:url('index/login/reg')}" method="POST"   onsubmit="return check2()">
+					<form id="login2" action="{:url('index/login/reg')}" method="POST"   onsubmit="return false">
 						<div class="form-group">
-							<input type="text" class="form-control" id="user2" name="user_name" value="" placeholder="用户名" autocomplete="off"></div>
+							<input type="text" class="form-control" id="user2" name="user_name" v-model="reginfo" placeholder="用户名" autocomplete="off"></div>
 						<div class="form-group">
-							<input type="text" class="form-control" id="com2" name="company_name" value="" placeholder="公司登录名" autocomplete="off"></div>
+							<input type="text" class="form-control" id="com2" name="company_name" v-model="regcompany"
+							value="" placeholder="公司登录名" autocomplete="off"></div>
 						<div class="form-group">
-							<input type="password" class="form-control" id="pass2" name="password" placeholder="密码" onpaste="return false;"></div>
+							<input type="password" class="form-control" id="pass2" name="password" placeholder="密码" onpaste="return false;" v-model="regpassword"></div>
 							<div class="form-group">
-							<input type="password" class="form-control" id="pass3"  placeholder="再次输入密码" onpaste="return false;"></div>
-						<button type="submit" class="btn btn-blue"  value="">注册</button>
+							<input type="password" class="form-control" id="pass3"  placeholder="再次输入密码" onpaste="return false;" v-model="regpassword2"></div>
+						<button type="submit" class="btn btn-blue"  value="" @click="doreg()">注册</button>
 						<span class="colorTip colorTip2">
 							<span style="display: none;" id="error_2">
 								错误提示
@@ -153,6 +154,10 @@ var login = new Vue({
    	logininfo:'',
    	logincompany:'',
    	loginpassword:'',
+   	reginfo:'',
+   	regcompany:'',
+   	regpassword:'',
+   	regpassword2:'',
    },
    methods:
    {
@@ -165,6 +170,36 @@ var login = new Vue({
       	else
       		alert("登录失败,请重新登录");
       });
+   	},
+   	doreg:function(){
+
+    if(this.reginfo ==  null || this.reginfo == ''){
+         alert("用户名不能为空");
+         return false;
+    }
+    if(this.regcompany ==  null || this.regcompany == ''){
+         alert("公司登录名不能为空");
+         return false;
+    }
+    if(this.regpassword ==  null || this.regpassword == ''){
+         alert("密码不能为空");
+         return false;
+    }
+    if(this.regpassword !=  this.regpassword2){
+         alert("两次输入密码不同!");
+         return false;
+    }
+    else{
+       $.get('{:url("index/login/reg")}',{user_name:this.reginfo,company_name:this.regcompany,password:this.regpassword},(rtnData)=>{
+      	if(rtnData===true){
+      		alert("注册成功");
+      		window.location.href="{:url('index/login/index')}";
+      	}
+      	else
+      		alert("注册失败,用户已存在");
+      });
+    }
+   		
    	}
    }
 })
@@ -184,30 +219,7 @@ var login = new Vue({
         }
     });
 
-     function check2(){
-    var name = document.getElementById("user2").value;
-    var company = document.getElementById("com2").value;
-    var psw1 = document.getElementById("pass2").value;
-    var psw2 = document.getElementById("pass3").value;
-    if(name ==  null || name == ''){
-         alert("用户名不能为空");
-         return false;
-    }
-    if(company ==  null || company == ''){
-         alert("公司登录名不能为空");
-         return false;
-    }
-    if(psw1 ==  null || psw1 == ''){
-         alert("密码不能为空");
-         return false;
-    }
-    if(psw1 !=  psw2){
-         alert("两次输入密码不同!");
-         return false;
-    }
 
-    return true;
- }
 
      
 </script>
