@@ -61,6 +61,9 @@ html{background: #EBEFF2;}
     overflow-y: scroll;
     -ms-overflow-y: scroll;
 }
+.content .content-left .table-add .dragArea{
+    min-height: 600px;
+}
 .content-left-footer{
     display: flex;
     margin-bottom: 30px;
