@@ -1,0 +1,36 @@
+{include file="top"}
+{include file="left"}
+<link rel="stylesheet" type="text/css" href="__STATIC__/admin/task/css/look.css?3">
+<div class="container" id="container">
+	<div class="mid_but">
+		<el-button type="primary">查看作业提交情况</el-button>
+
+		<el-button type="info">查看批改分数情况</el-button>
+	</div>
+	<h3 id="title">
+		作业
+		<span id="time">2018-1</span>
+		月份
+		<span id="type">提交情况</span>
+	</h3>
+	<div id="month_choose">
+		<el-button type="info">
+			<<上一月</el-button>
+
+				<el-button type="info">下一月>></el-button>
+				<p class="status">状态说明 空白：未交作业；n：分数为n分； √:已交作业；</p>
+			</div>
+		</div>
+		{include file="foot"}
+		<script>
+	new Vue({
+        el: "#container",
+        data: {
+            // 显示编辑内容
+            // 时间插件
+            input:''
+            },
+           
+        
+    })
+</script>

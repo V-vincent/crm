@@ -10,6 +10,9 @@ class Task extends \think\Controller
 	public function write()
     {
         return $this->fetch();
+    }
+    public function look(){
+    	return $this->fetch();
     }      
 }
 
