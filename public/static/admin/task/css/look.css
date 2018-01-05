@@ -1,0 +1,21 @@
+.container{
+	background: #fff;
+	margin-top: 30px;
+	overflow: hidden;
+}
+.mid_but{
+	margin: auto;
+	text-align: center;
+}
+#title{
+	margin-top: 22.5px;
+	text-align: center;
+}
+#month_choose{
+	margin: auto;
+	text-align: center;
+	margin-top:20px;
+}
+.status{
+	margin-top: 10px;
+}

@@ -15,9 +15,14 @@ class Task extends \think\Controller
     {
         return $this->fetch();
     }        
+    public function look()
+    {
+    	return $this->fetch();
+    }      
 	public function gather()
     {
         return $this->fetch();
     }       
+
 }
 
