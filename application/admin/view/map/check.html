@@ -1,4 +1,119 @@
 {include file="top"}
 {include file="left"}
-<div class="top" style="height: 60px;width: 80%;margin-left:12.5%;">
-查询轨道页面
+<style>
+    #mtk{
+        margin-left: 86px;
+        margin-top: 20px;
+    }
+    .block{
+        overflow: hidden;
+    }
+    .user{
+        float: left;
+        line-height: 40px;
+    }
+    .userinput{
+        float: left;
+        width: 80%;
+        margin-left: 10px;
+    }
+    .jilu{
+        margin-top: 50px;
+    }
+    .tab{
+        width: 700px;
+    }
+    .tab .col{
+        border: 1px solid #ebeff2 ;
+        height: 42px;
+        background: #ebeff2;
+    }
+</style>
+<div class="row" id="mtk" >
+    <div class=" col-md-5">
+        <template>
+            <p>轨迹查询</p>
+            <div class="block">
+                <div class="col-md-6">
+                    <span>日期</span>
+                    <el-date-picker type="date" v-model="value1" placeholder="选择日期" style="width: 40%"></el-date-picker>
+                    到
+                    <el-date-picker type="date" v-model="value2" placeholder="选择日期" style="width: 40%"></el-date-picker>
+                </div>
+                <div class="col-md-4">
+                    <span class="user">用户</span><el-input class="userinput" v-model="value3"></el-input>
+                </div>
+                <div class="col-md-2">
+                    <el-button type="info">查询</el-button>
+                </div>
+            </div>
+        </template>
+        <div class="jilu">
+            <p>轨迹(每用户每天1条轨迹) </p>
+            <table class="tab">
+                <tr class="col">
+                    <th>用户</th>
+                    <th>时间</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="container" style="width:98.5%;height:460px;border: 1px solid #ccc; margin-top: 20px;overflow: hidden" >
+            <div style="width:100%;height:100%">
+                <div id="allmap"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="footer" style="text-align: center; padding-top:10px; margin-top: 50px; border-top: 1px solid #ccc">
+    热线: <b>4000-80-4000 400-960-9606</b>
+    &nbsp;&nbsp;网站: <b><a href="http://www.xtools.cn" target="_blank">www.xtools.cn</a></b>
+    &nbsp;
+    <a class="btn btn-danger btn-xs" href="#" onclick="window.open ('http://www.xtools.cn/about/tousu.html', 'newwindow', 'height=410, width=540,top=100,left=200;toolbar=no, menubar=no, scrollbars=no, resizable=no,status=no');return false;"> <i class="fa fa-whatsapp m-r-5"></i>
+        投诉&amp;问题
+    </a>
+    &nbsp;&nbsp;
+    <a class="btn btn-default btn-xs" href="#" onclick="showWX(0);return false;"> <i class="fa fa-weixin m-r-5"></i>
+        微客服
+    </a>
+    &nbsp;&nbsp;
+    <a class="btn btn-primary btn-xs" href="#" onclick="showWX(1);return false;">
+        <i class="md md-speaker-notes m-r-5"></i>
+        订阅号
+    </a>
+    <br>
+    Copyright © 2004-2017 &nbsp;北京沃力森信息技术有限公司&nbsp;&nbsp;  Beijing Volitation Information Technology Co.,ltd
+</footer>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=RLG68MPH7d0OZMp6GM21BMWrPOqVRXFZ"></script>
+<script>
+    new Vue({
+        el: "#mtk",
+        data: {
+            // 显示编辑内容
+            // 时间插件
+            pickerOptions1: {
+                disabledDate(time) {
+                    return time.getTime() > Date.now();
+                }
+            },
+            value1: '',
+            value2: '',
+            value3:'',
+        },
+        methods: {
+
+        }
+    })
+    // 百度地图API功能
+    var map = new BMap.Map("allmap");    // 创建Map实例
+    map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);  // 初始化地图,设置中心点坐标和地图级别
+    //添加地图类型控件
+    map.addControl(new BMap.MapTypeControl({
+        mapTypes:[
+            BMAP_NORMAL_MAP,
+            BMAP_HYBRID_MAP
+        ]}));
+    map.setCurrentCity("北京");          // 设置地图显示的城市 此项是必须设置的
+    map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+</script>
