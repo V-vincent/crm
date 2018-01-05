@@ -58,6 +58,8 @@ html{background: #EBEFF2;}
     padding: 10px 5%;
     height: 600px;
     margin: 40px 0;
+    overflow-y: scroll;
+    -ms-overflow-y: scroll;
 }
 .content-left-footer{
     display: flex;
@@ -138,6 +140,7 @@ html{background: #EBEFF2;}
     line-height: 18px;
     color: #555;
     width: 280px;
+    margin-left: 96px;
 }
 .component textarea{
     padding: 4px;
@@ -148,6 +151,7 @@ html{background: #EBEFF2;}
     border: 1px solid #ccc;
     resize:none;
     width: 220px;
+    margin-left: 96px;
 }
 .component .valtype{
     font-size: 13px;
@@ -157,8 +161,11 @@ html{background: #EBEFF2;}
     font-weight: normal;
     float: left;
     padding: 5px 20px 5px 50px;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
-.component .controls .option{
+.component .controls .option,.component .option{
     width: 270px;
     border: 1px solid #bbb;
     height: 28px;
@@ -166,9 +173,13 @@ html{background: #EBEFF2;}
     padding: 4px;
     font-size: 13px;
     color: #555;
+    margin-left: 96px;
 }
 .component .controls .checkbox , .component .controls .radio{
     display: block;
+    font-size: 14px;
+    font-weight: normal;
+    margin-left: 96px;
 }
 
 .mark{
@@ -201,7 +212,7 @@ html{background: #EBEFF2;}
     border-bottom: 1px solid #eee;
     margin: 0 auto;
 }
-.edit input{
+.edit input,.edit textarea{
     box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
     background-color: #fff;
     border: 1px solid #ccc;
@@ -214,6 +225,7 @@ html{background: #EBEFF2;}
     font-size: 13px;
     line-height: 18px;
     color: #555;
+    width: 212px;
 }
 .edit .valtype{
     display: block;
@@ -222,7 +234,7 @@ html{background: #EBEFF2;}
     line-height: 18px;
     margin: 5px 0;
 }
-.edit .placeholder,.edit .edit-title{
+.edit .placeholder,.edit .edit-title,.edit .select{
     width: 220px;
     margin: 0 auto;
     padding-bottom: 10px;
@@ -240,9 +252,11 @@ html{background: #EBEFF2;}
     outline: none;
     color:#fff;
     background-color: #49afcd;
-    margin-right: 30px;
+    margin-right: 15px;
     border-radius: 5px;
 }
 .edit .btn-box a:hover{  background-color: #2f96b4;  }
 .edit .btn-box .btn2{  background-color: #da4f49;  }
 .edit .btn-box .btn2:hover{  background-color: #bd362f;}
+.edit .btn-box .btn3{  background-color: #f0ad4e;  }
+.edit .btn-box .btn3:hover{  background-color: #ec971f;}

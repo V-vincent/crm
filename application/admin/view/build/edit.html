@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="__STATIC__/admin/build/css/add.css?3">
+    <link rel="stylesheet" type="text/css" href="__STATIC__/admin/build/css/add.css?2">
     <script src="https://cdn.bootcss.com/vue/2.5.13/vue.js"></script>
     <!-- CDNJS :: Sortable (https://cdnjs.com/) -->
     <script src="//cdn.jsdelivr.net/npm/sortablejs@1.7.0/Sortable.min.js"></script>
@@ -15,7 +15,7 @@
     <div class="header">
         <span class="left">集客•H5采集页编辑器</span>
         <div class="title">采集页名称: <input type="text" id="name" v-model="name"></div>
-        <a href="javascript:;" @click="save()" class="right">编辑完成</a>
+        <a href="javascript:;" @click="update()" class="right">编辑完成</a>
     </div>
     <div class="content">
         <div class="content-left">
@@ -71,7 +71,7 @@
                         <a href="javascript:;" class="footer-right">文字基础色</a>
                     </div>
                 </div>
-                <a  href="javascript:;" @click="save()" class="footer-right">保存</a>
+                <a  href="javascript:;" @click="update()" class="footer-right">保存</a>
             </div>
         </div>
         <div class="content-right">
@@ -163,27 +163,29 @@
 
                 <div class="select" v-if="edit_data.type=='select'||edit_data.type=='checkbox'||edit_data.type=='radio'">
                     <label class="valtype">选择项:</label>
-                    <textarea style="height: 100px;"  ref="txt_val">{{edit_data.placeholder | capitalize}}</textarea>
+                    <textarea style="height: 100px;"  ref="txt_val" :value="edit_data.placeholder | capitalize"></textarea>
                 </div>
 
                 <div class="btn-box">
                     <a href="javascript:;" class="btn1" @click="det">确定</a>
-                    <a href="javascript:;" class="btn2" @click="cancel">取消</a>
+                    <a href="javascript:;" class="btn3" @click="cancel">取消</a>
+                    <a href="javascript:;" class="btn2" @click="del(edit_data2.num)">删除</a>
                 </div>
             </div>
         </div>
     </div>
-    <form action="{:url('save')}"  id="formid"  method = 'post'  style="display: none;">
+    <form action="{:url('update')}"  id="formid"  method = 'post'  style="display: none;">
         <input type="text" name="name" :value="name">
         <input type="text" name="list" :value="JSON.stringify(list)">
+        <input type="text" name="id" :value="buildid">
     </form>
 </div>
-
+{foreach $buildlist as $build}
 <script>
     var content=new Vue({
         el:"#content",
         data:{
-            left_data:[],
+            left_data:JSON.parse('{$build.list}')||[],
             right_type_data:[{title:'标题',placeholder:'请输入',type:'input'},
                 {title:'标题',placeholder:'请输入内容',type:'textarea'},
                 {title:'标题',placeholder:['选择1','选择2','选择3'],type:'select'},
@@ -195,8 +197,9 @@
             edit_data2:{},
             editleft:'',
             edittop:'',
-            name:'',
-            list:''
+            name:'{$build.name}',
+            list:'',
+            buildid:'{$build.id}'
         },
         filters: {
             capitalize: function (value) {
@@ -205,8 +208,8 @@
                 let hh = ''
                 value.forEach((item)=>{
                     str+=hh  + item
-                     hh ="\n"
-                    })
+                hh ="\n"
+            })
                 return str
             }
         },
@@ -227,7 +230,7 @@
             },
             det:function () {
                 this.mark=!this.mark;
-              let s = this.$refs.txt_val.value.split(/[\n]/g)
+                let s = this.$refs.txt_val.value.split(/[\n]/g)
                 console.log(s)
                 this.edit_data.placeholder = s
             },
@@ -237,15 +240,22 @@
                 this.edit_data.placeholder=this.edit_data2.placeholder;
                 this.edit_data.type=this.edit_data2.type;
             },
-            save:function () {
+            update:function () {
                 document.getElementById("formid").submit();
             },
+            del:function (n) {
+                this.mark=!this.mark;
+                if (confirm('你确认要删除吗？')) {
+                    this.left_data.splice(n,1);
+                }
+            }
         },
         mounted:function () {
             this.list=this.left_data;
         }
     })
 </script>
+{/foreach}
 <script>
     window.onload=function () {
         var edit= document.querySelector(".edit");

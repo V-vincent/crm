@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="__STATIC__/admin/build/css/build.css">
+    <link rel="stylesheet" type="text/css" href="__STATIC__/admin/build/css/build.css?1">
 
 </head>
 <body>
@@ -12,16 +12,13 @@
         <a class="add" href="{:url('add')}">
             <h2> 新建H5采集页面</h2>
         </a>
-        <a class="add" href="{:url('edit')}">
-            <span class="left">name</span>
+        {foreach $buildlist as $build}
+        <a class="add" href="{:url('edit')}?id={$build.id}">
+            <span class="left">{$build.name}</span>
             <h3>发布</h3>
-            <span class="right">time</span>
+            <span class="right">{$build.time}</span>
         </a>
-        <a class="add" href="{:url('edit')}">
-            <span class="left">name</span>
-            <h3>发布</h3>
-            <span class="right">time</span>
-        </a>
+        {/foreach}
     </div>
     <div class="content-right">
 
