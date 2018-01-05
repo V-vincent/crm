@@ -168,7 +168,8 @@
 
                 <div class="btn-box">
                     <a href="javascript:;" class="btn1" @click="det">确定</a>
-                    <a href="javascript:;" class="btn2" @click="cancel">取消</a>
+                    <a href="javascript:;" class="btn3" @click="cancel">取消</a>
+                    <a href="javascript:;" class="btn2" @click="del(edit_data2.num)">删除</a>
                 </div>
             </div>
         </div>
@@ -240,6 +241,12 @@
             save:function () {
                 document.getElementById("formid").submit();
             },
+            del:function (n) {
+                this.mark=!this.mark;
+                if (confirm('你确认要删除吗？')) {
+                    this.left_data.splice(n,1);
+                }
+            }
         },
         mounted:function () {
             this.list=this.left_data;
