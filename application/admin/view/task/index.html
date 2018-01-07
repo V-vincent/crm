@@ -1,6 +1,6 @@
 {include file="top"}
 {include file="left"}
-<link rel="stylesheet" type="text/css" href="__STATIC__/admin/task/css/index.css?9">
+<link rel="stylesheet" type="text/css" href="__STATIC__/admin/task/css/index.css?2">
 <div class="task">
 	<div class="task_left"></div>
 	<div class="task_box">
@@ -10,10 +10,35 @@
 		</div>
 		<div class="task_content">
 			<ul class="list_top">
-				<li><a href="{:url('add')}"><span class="glyphicon glyphicon-pencil"></span>写作业</a></li>
-				<li><a href="{:url('check')}"><span class="glyphicon glyphicon-ok"></span>改作业</a></li>
+				<li><a href="{:url('add')}"><span class="glyphicon glyphicon-pencil"></span>交作业</a></li>
 				<li><a href="javascript:;"><span class="glyphicon glyphicon-tasks"></span>布置作业</a></li>
 			</ul>
+			<table class="table" style="text-align: center;">
+				<tr>
+					<th>编号ID</th>
+					<th>用户</th>
+					<th>名称</th>
+					<th>内容</th>
+					<th>添加时间</th>
+					<th>回复</th>
+					<th>成绩</th>
+					<th>操作</th>
+				</tr>
+				{foreach $work_list as $info}
+				<tr >
+					<td>{$info.id}</td>
+					<td>{$info.u_id}</td>
+					<td>{$info.title}</td>
+					<td>{$info.content}</td>
+					<td>{$info.time}</td>
+					<td>{$info.reply}</td>
+					<td>{$info.result}</td>
+					<td>
+						<a class="btn btn-default" href="{:url('check',['id'=>$info.id])}">批改</a>
+					</td>
+				</tr>
+				{/foreach}
+			</table>
 			<ul class="list_bottom">
 				<li><a href="{:url('look')}"><span class="glyphicon glyphicon-folder-open"></span>查看提交情况</a></li>
 				<li><a href="{:url('gather')}"><span class="glyphicon glyphicon-list"></span>汇总</a></li>

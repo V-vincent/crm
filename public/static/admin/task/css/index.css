@@ -50,3 +50,7 @@
 .task .task_box .gather_content .time{
 	background: #f4f8fb;
 }
+
+.table tr th{
+	text-align: center;
+}
