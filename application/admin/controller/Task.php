@@ -5,7 +5,11 @@ class Task extends \think\Controller
 {
     public function index()
     {
-        $work_list  =  db('work')->order('id desc')->paginate(5);
+        $where_data = [];
+        if(input('user_name')){
+            $where_data['u_id'] = ['like','%'.input('user_name').'%'];
+        }    
+        $work_list  =  db('work')->where($where_data)->order('id desc')->paginate(5);
         $this->assign('work_list',$work_list);                   
         return $this->fetch();
     }    

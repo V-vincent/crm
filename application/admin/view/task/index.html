@@ -12,6 +12,14 @@
 			<ul class="list_top">
 				<li><a href="{:url('add')}"><span class="glyphicon glyphicon-pencil"></span>交作业</a></li>
 				<li><a href="javascript:;"><span class="glyphicon glyphicon-tasks"></span>布置作业</a></li>
+				<li style="width: 0%;">
+					 <form action="{:url('index')}" class="form">
+					 	<div class="input-group pull-left">
+					 		<input type="text" class="form-control pull-left" placeholder="输入用户名称" name="user_name">
+					 	</div>
+					 	<input type="submit" class="btn btn-group pull-left" style="cursor: pointer;" value="搜索">
+					 </form>
+				</li>
 			</ul>
 			<table class="table" style="text-align: center;">
 				<tr>
