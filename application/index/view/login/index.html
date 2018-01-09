@@ -9,13 +9,14 @@
     <!-- Mobile Specific -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1"/>
-
     <script src="__PUBLIC__static/index/login/js/jquery.min.js"></script>
     <!-- CSS -->
     <link rel="stylesheet" href="__PUBLIC__static/index/login/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="__PUBLIC__static/index/login/css/free.css"/>
     <link rel="stylesheet" href="__PUBLIC__static/index/login/css/css.css"/>
     <script type="text/javascript" src="https://cdn.bootcss.com/vue/2.5.13/vue.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
 </head>
 {include file="top"}
 <header id="one">
@@ -164,39 +165,59 @@ var login = new Vue({
    	loginin:function(){
       $.get('{:url("index/login/loginin")}',{user_name:this.logininfo,company_name:this.logincompany,password:this.loginpassword},(rtnData)=>{
       	if(rtnData===true){
-      		alert("登录成功");
-      		window.location.href="{:url('admin/index/index')}";
+      		this.$alert('登录成功，点击确定即将跳转到CRM界面......',  {
+          confirmButtonText: '确定',
+          callback: action => {
+            this.$message({
+              type: 'info',
+              center:true,
+              showClose:false,
+            });
+            window.location.href="{:url('admin/index/index')}";
+          }
+
+        });
       	}
       	else
-      		alert("登录失败,请重新登录");
+      		this.$message.error('账号或密码错误，请重新输入');
       });
    	},
    	doreg:function(){
 
     if(this.reginfo ==  null || this.reginfo == ''){
-         alert("用户名不能为空");
+         this.$message.error('账号名不能为空');
          return false;
     }
     if(this.regcompany ==  null || this.regcompany == ''){
-         alert("公司登录名不能为空");
+         this.$message.error('公司名不能为空');
          return false;
     }
     if(this.regpassword ==  null || this.regpassword == ''){
-         alert("密码不能为空");
+         this.$message.error('密码不能为空');
          return false;
     }
     if(this.regpassword !=  this.regpassword2){
-         alert("两次输入密码不同!");
+         this.$message.error('两次密码不一致');
          return false;
     }
     else{
        $.get('{:url("index/login/reg")}',{user_name:this.reginfo,company_name:this.regcompany,password:this.regpassword},(rtnData)=>{
       	if(rtnData===true){
-      		alert("注册成功");
-      		window.location.href="{:url('index/login/index')}";
+      		this.$alert('注册成功，点击确定即将跳转到登录界面......',  {
+          confirmButtonText: '确定',
+          callback: action => {
+            this.$message({
+              type: 'info',
+              center:true,
+              showClose:false,
+            });
+            window.location.href="{:url('index/login/index')}";
+          }
+
+        });
       	}
       	else
-      		alert("注册失败,用户已存在");
+      		this.$message.error('账号已存在，请修改注册用户名');
       });
     }
    		

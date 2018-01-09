@@ -22,13 +22,16 @@ class Login extends \think\Controller
     }
     public function loginin(){
     	$data=input();
+        
         $realpassword=db("user")->where("user_name",$data['user_name'])->
         where("company_name",$data["company_name"])->where("password",$data['password'])->
-        select();
+        find();
         if(!empty($realpassword)){
         	return true;
+
         }
         else
         	return false;
+        
     }
 }

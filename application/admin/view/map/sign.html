@@ -34,23 +34,32 @@
     <div class=" col-md-5">
         <template>
             <p>查询</p>
+            <form action="{:url('admin/map/sign')}" class="form">
             <div class="block">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <span>日期</span>
-                    <el-date-picker type="date" v-model="value1" placeholder="选择日期" style="width: 40%"></el-date-picker>
+                    <el-date-picker type="date" v-model="value1" placeholder="选择日期" type="date1" name="time1"
+      placeholder="选择日期"
+      format="yyyy-MM-dd"
+      value-format="yyyy-MM-dd 00:00:00" style="width: 40%"></el-date-picker>
                     到
-                    <el-date-picker type="date" v-model="value2" placeholder="选择日期" style="width: 40%"></el-date-picker>
+                    <el-date-picker type="date" v-model="value2" placeholder="选择日期" type="date2" name="time2"
+      placeholder="选择日期"
+      format="yyyy-MM-dd"
+      value-format="yyyy-MM-dd 00:00:00" style="width: 40%"></el-date-picker>
                 </div>
-                <div class="col-md-4">
-                    <span class="user">用户</span><el-input class="userinput" v-model="value3"></el-input>
+                
+                <div class="col-md-5" style="margin-top: 30px">
+                    <span class="user">用户ID</span><el-input class="userinput" v-model="value3" name="id"></el-input>
                 </div>
-                <div class="col-md-2">
-                    <el-button type="info">查询</el-button>
+                <div class="col-md-2" style="margin-top: 30px">
+                    <el-input type="submit">查询</el-input>
                 </div>
+                </form>
             </div>
         </template>
         <div class="jilu">
-            <p>拜访记录</p>
+            <p>考勤记录</p>
             <table class="tab">
                 <tr class="col">
     <div class="col-md-5 Mapleft">
@@ -118,9 +127,18 @@
             value3:'',
         },
         methods: {
+           
+            strtotime:function(datetime){
+                var tmp_datetime = datetime.replace(/:/g,'-'); 
+                tmp_datetime = tmp_datetime.replace(/ /g,'-'); 
+                var arr = tmp_datetime.split("-"); 
+                var now = new Date(Date.UTC(arr[0],arr[1]-1,arr[2],arr[3]-8,arr[4],arr[5])); 
+                return parseInt(now.getTime()/1000);
+            }//年月日转换成时间戳
 
         }
     })
+
     function showPosition(lng,lat){
         console.log(lng)
         console.log(lat)
