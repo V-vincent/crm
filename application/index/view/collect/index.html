@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=0">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/vue/2.5.13/vue.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .form{
+
+            display: block;
+            min-width: 302px;
+            max-width: 602px;
+            margin: 30px auto;
+        }
+        .form p{
+            text-indent: 30px;
+        }
+        .form .component{
+            width: calc(100% - 60px);
+           min-width: 240px;
+           max-width: 540px;
+            padding: 0 30px;
+            margin-bottom: 20px;
+            margin-top: 10px;
+        }
+        .form .component .radio,.form .component .checkbox{
+            margin-left: 20px;
+            margin-right: 10px;
+        }
+        .form .component .text,.form .component textarea,.form .component select{
+            width: calc(100% - 10px);
+            outline-color: #0862ed;
+            border: 1px solid #1d1d1d;
+            padding: 4px 5px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .form .component select .option{
+            width: calc(100% - 60px);
+        }
+        .form .submit{
+            width: calc(100% - 60px);
+            min-width: 240px;
+            max-width: 540px;
+            background: #fff;
+            padding: 4px 5px;
+            border-radius: 5px;
+            border: 1px solid #222;
+            display: inline-block;
+            outline: none;
+            margin:0 30px;
+        }
+    </style>
+</head>
+<body>
+<form action="{:url('save')}" method="post" class="form">
+    {foreach $buildlist as $index => $info}
+    <p>{$info.title}：</p>
+    {if $info.type=='input'}
+    <div class="component">
+        <input class="text"  type="text" placeholder="{$info.placeholder}" name="data{$index}">
+    </div>
+    {/if}
+    {if $info.type=='textarea'}
+    <div class="component">
+        <textarea placeholder="{$info.placeholder}" name="data{$index}"></textarea>
+    </div>
+    {/if}
+    {if $info.type=='select'}
+    <div class="component">
+        <select name="data{$index}">
+            {foreach $info.placeholder as $xs}
+            <option value="{$xs}" class="option">{$xs}</option>
+            {/foreach}
+        </select>
+    </div>
+    {/if}
+
+    {if $info.type=='radio'}
+    <div class="component">
+        {foreach $info.placeholder as $xs}
+        <input class="radio" type="radio" value="{$xs}" name="data{$index}">{$xs}
+        {/foreach}
+    </div>
+    {/if}
+
+    {if $info.type=='checkbox'}
+    <div class="component">
+        {foreach $info.placeholder as $xs}
+        <input class="checkbox" type="checkbox" value="{$xs}" name="data{$index}">{$xs}
+        {/foreach}
+    </div>
+    {/if}
+    {/foreach}
+    <input type="submit" value="提交" class="submit">
+</form>
+
+</body>
+</html>

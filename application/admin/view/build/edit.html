@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="__STATIC__/admin/build/css/add.css?2">
+    <link rel="stylesheet" type="text/css" href="__STATIC__/admin/build/css/add.css?3">
     <script src="https://cdn.bootcss.com/vue/2.5.13/vue.js"></script>
     <!-- CDNJS :: Sortable (https://cdnjs.com/) -->
     <script src="//cdn.jsdelivr.net/npm/sortablejs@1.7.0/Sortable.min.js"></script>
@@ -21,7 +21,7 @@
         <div class="content-left">
             <div class="title">采集页内容</div>
             <div class="table-add">
-                <draggable :list="left_data" class="dragArea" :options="{group:'h5form'}"  style="min-height: 500px">
+                <draggable :list="left_data" class="dragArea" :options="{group:'h5form'}">
                     <div  v-for="(item,index) in left_data" @click="edit(index)">
                         <div class="component" v-if="item.type=='input'">
                             <label class="valtype" data-valtype="label">{{item.title}}</label>
