@@ -70,12 +70,12 @@
                                 </a>
                             </li>
                             <li role="presentation" tabindex="-1" href="#">
-                                <a role="menuitem" tabindex="-1" href="#">
+                                <a role="menuitem" tabindex="-1" href="{:url('news/index')}">
                                     <div>
                                         <span class="glyphicon glyphicon-th-list pull-left"></span>
                                         <div class="pull-left">
-                                            <h4>Salary薪资管理</h4>
-                                            <p>老板和财务最爱，奖金和业绩联动</p>
+                                            <h4>New新闻管理</h4>
+                                            <p>企业内进行新闻或信息公告，响应信息化时代</p>
                                         </div>
                                     </div>
                                 </a>
@@ -97,7 +97,7 @@
                                         <span class="glyphicon glyphicon-globe pull-left"></span>
                                         <div class="pull-left">
                                             <h4>集客</h4>
-                                            <p>用集客为自己扩展客源</p>
+                                            <p>自动化生成H5页面,用集客为自己扩展客源</p>
                                         </div>
                                     </div>
                                 </a>
@@ -169,6 +169,8 @@
                     this.cur='TASK';
                 }else if(this.controller=='Build' ){
                     this.cur='集客';
+                }else if(this.controller=='News' ){
+                    this.cur='News';
                 }
             }
         }

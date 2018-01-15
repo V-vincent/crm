@@ -9,9 +9,29 @@ class Map extends \think\Controller
         
     }
     public function sign(){
-    	$signlist=db('sign')->select();
+        $where_data = '1=1 ';
+
+        // 如果有传搜索的条件
+        // 那么就加一个链式操作 where 
+        if (input('time1')) {
+            $where_data.= ' and time>'.strtotime(input('time1'));
+        }
+
+         if (input('time2')) {
+            $where_data .= ' and time<'.strtotime(input('time2'));
+        }
+         if (input('id')) {
+            $where_data.= 'and id ='.input('id');
+        }
+
+    	$signlist=db('sign')->alias('m')->order('m.id desc')->where($where_data)->select();
+        // echo db('sign')->getLastSql();exit();
     	$this->assign("signlist",$signlist);
     	return $this->fetch();
+    }
+    public function checksign(){
+        $data=input();
+        print_r($data);
     }
     public function addmap(){
         $addData = input();

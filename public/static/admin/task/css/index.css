@@ -26,7 +26,7 @@
 	font-size: 22px;
 	color: #505458;
 }
-.task .task_box .task_content .list_top li a{color: #505458;text-decoration: none;}
+.task .task_box .task_content .list_top li>a{color: #505458;text-decoration: none;}
 .task .task_box .task_content  .list_bottom{
 	display: flex;
 	justify-content: center;
@@ -49,4 +49,8 @@
 }
 .task .task_box .gather_content .time{
 	background: #f4f8fb;
+}
+
+.table tr th{
+	text-align: center;
 }
