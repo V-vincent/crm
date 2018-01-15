@@ -1,6 +1,6 @@
 <?php
 namespace app\index\controller;
-
+use \think\Session;
 class Login extends \think\Controller
 {
     public function index()
@@ -14,7 +14,7 @@ class Login extends \think\Controller
     	$have=db('user')->where('user_name',$data['user_name'])->find();
     	if(empty($have))
     	{
-    		db('user')->insert($data);
+    		db('user')->insert($data);    
     		return true;
     	}
     	else
@@ -26,13 +26,7 @@ class Login extends \think\Controller
         where("company_name",$data["company_name"])->where("password",$data['password'])->
         find();
         if(!empty($realpassword)){
-            Session::init([
-    'prefix'         => 'module',
-    'type'           => '',
-    'auto_start'     => true,
-]);
-            session_start(); Session::set('uid',$realpassword["id"]);
-            echo $Session["uid"];
+            Session::set('uid',$realpassword["user_name"]);
         	return true;
         }
         else
