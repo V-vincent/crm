@@ -11,7 +11,7 @@ class Login extends \think\Controller
     }
     public function reg(){
     	$data=input();
-    	$have=db('user')->where('user_name',$data['user_name'])->select();
+    	$have=db('user')->where('user_name',$data['user_name'])->find();
     	if(empty($have))
     	{
     		db('user')->insert($data);
