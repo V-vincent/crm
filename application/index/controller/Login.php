@@ -11,7 +11,7 @@ class Login extends \think\Controller
     }
     public function reg(){
     	$data=input();
-    	$have=db('user')->where('user_name',$data['user_name'])->select();
+    	$have=db('user')->where('user_name',$data['user_name'])->find();
     	if(empty($have))
     	{
     		db('user')->insert($data);
@@ -26,8 +26,12 @@ class Login extends \think\Controller
         where("company_name",$data["company_name"])->where("password",$data['password'])->
         find();
         if(!empty($realpassword)){
-            session_start();
-            Session::set('uid',$realpassword["id"]);
+            Session::init([
+    'prefix'         => 'module',
+    'type'           => '',
+    'auto_start'     => true,
+]);
+            session_start(); Session::set('uid',$realpassword["id"]);
             echo $Session["uid"];
         	return true;
         }

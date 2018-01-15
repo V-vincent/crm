@@ -1,6 +1,6 @@
 {include file="top"}
 {include file="left"}
-<link rel="stylesheet" type="text/css" href="__STATIC__/admin/task/css/look.css?3">
+<link rel="stylesheet" type="text/css" href="__STATIC__/admin/task/css/look.css?8">
 <div class="container" id="container">
 	<div class="mid_but">
 		<el-button type="primary">查看作业提交情况</el-button>
@@ -22,8 +22,8 @@
 		</div>
 		<table class="table">
 			<tr>
-                <th >
-                <p class="name" >姓名</p>
+                <th style="width: 68px;">
+                <p class="name" >姓<br>名</p>
 				</th>
 				<th v-for="n in t_days"  class="biao" style="line-height: 30px">{{n}}
 					<br>
@@ -33,11 +33,11 @@
 		</table>
 		<table class="table table2" style="margin-top: -21px">
 			<tr>
-                <th style="width: 87px;">
+                <th style="width: 68px;">
                 <p class="name" >BOSS</p>
 				</th>
-				<th v-for="n in t_days"  class="biao" style="line-height: 30px">
-					<br>
+				<th v-for="n in t_days"  class="biao" style="line-height: 46px">
+					86
 				</th>
 			</tr>
 		</table>

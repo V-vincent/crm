@@ -5,3 +5,20 @@
 .container .table .success{border-bottom: 2px #ccc solid;border-top: none;}
 .container .edit{padding: 10px 10px;background: #ebeff2;}
 #text-center-b{display: block;height: 1px;width: 40%;background: rgba(0,0,0,0.2);margin-bottom: 10px;margin-left: 30%;}
+.three_one_fade-enter-active {
+  animation: bounce-in .5s;
+}
+.three_one_fade-leave-active {
+  animation: bounce-in .5s reverse;
+}
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

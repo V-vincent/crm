@@ -90,11 +90,21 @@
 							<input type="text" class="form-control" id="user2" name="user_name" v-model="reginfo" placeholder="用户名" autocomplete="off"></div>
 						<div class="form-group">
 							<input type="text" class="form-control" id="com2" name="company_name" v-model="regcompany"
-							value="" placeholder="公司登录名" autocomplete="off"></div>
+							value="" placeholder="公司登录名" autocomplete="off">
+						</div>
 						<div class="form-group">
 							<input type="password" class="form-control" id="pass2" name="password" placeholder="密码" onpaste="return false;" v-model="regpassword"></div>
-							<div class="form-group">
+						<div class="form-group">
 							<input type="password" class="form-control" id="pass3"  placeholder="再次输入密码" onpaste="return false;" v-model="regpassword2"></div>
+						<div class="form-group">
+							<label>用户类型</label>
+							<select name="user_cate" v-model="regcate">
+								<option value="老板">老板</option>
+								<option value="员工">员工</option>
+								<option value="老师">老师</option>
+								<option value="学生">学生</option>
+							</select>
+						</div>
 						<button type="submit" class="btn btn-blue"  value="" @click="doreg()">注册</button>
 						<span class="colorTip colorTip2">
 							<span style="display: none;" id="error_2">
@@ -157,6 +167,7 @@ var login = new Vue({
    	loginpassword:'',
    	reginfo:'',
    	regcompany:'',
+   	regcate:'',
    	regpassword:'',
    	regpassword2:'',
    },
@@ -201,7 +212,7 @@ var login = new Vue({
          return false;
     }
     else{
-       $.get('{:url("index/login/reg")}',{user_name:this.reginfo,company_name:this.regcompany,password:this.regpassword},(rtnData)=>{
+       $.get('{:url("index/login/reg")}',{user_name:this.reginfo,company_name:this.regcompany,password:this.regpassword,user_cate:this.regcate},(rtnData)=>{
       	if(rtnData===true){
       		this.$alert('注册成功，点击确定即将跳转到登录界面......',  {
           confirmButtonText: '确定',
@@ -211,9 +222,8 @@ var login = new Vue({
               center:true,
               showClose:false,
             });
-            window.location.href="{:url('index/login/index')}";
+            /*window.location.href="{:url('index/login/index')}";*/
           }
-
         });
       	}
       	else
