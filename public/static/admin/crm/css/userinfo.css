@@ -9,11 +9,10 @@ body{background: #f4f8fb;}
 }
 .container .top p{color:#98a6ad;font-size: 12px;}
 .content .left .value{background: white;padding: 10px;}
-.content .left .value .text-center img{width: 60%;margin-top: 8px;}
-.content .left .value .text-center div div:hover{background: white;}
-.content .left .value .first div{border-radius: 50%;border: 1px solid #000;height: 50px;background: #000;}
-.content .left .value .second div{border-radius: 50%;border: 1px solid #000;height: 50px;background: #000;}
-.content .left .value .first div{border-radius: 50%;border: 1px solid #000;height: 50px;background: #000;}
+.content .left .value .text-center img{width: 30px;margin-top: 8px;}
+.content .left .value .text-center div div:hover{background: blue;}
+.content .left .value .first div{border-radius: 50%;border: 1px solid #000;height: 50px;cursor: pointer;}
+.content .left .value .second div{border-radius: 50%;border: 1px solid #000;height: 50px;cursor: pointer;}
 .content .left .info{padding: 10px;margin-top: 10px;background: white;}
 .content .left .info div p{color: #ccc;font-size: 15px;}
 .content .left .info div p span{font-size: 8px;color: black;}

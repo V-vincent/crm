@@ -4,20 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <script type="text/javascript" src="https://cdn.bootcss.com/vue/2.5.13/vue.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="__PUBLIC__static/admin/crm/css/userinfo.css?199">
     <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" id="container">
         <div class="title">
             <div class="pull-left">
                 <p class="pull-left">客户视图</p><a class="glyphicon glyphicon-user"></a></div>
             <div class="pull-right">ID:{$info.id}</div>
         </div>
         <div class="top">
-            <h3 class="username text-center" style="position: relative;">{$info.company_name}<span class="sup-btn">潜在</span></h3>
+            <h3 class="username text-center" style="position: relative;">{$info.company_name}<span class="sup-btn">{$info.state}</span></h3>
             <p class="text-center">更新:2天前 创建:{$info.time}</p>
         </div>
         <div class="content row">
@@ -30,16 +33,16 @@
                     </div>
                     <div class="text-center row">
                         <div class="first col-md-3 col-md-offset-1">
-                            <div><img src="__PUBLIC__static/admin/crm/images/userinfo/first.png" alt=""></div>
-                            <p>有价值</p>
+                            <div><img src="__PUBLIC__static/admin/crm/images/userinfo/money.png" v-if=""></div>
+                            <p>{$info.three_one_dinxin}</p>
                         </div>
-                        <div class="second col-md-3 col-md-offset-1">
-                            <div><img src="__PUBLIC__static/admin/crm/images/userinfo/emoji.png" alt=""></div>
-                            <p>无价值</p>
+                        <div class="first col-md-3 col-md-offset-1">
+                            <div><img src="__PUBLIC__static/admin/crm/images/userinfo/qiandan.png"></div>
+                            <p>{$info.three_one_dinji}</p>
                         </div>
-                        <div class="second col-md-3 col-md-offset-1">
-                            <div><img src="__PUBLIC__static/admin/crm/images/userinfo/edit.png" alt=""></div>
-                            <p>本月</p>
+                        <div class="first col-md-3 col-md-offset-1">
+                            <div><img src="__PUBLIC__static/admin/crm/images/userinfo/time.png"></div>
+                            <p>{$info.three_one_dinliang}</p>
                         </div>
                     </div>
                 </div>
@@ -84,7 +87,7 @@
                             <div class="col-md-4" style="padding: 0 0 0 30px;">
                                 <p style="font-size: 30px;"><i class="glyphicon glyphicon-user"></i></p>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <p>手机：{$info.user_phone}</p>
                                 <p>电话：{$info.user_telephone}</p>
                                 <p>邮箱：{1}</p>
@@ -106,7 +109,17 @@
                 <!-- 销售金额结束 -->
                 <!-- 地址开始 -->
                 <div class="address">
-                    <p><i class="glyphicon glyphicon-map-marker"></i>地址</p>
+                    <p><i class="glyphicon glyphicon-map-marker">  
+                    </i>地址</p>
+                    <div style="overflow: hidden;">
+                        <p class="pull-left"><span style="color: #ccc">省份:</span>{$info.province_address}</p>
+                        <p class="pull-left" style="margin-left: 8px;"><span style="color: #ccc">城市:</span>{$info.city_address}</p>
+                        <p class="pull-left" style="margin-left: 8px;"><span style="color: #ccc">区域:</span>{$info.area_address}</p>
+                    </div>
+                    <div class="address">
+                        <p><span style="color: #ccc">地址:</span>{$info.detailed_address}</p>
+                        <p><span style="color: #ccc">网址:</span>http://{$info.company_url}</p>
+                    </div>
                 </div>
                 <!-- 地址结束 -->
                 <!-- 下级客户开始 -->
@@ -120,10 +133,47 @@
                 <div class="title">
                     <p><i class="glyphicon glyphicon-earphone"></i>跟单时间线</p>
                 </div>
+                <form action="{:url('with')}" class="form" method="post">
+                    <div class="edit" id="element1">
+                        <div class="title form-inline">
+                            <input type="text" class="form-control" placeholder="标题" style="width: 69%; height: 40px;" name="with_title">
+                            <div class="form-group">
+                                <template>
+                                    <div class="block">
+                                        <el-date-picker style="width: 150px;" v-model="value1" type="date" placeholder="选择日期" name="with_time">
+                                        </el-date-picker>
+                                    </div>
+                                </template>
+                            </div>
+                        </div>
+                        <textarea name="with_content" id="myEditor" placeholder="输入内容">
+                        </textarea>
+                        <div class="form-group">
+                        <input type="hidden" name="user_id" value="{$info.id}">
+                        <input type="submit" class="btn btn-primary btn-block"></div>
+                    </div>
+                </form>
+                
+                    {foreach $with as $list}
+                    <div class="content">
+                        <div style="height: 10px;background: #f4f8fb;"></div>
+                    <div class="with_content">
+                        <h3>{$list.with_title}</h3>
+                        <div>{$list.with_content}</div>
+                        <p class="text-right" style="color: red;font-size: 10px;">{$list.with_time}</p>
+                    </div>
+                    </div>
+                    
+                    {/foreach}
+                
             </div>
         </div>
     </div>
 </body>
+<!-- 配置文件 -->
+<script type="text/javascript" src="__STATIC__/library/ueditor/ueditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="__STATIC__/library/ueditor/ueditor.all.min.js"></script>
 <script>
 $(document).ready(function() {
     $('#btn-up').click(function() {
@@ -136,6 +186,19 @@ $(document).ready(function() {
     })
 
 });
+</script>
+<script type="text/javascript">
+new Vue({
+    el: "#container",
+    data: {
+        value1: '',
+        value2: '',
+        dinxin:'不确定'
+    },
+
+})
+
+UE.getEditor("myEditor")
 </script>
 
 </html>
