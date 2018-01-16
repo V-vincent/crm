@@ -9,23 +9,18 @@
 			<h4>TASK学生作业管理</h4>
 		</div>
 		<div class="task_content">
+			{foreach $user as $userdata}
+			<!-- 学生身份作业管理 -->
+			{if $userdata.user_cate=='学生'}
 			<ul class="list_top">
 				<li><a href="{:url('add')}"><span class="glyphicon glyphicon-pencil"></span>交作业</a></li>
-				<li style="width: 0%;">
-					 <form action="{:url('index')}" class="form">
-					 	<div class="input-group pull-left">
-					 		<input type="text" class="form-control pull-left" placeholder="输入用户名称" name="user_name">
-					 	</div>
-					 	<input type="submit" class="btn btn-group pull-left" style="cursor: pointer;" value="搜索">
-					 </form>
-				</li>
 			</ul>
 			<table class="table" style="text-align: center;">
 				<tr>
 					<th>编号ID</th>
-					<th>用户</th>
 					<th>名称</th>
 					<th>内容</th>
+					<th>附件</th>
 					<th>添加时间</th>
 					<th>回复</th>
 					<th>成绩</th>
@@ -34,22 +29,73 @@
 				{foreach $work_list as $info}
 				<tr >
 					<td>{$info.id}</td>
-					<td>{$info.u_id}</td>
 					<td>{$info.title}</td>
 					<td>{$info.content}</td>
+					<td><a href="__UPLOADS__{$info.work}">点击查看</a></td>
 					<td>{$info.time}</td>
 					<td>{$info.reply}</td>
 					<td>{$info.result}</td>
 					<td>
-						<a class="btn btn-default" href="{:url('check',['id'=>$info.id])}">批改</a>
+						{if $info.result==''}
+						<a class="btn btn-default" href="{:url('check',['id'=>$info.id])}">修改</a>
+						{/if}
+						{if $info.result!=''}
+						<p>已批改</p>
+						{/if}
 					</td>
 				</tr>
 				{/foreach}
 			</table>
+			{/if}
+			<!-- 非学生身份管理作业 -->
+			{if $userdata.user_cate!='学生'}
+			<ul class="list_top">
+				<li><a href="{:url('arrange')}"><span class="glyphicon glyphicon-list"></span>布置作业</a></li>
+				<li style="width: 0%;">
+					 <form action="{:url('index')}" class="form">
+					 	<div class="input-group pull-left">
+					 		<input type="text" class="form-control pull-left" placeholder="输入学生名称" name="user_name">
+					 	</div>
+					 	<input type="submit" class="btn btn-group pull-left" style="cursor: pointer;" value="搜索">
+					 </form>
+				</li>
+			</ul>
+			<table class="table" style="text-align: center;">
+				<tr>
+					<th>编号ID</th>
+					<th>学生</th>
+					<th>名称</th>
+					<th>内容</th>
+					<th>附件</th>
+					<th>添加时间</th>
+					<th>回复</th>
+					<th>成绩</th>
+					<th>操作</th>
+				</tr>
+				{foreach $work_list as $info}
+					<tr >
+						<td>{$info.id}</td>
+						{foreach $user_list as $user}
+						{if $user.id==$info.u_id}	
+						<td>{$user.user_name}</td>
+						{/if}
+						{/foreach}	
+						<td>{$info.title}</td>
+						<td>{$info.content}</td>
+						<td><a href="__UPLOADS__{$info.work}">点击查看</a></td>
+						<td>{$info.time}</td>
+						<td>{$info.reply}</td>
+						<td>{$info.result}</td>
+						<td><a class="btn btn-default" href="{:url('check',['id'=>$info.id])}">批改</a></td>
+					</tr>			
+				{/foreach}
+			</table>
+			{/if}
+			{/foreach}
+			{$work_list->render()}
 			<ul class="list_bottom">
 				<li><a href="{:url('look')}"><span class="glyphicon glyphicon-folder-open"></span>查看提交情况</a></li>
-				<li><a href="{:url('gather')}"><span class="glyphicon glyphicon-list"></span>汇总</a></li>
-				<li><a href="javascript:;"><span class="glyphicon glyphicon-search"></span>作业查询</a></li>
+				<li><a href="javascript:;"><span class="glyphicon glyphicon-list"></span>汇总</a></li>
 				<li><a href="javascript:;"><span class="glyphicon glyphicon-download-alt"></span>作业导出</a></li>
 			</ul>
 		</div>

@@ -2,9 +2,11 @@
 {include file="left"}
 <link rel="stylesheet" type="text/css" href="__STATIC__/admin/task/css/look.css?8">
 <div class="container" id="container">
+	<div class="title" style="margin: 10px 30px;">
+		<a href="{:url('index')}" class="glyphicon glyphicon-chevron-left return">返回工作台</a>
+	</div>
 	<div class="mid_but">
 		<el-button type="primary">查看作业提交情况</el-button>
-
 		<el-button type="success">查看批改分数情况</el-button>
 	</div>
 	<h3 id="title">
@@ -16,34 +18,49 @@
 	<div id="month_choose">
 		<el-button type="info">
 			<<上一月</el-button>
-
-				<el-button type="info">下一月>></el-button>
-				<p class="status">状态说明 空白：未交作业；n：分数为n分； √:已交作业；</p>
-		</div>
-		<table class="table">
+		<el-button type="info">下一月>></el-button>
+		<p class="status">状态说明 空白：未交作业；n：分数为n分； √:已交作业；</p>
+	</div>
+	<table class="table">
+		<tr>
+           	<th style="width: 68px;">
+            	<p class="name" >姓<br>名</p>
+			</th>
+			<th v-for="n in t_days"  class="biao" style="line-height: 30px">{{n}}<br>
+				{{n,year,month | getweek}}
+			</th>
+		</tr>
+	</table>
+	<table class="table table2" style="margin-top: -21px">
+		{foreach $user as $userdata}
+			<!-- 用户身份为学生时 -->
+			{if $userdata.user_cate=='学生'}
 			<tr>
-                <th style="width: 68px;">
-                <p class="name" >姓<br>名</p>
+            	<th style="width: 68px;">
+                	<p class="name" >{$Think.session.user_name}</p>
 				</th>
-				<th v-for="n in t_days"  class="biao" style="line-height: 30px">{{n}}
-					<br>
-					{{n,year,month | getweek}}
-				</th>
-			</tr>
-		</table>
-		<table class="table table2" style="margin-top: -21px">
+				<th v-for="n in t_days"  class="biao" style="width: 35px;line-height: 46px">
+					<span v-if="work_list[n]">√</span>
+				</th>	
+			</tr>			
+			{/if}	
+			<!-- 用户身份不是学生时 -->
+			{if $userdata.user_cate!='学生'}	
+			{foreach $user_list as $u_info}
 			<tr>
-                <th style="width: 68px;">
-                <p class="name" >BOSS</p>
+            	<th style="width: 68px;">
+                	<p class="name" >{$u_info.user_name}</p>
 				</th>
-				<th v-for="n in t_days"  class="biao" style="line-height: 46px">
-					86
-				</th>
+				<th v-for="n in t_days"  class="biao" style="width: 35px;line-height: 46px">
+					<span  v-for="t_work in t_work_list" v-if='t_work.d==n&&t_work.u_id=={$u_info.id}'>√</span>	
+				</th>	
 			</tr>
-		</table>
-
-		{include file="foot"}
-		<script>
+			{/foreach}
+			{/if}	
+		{/foreach}
+	</table>
+{include file="foot"}
+<script>
 	new Vue({
         el: "#container",
         data: {
@@ -53,16 +70,16 @@
             t_days:{$t_days},
             year:{$year},
             month:{$month},
+            work_list:JSON.parse('{$work_list}'),
+			t_work_list:JSON.parse('{$t_work_list}'),
           },
-          filters:{
+       	filters:{
           	getweek:function (val,year,month) {
-          		var arry=["天","一","二","三","四","五","六"]
+          		var arry=["日","一","二","三","四","五","六"]
           		var m = new Date(year,month-1,val);//计算2016.2.20日星期几
           		k='星期'+arry[m.getDay()]+'' ;
           		return k;
           	}
-          }
-           
-        
+        }
     })
 </script>
