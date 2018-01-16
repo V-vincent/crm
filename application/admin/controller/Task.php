@@ -35,6 +35,10 @@ class Task extends \think\Controller
     {
         $time=date('Y-m-d');
         $this->assign("time",$time);
+
+        $work=db('worklist')->select();
+        $this->assign('work',$work);
+        
         return $this->fetch();
     }
     //交作业时保存
@@ -116,13 +120,20 @@ class Task extends \think\Controller
 	public function arrange()
     {
         $time=date('Y-m-d');
-        $this->assign("time",$time);        
+        $this->assign("time",$time);      
         return $this->fetch();
+    }  
+    //布置作业保存
+    public function save2()
+    {
+        $data=input();
+        db("worklist")->insert($data);
+        $this->success('布置成功','index');
     }  
     public function update()
     {
-         $id = input('id');
-         $data=input();
+        $id = input('id');
+        $data=input();
         db('work')->where("id=$id")->update($data);
         $this->success('操作成功','index');      
     } 

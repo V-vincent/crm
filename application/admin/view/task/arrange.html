@@ -8,15 +8,15 @@
 		</div>
 		<h3 class="time_now">{$time}</h3>
 		<div class="from_box">
-			<form action="{:url('save')}" class="form" method="post">
+			<form action="{:url('save2')}" class="form" method="post">
 				<div class="form-group">
 					<div class="form-group">
 						<label>作业</label>
 						<input type="text" class="form-control" name="work_name">
 					</div>
 					<div class="form-group">
-						<label>内容</label>
-						<textarea name="work_content" id="myEditor" style="height: 280px;width: 100%;"></textarea>
+						<label>作业要求</label>
+						<textarea name="work_require" id="myEditor" style="height: 280px;width: 100%;"></textarea>
 					</div>
 				<div class="form-group">
 					<input type="submit" class="btn btn-primary" value="提交">

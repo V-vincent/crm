@@ -12,7 +12,11 @@
 				<div class="form-group">
 					<div class="form-group">
 						<label>作业</label>
-						<input type="text" class="form-control" name="title">
+						<select name="title" v-model="title">
+							{foreach $work as $info}
+							<option value="{$info.work_name}">{$info.work_name}</option>
+							{/foreach}
+						</select>						
 					</div>
 					<div class="form-group">
 						<label>内容</label>
