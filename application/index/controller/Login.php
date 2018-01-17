@@ -26,7 +26,9 @@ class Login extends \think\Controller
         where("company_name",$data["company_name"])->where("password",$data['password'])->
         find();
         if(!empty($realpassword)){
-            Session::set('uid',$realpassword["user_name"]);
+            Session::set('user_name',$realpassword["user_name"]);
+            Session::set('user_cate',$realpassword["user_cate"]);
+            Session::set('u_id',$realpassword["id"]);
         	return true;
         }
         else
