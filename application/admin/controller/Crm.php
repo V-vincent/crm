@@ -72,6 +72,7 @@ class Crm extends \think\Controller
       db('userinfo')->where("id=$id")->update($info);
       $this->success('','index');
     }
+    
     //客户来源数据词典
     public function usersource(){
         $list = db('usersource')->paginate(10);
