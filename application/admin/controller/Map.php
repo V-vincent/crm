@@ -1,7 +1,7 @@
 <?php
 namespace app\admin\controller;
 
-class Map extends \think\Controller
+class Map extends \app\admin\Auth
 {
     public function index()
     {
@@ -24,8 +24,20 @@ class Map extends \think\Controller
             $where_data.= 'and id ='.input('id');
         }
 
-    	$signlist=db('sign')->alias('m')->order('m.id desc')->where($where_data)->select();
+    	
         // echo db('sign')->getLastSql();exit();
+
+
+
+        $signlist = db('sign')->alias('s')//给userinfo表设置简写u
+                              ->field('s.uid,s.id,s.time,s.lng,s.lat')//解决ID排序问题
+                              ->join('user u','s.uid=u.id','left')//设置公司分类表简写为c，用u的id和c的id比较
+                              ->where($where_data)
+                              ->order('s.id desc')//设置排序为从大到小
+                              ->paginate(10);
+        $user=db("user")->select();
+        $this->assign("user",$user);
+
     	$this->assign("signlist",$signlist);
     	return $this->fetch();
     }
@@ -37,7 +49,6 @@ class Map extends \think\Controller
         $addData = input();
         print_r($addData);
     	$addData['time'] = time();
-    	$addData['uid'] = 1;
     	db('sign')->insert($addData);
     }
     public function business(){

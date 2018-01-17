@@ -1,7 +1,7 @@
 <?php
 namespace app\admin\controller;
 
-class Crm extends \think\Controller
+class Crm extends \app\admin\Auth
 {
     public function index()
     {

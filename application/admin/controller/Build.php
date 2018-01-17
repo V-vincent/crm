@@ -1,7 +1,7 @@
 <?php
 namespace app\admin\controller;
 
-class Build extends \think\Controller
+class Build extends \app\admin\Auth
 {
     public function index(){
         $buildlist=db('buildlist')->select();

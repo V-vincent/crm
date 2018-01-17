@@ -34,4 +34,11 @@ class Login extends \think\Controller
         else
         	return false; 
     }
+
+    public function logout(){
+            Session::delete('user_name');
+            Session::delete('user_cate');
+            Session::delete('u_id');
+            $this->success('退出成功','index/login/index');
+    }
 }

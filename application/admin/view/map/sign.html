@@ -53,7 +53,7 @@
                     <span class="user">用户ID</span><el-input class="userinput" v-model="value3" name="id"></el-input>
                 </div>
                 <div class="col-md-2" style="margin-top: 30px">
-                    <el-input type="submit">查询</el-input>
+                    <el-input type="submit" value="搜索"></el-input>
                 </div>
                 </form>
             </div>
@@ -65,15 +65,19 @@
     <div class="col-md-5 Mapleft">
         <table class="tab">
             <tr class="col">
-                <th>ID</th>
-                <th>用户ID</th>
+                <th>签到ID</th>
+                <th>用户姓名</th>
                 <th>签到时间</th>
                 <th>操作</th>
             </tr>
                 {foreach $signlist as $info}
                 <tr>
                     <td>{$info.id}</td>
-                    <td>{$info.uid}</td>
+                    {foreach $user as $user_info}
+                    {if $info.uid==$user_info.id}
+                    <td>{$user_info.user_name}</td>
+                    {/if}
+                    {/foreach}
                     <td>{$info.time|date="Y-m-d H:i:s",###}</td>
                     <td>
                         <a href="javascript:" onclick="showPosition('{$info.lng}','{$info.lat}')">定位</a>

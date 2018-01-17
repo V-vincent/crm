@@ -1,7 +1,7 @@
 <?php
 namespace app\admin\controller;
 use \think\Session;
-class Task extends \think\Controller
+class Task extends \app\admin\Auth
 {
     public function index()
     {   

@@ -148,7 +148,8 @@
                 <div class="user">
                     <span class="glyphicon glyphicon-user"></span>
                 </div>
-                <span class="user_name">{$Think.session.user_name}({$Think.session.user_cate})</span>
+               <form action="{:url('index/login/logout')}" method="post" class="form"> <span class="user_name">{$Think.session.user_name}({$Think.session.user_cate})   <input id="exit" type="submit" value="退出登录"></input>  </span>
+               </form>
             </div>
         </div>
     </header>

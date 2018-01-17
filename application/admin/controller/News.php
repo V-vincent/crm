@@ -1,7 +1,7 @@
 <?php
 namespace app\admin\controller;
 
-class News extends \think\Controller
+class News extends \app\admin\Auth
 {
     public function index()
     {
