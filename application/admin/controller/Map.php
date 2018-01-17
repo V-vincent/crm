@@ -20,11 +20,13 @@ class Map extends \app\admin\Auth
          if (input('time2')) {
             $where_data .= ' and time<'.strtotime(input('time2'));
         }
-         if (input('id')) {
-            $where_data.= 'and id ='.input('id');
+         if (input('name')) {
+            $name=input('name');
+            $user1=db('user')->where(['user_name'=>$name])->select();
+            if($user=""){
+              $where_data.= 'and uid='.$user1[0]['id'];
+            }
         }
-
-    	
         // echo db('sign')->getLastSql();exit();
 
 
@@ -35,6 +37,7 @@ class Map extends \app\admin\Auth
                               ->where($where_data)
                               ->order('s.id desc')//设置排序为从大到小
                               ->paginate(10);
+
         $user=db("user")->select();
         $this->assign("user",$user);
 
