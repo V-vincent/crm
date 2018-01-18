@@ -6,7 +6,11 @@ class Build extends \app\admin\Auth
     public function index(){
         $buildlist=db('buildlist')->select();
         $this->assign('buildlist',$buildlist);
-        return $this->fetch();
+        if(!empty($_REQUEST['id'])){
+            print_r($buildlist);
+        }else {
+            return $this->fetch();
+        }
     }
     public function add(){
         return $this->fetch();

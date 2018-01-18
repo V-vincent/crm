@@ -14,6 +14,7 @@ class Login extends \think\Controller
     	$have=db('user')->where('user_name',$data['user_name'])->find();
     	if(empty($have))
     	{
+            $data["mark"]=0;
     		db('user')->insert($data);    
     		return true;
     	}
@@ -29,6 +30,7 @@ class Login extends \think\Controller
             Session::set('user_name',$realpassword["user_name"]);
             Session::set('user_cate',$realpassword["user_cate"]);
             Session::set('u_id',$realpassword["id"]);
+            Session::set('u_mark',$realpassword["mark"]);
         	return true;
         }
         else

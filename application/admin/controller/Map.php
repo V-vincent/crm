@@ -23,7 +23,7 @@ class Map extends \app\admin\Auth
          if (input('name')) {
             $name=input('name');
             $user1=db('user')->where(['user_name'=>$name])->select();
-            if($user=""){
+            if($user1!=""){
               $where_data.= 'and uid='.$user1[0]['id'];
             }
         }
@@ -35,7 +35,7 @@ class Map extends \app\admin\Auth
                               ->field('s.uid,s.id,s.time,s.lng,s.lat')//解决ID排序问题
                               ->join('user u','s.uid=u.id','left')//设置公司分类表简写为c，用u的id和c的id比较
                               ->where($where_data)
-                              ->order('s.id desc')//设置排序为从大到小
+                              ->order('s.id asc')//设置排序为从小到大 大到小desc
                               ->paginate(10);
 
         $user=db("user")->select();
@@ -53,6 +53,8 @@ class Map extends \app\admin\Auth
         print_r($addData);
     	$addData['time'] = time();
     	db('sign')->insert($addData);
+        session('u_mark', session('u_mark')+15);
+        db('user')->where('id',session('u_id'))->update(['mark' => session('u_mark')]);
     }
     public function business(){
     	return $this->fetch();
