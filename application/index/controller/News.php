@@ -4,7 +4,8 @@ namespace app\index\controller;
 class News extends \think\Controller
 {
     public function index()
-    {
+    {   
+        
         if(input('cate')){
             $cate=input('cate');
             $news_list2 = db('newslist')->where("cate_id=$cate")->select();
@@ -19,6 +20,8 @@ class News extends \think\Controller
         $news_cate  =  db('newscate')->select();
         $this->assign('news_cate',$news_cate);
         return $this->fetch();
+
+        
     }
     
     public function news()

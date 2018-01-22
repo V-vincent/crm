@@ -1,7 +1,7 @@
 <?php
 namespace app\admin\controller;
 
-class Map extends \think\Controller
+class Map extends \app\admin\Auth
 {
     public function index()
     {
@@ -20,12 +20,27 @@ class Map extends \think\Controller
          if (input('time2')) {
             $where_data .= ' and time<'.strtotime(input('time2'));
         }
-         if (input('id')) {
-            $where_data.= 'and id ='.input('id');
+         if (input('name')) {
+            $name=input('name');
+            $user1=db('user')->where(['user_name'=>$name])->select();
+            if($user1!=""){
+              $where_data.= 'and uid='.$user1[0]['id'];
+            }
         }
-
-    	$signlist=db('sign')->alias('m')->order('m.id desc')->where($where_data)->select();
         // echo db('sign')->getLastSql();exit();
+
+
+
+        $signlist = db('sign')->alias('s')//给userinfo表设置简写u
+                              ->field('s.uid,s.id,s.time,s.lng,s.lat')//解决ID排序问题
+                              ->join('user u','s.uid=u.id','left')//设置公司分类表简写为c，用u的id和c的id比较
+                              ->where($where_data)
+                              ->order('s.id asc')//设置排序为从小到大 大到小desc
+                              ->paginate(10);
+
+        $user=db("user")->select();
+        $this->assign("user",$user);
+
     	$this->assign("signlist",$signlist);
     	return $this->fetch();
     }
@@ -37,8 +52,9 @@ class Map extends \think\Controller
         $addData = input();
         print_r($addData);
     	$addData['time'] = time();
-    	$addData['uid'] = 1;
     	db('sign')->insert($addData);
+        session('u_mark', session('u_mark')+15);
+        db('user')->where('id',session('u_id'))->update(['mark' => session('u_mark')]);
     }
     public function business(){
     	return $this->fetch();

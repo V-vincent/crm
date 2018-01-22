@@ -76,7 +76,8 @@
         function saveAttr(){
             var p = marker2.getPosition();
             if(confirm("亲爱的boss,"+"您目前的经度为："+p.lng+",纬度为："+p.lat+"确认签到吗")){
-                    $.get('{:url("admin/map/addmap")}',{lng:p.lng,lat:p.lat});
+                    $.get('{:url("admin/map/addmap")}',{lng:p.lng,lat:p.lat,uid:{$Think.session.u_id}});
+                    alert("签到成功,积分+15");
             }//获取marker的位置         
     }
 })
