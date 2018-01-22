@@ -1,0 +1,32 @@
+{include file="top"} {include file="left"}
+<div class="container" style="background: #fff">
+    <h3>录入数据类型配置(客户-客户来源)</h3>
+    <form action="{:url('update_school')}" class="form" method="post" enctype="multipart/form-data">
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr class="success">
+                <th>序号</th>
+                <th>选项内容</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            {foreach $list as $info_cate}
+            <tr>
+                <td>{$info_cate.id}</td>
+                <td>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="name" value="{$info_cate.school_name}" name="school[{$info_cate.id}]">
+                    </div>
+                </td>
+                <td><a href="" class="btn btn-danger">删除</a></td>
+            </tr>
+            {/foreach}
+        </tbody>
+    </table>
+    <div style="text-align: center;" class="form-group"><input type="submit" class="btn btn-success" style="width: 150px;"><a href="{:url('addschool')}" type="button" class="btn btn-primary" style="width: 150px;">增加</a>
+    </div>
+    </form>
+    {$list->render()}
+</div>
+{include file="foot"}

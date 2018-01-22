@@ -1,0 +1,445 @@
+.titleimg{height:250px;width: 100%;background-size: cover;position: relative;}
+
+.titleimg .img1 img{width: 60px;height: 60px;position: absolute;bottom:20px;left:10px;
+	animation: qiumoves 12s infinite linear;
+}
+.titleimg .img2 img{width: 80px;height: 80px;position: absolute;top: 20px;left: 10px;
+	animation: qiumoves 8s infinite linear;
+}
+.titleimg .img3 img{width: 80px;height: 80px;position: absolute;bottom:20px;right:10px;
+	animation: qiumovet 6s infinite linear;
+}
+.titleimg .img4 img{width: 35px;height: 40px;position: absolute;top:0px;right:100px;
+	animation: qiumovef 6s infinite linear;
+}
+
+.titleimg .imgfly1 img{width: 60px;height: 60px;position: absolute;top:-4px;right:850px;
+animation: flyo 0.5s infinite}
+.titleimg .imgfly2 img{width: 80px;height: 100px;position: absolute;top: 7px;right: 502px;
+animation: flyt 0.7s infinite}
+.titleimg .imgflag{width: 300px;position: absolute;right: 580px;top: 35px;height: 200px;background-size: 18400px 200px;
+	animation:dynamic 2.4s steps(9) infinite;}
+
+.titleimg .imgflag .wxfirst{
+	position: absolute;left: 50px;top: 30px;font-size: 40px;color: red;
+}
+.titleimg .imgflag .wxsecond{
+	position: absolute;
+    left: 97px;
+    top: 17px;
+    font-size: 20px;
+    color: red;
+}
+.titleimg .imgflag .wxthird{
+	position: absolute;
+    left: 110px;
+    top: 40px;
+    font-size: 20px;
+    color: red;
+}
+.titleimg .imgflag .wxfourth{
+	position: absolute;
+    left: 100px;
+    top: 60px;
+    font-size: 20px;
+    color: red;
+}
+.titleimg .imgflag .wxfifth{
+	position: absolute;
+    left: 77px;
+    top: 76px;
+    font-size: 20px;
+    color: red;
+}
+
+	@keyframes flyo{
+	0%{top:-4px;}
+	
+	100%{top: -3px;}
+}
+
+	@keyframes flyt{
+	0%{top:7px;}
+	
+	100%{top: 8px;}
+}
+
+@keyframes qiumovef{
+	0%{bottom: 20px;left:10px;opacity: 0.5}
+	20%{bottom: 120px;left:110px;opacity: 0}
+	40%{bottom: 190px;left:200px;opacity: 0.5}
+	60%{bottom: 0px;left:400px;opacity: 0}
+	80%{bottom: 190px;left:800px;opacity: 0.8}
+	100%{bottom: 0px;left:1200px;opacity: 1}
+}
+
+@keyframes qiumoves{
+	0%{top: 20px;left: 100px;opacity: 0.5}
+	20%{top: 100px;left: 360px;opacity: 0}
+	40%{top: 170px;left: 680px;opacity: 0.5}
+	60%{top: 0px;left: 780px;opacity: 0}
+	80%{top: 170px;left: 900px;opacity: 0.8}
+	100%{top: 0px;left: 1200px;opacity: 1}
+}
+
+ @keyframes qiumovet{
+	0%{bottom: 20px;right: 10px;opacity: 0.5}
+	20%{bottom: 120px;right: 110px;opacity: 0}
+	40%{bottom: 190px;right: 200px;opacity: 0.5}
+	60%{bottom: 0px;right: 400px;opacity: 0}
+	80%{bottom: 190px;right: 800px;opacity: 0.8}
+	100%{bottom: 0px;right: 1200px;opacity: 1}
+} 
+@keyframes qiumovef{
+	0%{top: 20px;right: 100px;opacity: 0.5}
+	20%{top: 190px;right: 360px;opacity: 0}
+	40%{top: 190px;right: 680px;opacity: 0.5}
+	60%{top: 0px;right: 780px;opacity: 0}
+	80%{top: 190px;right: 900px;opacity: 0.8}
+	100%{top: 0px;right: 1200px;opacity: 1}
+}
+
+.gear-box{width: 352px;
+    height: 252px;
+    position: absolute;
+    z-index: 500;
+    right: 1px;
+    top: 0px;}
+.gear-box .gear-border-1{width:352px;
+    height: 252px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-size: cover;
+    z-index: 500;}
+ .gear-box .gear-border-2{width: 352px;
+    height: 252px;
+    position: absolute;
+    background-size: cover;
+    left: 1px;
+    top: 1px;
+    z-index: 480;
+}
+.gear-box .gear-border-3{width: 351px;
+    height: 256px;
+    position: absolute;
+    background-size: cover;
+    left: 0;
+    top: 0;
+    z-index: 440;
+}
+.gear-box .gear-bg-1{
+width: 237px;
+    height: 233px;
+    position: absolute;
+    left: 8px;
+    top: 17px;
+    z-index: 390;
+}
+.gear-box .gear-stick-1 {
+    width: 140px;
+    height: 20px;
+    position: absolute;
+    left: 10px;
+    top: 188px;
+    z-index: 490;
+    background-size: cover;
+}
+.gear-box .gear-stick-2 {
+    width: 70px;
+    height: 20px;
+    position: absolute;
+    left: 35px;
+    top: 95px;
+    z-index: 490;
+    background-size: cover;
+}
+.gear-box .gear-stick-3 {
+    width: 70px;
+    height: 20px;
+    position: absolute;
+    left: 45px;
+    top: 130px;
+    z-index: 490;
+    background-size: cover;
+}
+.gear-box .gear-stick-4 {
+    width: 90px;
+    height: 10px;
+    position: absolute;
+    left: 48px;
+    top: 170px;
+    z-index: 490;
+    background-size: cover;
+}
+.gear-box .gear-item-shadow-1 {
+    width: 77px;
+    height: 78px;
+    position: absolute;
+    left: 105px;
+    top: 160px;
+    z-index: 465;
+    background-size: cover;
+    transform: rotate(0deg);
+    animation: ring 10s infinite linear;
+}
+.gear-box .gear-item-1 {
+    width: 61px;
+    height: 60px;
+    background-size: cover;
+    position: absolute;
+    left: 109px;
+    top: 166px;
+    z-index: 470;
+    transform: rotate(0deg);
+    animation: ring 10s infinite linear;
+}
+
+.gear-box .gear-item-shadow-2 {
+    width: 77px;
+    height: 78px;
+    position: absolute;
+    left: 185px;
+    top: 178px;
+    z-index: 465;
+    background-size: cover;
+    transform: rotate(0deg);
+    animation: backring 10s infinite linear;
+}
+.gear-box .gear-item-2 {
+    width: 61px;
+    height: 60px;
+    background-size: cover;
+    position: absolute;
+    left: 185px;
+    top: 178px;
+    z-index: 470;
+    transform: rotate(0deg);
+    animation: backring 10s infinite linear;
+}
+
+.gear-box .gear-item-shadow-3 {
+    width: 107px;
+    height: 108px;
+    position: absolute;
+    left: 160px;
+    top: 30px;
+    z-index: 465;
+    background-size: cover;
+    transform: rotate(0deg);
+    animation: ring 10s infinite linear;
+}
+.gear-box .gear-item-3 {
+    width: 91px;
+    height: 90px;
+    background-size: cover;
+    position: absolute;
+    left: 160px;
+    top: 30px;
+    z-index: 470;
+    transform: rotate(0deg);
+    animation: ring 10s infinite linear;
+}
+.gear-box .gear-item-shadow-4 {
+width: 70px;
+    height: 71px;
+    position: absolute;
+    left: 213px;
+    top: 105px;
+    z-index: 465;
+    background-size: cover;
+    transform: rotate(0deg);
+    animation: backring 4s infinite linear;
+}
+.gear-box .gear-item-4 {
+    width: 58px;
+    height: 58px;
+    background-size: cover;
+    position: absolute;
+    left: 209px;
+    top: 109px;
+    z-index: 470;
+    transform: rotate(0deg);
+    animation: backring 4s infinite linear;
+}
+
+.gear-box .gear-item-shadow-5 {
+width: 70px;
+    height: 71px;
+    position: absolute;
+    left: 65px;
+    top: 75px;
+    z-index: 465;
+    background-size: cover;
+    transform: rotate(0deg);
+    animation: backring 4s infinite linear;
+}
+.gear-box .gear-item-5 {
+    width: 58px;
+    height: 58px;
+    background-size: cover;
+    position: absolute;
+    left: 65px;
+    top: 75px;
+    z-index: 470;
+    transform: rotate(0deg);
+    animation: backring 4s infinite linear;
+}
+
+.gear-box .gear-item-shadow-6 {
+width: 70px;
+    height: 71px;
+    position: absolute;
+    left: 95px;
+    top: 95px;
+    z-index: 445;
+    background-size: cover;
+    transform: rotate(0deg);
+    animation: ring 10s infinite linear;
+}
+.gear-box .gear-item-6 {
+    width: 70px;
+    height: 70px;
+    background-size: cover;
+    position: absolute;
+    left: 102px;
+    top: 88px;
+    z-index: 460;
+    transform: rotate(0deg);
+    animation: ring 10s infinite linear;
+}
+
+.gear-box .gear-item-shadow-7 {
+    width: 70px;
+    height: 71px;
+    position: absolute;
+    left: 172px;
+    top: 110px;
+    z-index: 445;
+    background-size: cover;
+    transform: rotate(0deg);
+    animation: ring 10s infinite linear;
+}
+.gear-box .gear-item-7 {
+    width: 70px;
+    height: 70px;
+    background-size: cover;
+    position: absolute;
+    left: 172px;
+    top: 110px;
+    z-index: 460;
+    transform: rotate(0deg);
+    animation: ring 10s infinite linear;
+}
+
+/*齿轮动画*/
+@keyframes ring{
+	0%{transform: rotate(0deg);}
+	100%{transform: rotate(360deg);}
+}
+@keyframes backring{
+	0%{transform: rotate(0deg);}
+	100%{transform: rotate(-360deg);}
+}
+.container .left{width: 20%;background-size:100% 1200px;position: relative;}
+/*.container .left .info{width: 512px;height: 412px;position: absolute;left: 0;top: 0;z-index: 500;}*/
+.container .left .xuehua{color: #fff;position: absolute;}
+.container .left .xuehua-first{font-size: 10px;animation:xuehua-first 4s linear infinite}
+.container .left .xuehua-second{font-size: 20px;animation:xuehua-second 4s linear infinite}
+.container .left .xuehua-third{font-size: 30px;animation:xuehua-third 6s linear infinite}
+.container .left .xuehua-fourth{font-size: 35px;animation:xuehua-fourth 8s linear infinite}
+.container .left .xuehua-fifth{font-size: 40px;animation:xuehua-fifth 10s linear infinite}
+/*雪花动画*/
+@keyframes xuehua-first{
+	0%{left: 0px;top: 10px;opacity:1;}
+	100%{left: 400px;top: 1000px;opacity:0;}
+}
+@keyframes xuehua-second{
+	0%{left: 50px;top: 10px;opacity:1;}
+	
+	100%{left: 120px;top: 1000px;opacity:0.2;}
+}
+
+@keyframes xuehua-third{
+	0%{left: 230px;top: 10px;opacity:1;}
+	100%{left: 0px;top: 1000px;opacity:0.2;}
+}
+@keyframes xuehua-fourth{
+	0%{left: 0px;top: 10px;opacity:1;}
+	100%{left: 230px;top: 1000px;opacity:0.2;}
+}
+@keyframes xuehua-fifth{
+	0%{left: 230px;top: 10px;opacity:1;}
+	
+	100%{left: 0px;top: 1000px;opacity:0.2;}
+}
+
+.container .left .head{width: 100px;height: 80px;position: relative;}
+.container .left .head img{width: 100px;height:100px;border-radius: 60%;position: absolute;;left: 0px;top: -50px;}
+.container .left .leftbtn{width: 180px;height: 60px;border: 3px solid #ccc;line-height: 60px;text-align: center;
+font-size: 20px;border-radius: 20%;position: relative;
+cursor: pointer;margin-bottom: 170px;color: #fff}
+
+.container .left  p{line-height: 50px;position: relative;left:15px;}
+.container .left .leftbtn:hover{animation: myfirst .2s;color: red;}
+/*左边导航动画*/
+@keyframes myfirst {  
+0%{ left:0px; top:0px;} 
+25%  { left:0px; top:5px;} 
+50%  { right:0px; top:0px;} 
+75%  { left:0px; top:-5px;} 
+100% { right:0px; top:0px;} 
+}
+
+.left-p-enter-active {
+  animation: shouzhi 1s;
+}
+/* 手指动画 */
+@keyframes shouzhi {  
+0%{ left:0px;} 10%{ left:2px;} 20%{ left:4px;} 30%{ left:6px;} 40%{ left:8px;} 50%{ left:10px;} 
+60%{ left:12px;} 70%{ left:14px;} 80%{ left:15px;} 90%{ left:16px;} 100%{ left:15px;}
+}
+@keyframes kuang{
+	0%{transform: translateY(0px)}
+	50%{transform: translateY(10px)}
+	100%{transform: translateY(0px)}
+}
+.container .right{width: 78%;overflow: hidden;background-size: 1000px 1000px;}
+.container .right .rightimg{width: 20px;height: 20px;}
+.container .right .kuang{width: 100%;background: #ccc;margin-bottom: 10px;padding: 30px 50px 15px 50px;
+	box-shadow: 10px 10px 10px 5px #888888;}
+	.container .right .kuang:hover{
+		animation: kuang .2s
+	}
+
+.container .right .info div{padding: 5px;}
+.container .right .info{margin-top: 30px;background-size: 880px 210px;}
+.container .right .achievement{width: 100%;background: #ccc;margin: 30px 0;height: 200px;
+	background-size: 880px 210px;}
+.container .right .evaluate{width: 100%;background: #ccc;margin-bottom: 30px;height: 200px;
+background-size: 880px 210px;}
+.container .right .Schedule{width: 100%;background: #ccc;margin-bottom: 30px;height: 200px;
+background-size: 880px 210px;}
+/*左下角动画*/
+.Kanshan-container {position: fixed;z-index: 2;bottom: 50px;left:0;width: 160px;height: 160px;cursor: pointer;
+overflow: hidden;}
+.Kanshan-container div {position: relative;bottom: 15px;right: 53px;width: 200px;height: 200px;}
+.Kanshan--dynamic{background-image: url(https://static.zhihu.com/heifetz/kanshan_array.074a2fd6bb36d3c29a39.png);
+	background-size: 10800px 200px;animation:dynamic 2.4s steps(54) infinite;}
+@keyframes dynamic{
+	0% {
+    background-position: 0px 0px;
+}
+100% {
+    background-position: -10800px 0px;
+}
+
+.feiji:hover{
+	animation: feiji 1s
+}
+@keyframes feiji{
+	0%{top:520px;}
+	100%{top: 0px;}
+}
+
+

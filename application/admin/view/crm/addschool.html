@@ -1,0 +1,14 @@
+{include file="top"} {include file="left"}
+<div class="container" style="background: #fff">
+    <h3>输入学校名称:</h3>
+<form action="{:url('addschool1')}" class="form" method="post" enctype="multipart/form-data">
+     <div class="form-group">
+    <label for="name">名称</label>
+    <input type="text" class="form-control" name="school_name" placeholder="请输入名称">
+  </div>
+    <div style="text-align: center;" class="form-group"><input type="submit" class="btn btn-success" style="width: 150px;">
+    </div>
+    </form>
+    
+</div>
+{include file="foot"}

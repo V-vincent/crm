@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title> </title>
+    <script type="text/javascript" src="https://cdn.bootcss.com/vue/2.5.13/vue.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__static/library/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__static/admin/crm/css/eachstudentinfo.css?111111">
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
+    <style type="text/css">
+    	.feiji{
+	animation: feiji 6s infinite;
+}
+    @keyframes feiji{
+
+	0%{right:40px;top:660px;transform: rotate(0deg);}
+	50%{right:40px;top:660px;transform: rotate(-60deg);}
+	100%{right:1200px;top: -100px;transform: rotate(-60deg);}
+}
+.ruler img:hover{
+	animation: ruler 1s
+}
+@keyframes ruler{
+	0%{transform: rotate(0deg);}
+	50%{transform: rotate(10deg);}
+	100%{transform: rotate(0deg);}
+
+}
+
+.titleimg img{width: 20%;position: absolute;right: 0px;}
+@keyframes xuanzhuan{
+	from{transform: rotateY(0deg);}
+	to{transform: rotateY(360deg);}
+}
+
+    </style>
+</head>
+
+<body style="background-image: url(__PUBLIC__static/admin/crm/images/eachstudentinfo/bg.png);background-size: 120% 1200px;">
+<!-- 飞机 -->
+	 <div class="feiji" style="position: absolute;right: 40px;top: 660px;z-index: 880"><img src="__PUBLIC__static/admin/crm/images/eachstudentinfo/feiji.png"></div>
+<!-- 尺子 -->
+	  <div class="ruler" style="position: absolute;right: 0px;top: 200px;z-index: 999"><img src="__PUBLIC__static/admin/crm/images/eachstudentinfo/ruler.png"></div>
+<!-- 齿轮 -->
+<div class="gear-box">
+        <div class="gear-border-1" style="background-image: url(__PUBLIC__static/admin/crm/images/eachstudentinfo/gear-border-1.png);"></div>
+        <div class="gear-border-2" style="background-image: url(__PUBLIC__static/admin/crm/images/eachstudentinfo/gear-border-2.png);"></div>
+        <div class="gear-border-3" style="background-image: url(__PUBLIC__static/admin/crm/images/eachstudentinfo/gear-border-3.png);"></div>
+        <div class="gear-bg-1" style="background-image: url(__PUBLIC__static/admin/crm/images/eachstudentinfo/gear-bg-1.png);"></div>
+        <div class="gear-stick-1" style="background-image: url(__PUBLIC__static/admin/crm/images/eachstudentinfo/gear-stick-1.png);"></div>
+         <div class="gear-stick-2" style="background-image: url(__PUBLIC__static/admin/crm/images/eachstudentinfo/gear-stick-2.png);"></div>
+          <div class="gear-stick-3" style="background-image: url(__PUBLIC__static/admin/crm/images/eachstudentinfo/gear-stick-3.png);"></div>
+           <div class="gear-stick-4" style="background-image: url(__PUBLIC__static/admin/crm/images/eachstudentinfo/gear-stick-4.png);"></div>
+
+
+           <div class="gear-item-shadow-1" style="background-image: url(__PUBLIC__static/admin/crm/images/eachstudentinfo/gear-item-shadow-1.png);"></div>
+           <div class="gear-item-1" style="background-image: url(__PUBLIC__static/admin/crm/images/eachstudentinfo/gear-item-1.png);"></div>
+
+           <div class="gear-item-shadow-2" style="background-image: url(__PUBLIC__static/admin/crm/images/eachstudentinfo/gear-item-shadow-2.png);"></div>
+           <div class="gear-item-2" style="background-image: url(__PUBLIC__static/admin/crm/images/eachstudentinfo/gear-item-2.png);"></div>
+
+
+<div class="gear-item-shadow-3" style="background-image: url(__PUBLIC__static/admin/crm/images/eachstudentinfo/gear-item-shadow-3.png);"></div>
+           <div class="gear-item-3" style="background-image: url(__PUBLIC__static/admin/crm/images/eachstudentinfo/gear-item-3.png);"></div>
+
+           <div class="gear-item-shadow-4" style="background-image: url(__PUBLIC__static/admin/crm/images/eachstudentinfo/gear-item-shadow-4.png);"></div>
+           <div class="gear-item-4" style="background-image: url(__PUBLIC__static/admin/crm/images/eachstudentinfo/gear-item-4.png);"></div>
+
+           <div class="gear-item-shadow-5" style="background-image: url(__PUBLIC__static/admin/crm/images/eachstudentinfo/gear-item-shadow-5.png);"></div>
+           <div class="gear-item-5" style="background-image: url(__PUBLIC__static/admin/crm/images/eachstudentinfo/gear-item-5.png);"></div>
+
+            <div class="gear-item-shadow-6" style="background-image: url(__PUBLIC__static/admin/crm/images/eachstudentinfo/gear-item-shadow-6.png);"></div>
+           <div class="gear-item-6" style="background-image: url(__PUBLIC__static/admin/crm/images/eachstudentinfo/gear-item-6.png);"></div>
+
+           <div class="gear-item-shadow-7" style="background-image: url(__PUBLIC__static/admin/crm/images/eachstudentinfo/gear-item-shadow-6.png);"></div>
+           <div class="gear-item-7" style="background-image: url(__PUBLIC__static/admin/crm/images/eachstudentinfo/gear-item-6.png);"></div>
+
+</div>
+
+
+
+
+
+
+    <div class="titleimg" style="background-image: url(__PUBLIC__static/admin/crm/images/eachstudentinfo/bannerBg.png);">
+    	<div class="img1"><img src="__PUBLIC__static/admin/crm/images/eachstudentinfo/circle-2.png"></div>
+    	<div class="img2"><img src="__PUBLIC__static/admin/crm/images/eachstudentinfo/circle-3.png"></div>
+    	<div class="img3"><img src="__PUBLIC__static/admin/crm/images/eachstudentinfo/circle-4.png"></div>
+    	<div class="img4"><img src="__PUBLIC__static/admin/crm/images/eachstudentinfo/circle-5.png"></div>
+    	<div class="imgfly1"><img src="__PUBLIC__static/admin/crm/images/eachstudentinfo/fly1.png"></div>
+    	<div class="imgfly2"><img src="__PUBLIC__static/admin/crm/images/eachstudentinfo/fly2.png"></div>
+    	<div class="imgflag" style="background-image: url(__PUBLIC__static/admin/crm/images/eachstudentinfo/flag.png);">
+    		<p class="glyphicon glyphicon-star form-inline wxfirst"></p>
+    		<p class="glyphicon glyphicon-star form-inline wxsecond"></p>
+    		<p class="glyphicon glyphicon-star form-inline wxthird"></p>
+    		<p class="glyphicon glyphicon-star form-inline wxfourth"></p>
+    		<p class="glyphicon glyphicon-star form-inline wxfifth"></p>
+
+
+
+
+    		
+    	</div>
+
+
+
+
+
+    </div>
+
+    <div class="container" id="app">
+        <div class="left pull-left" style="background-image: url(__PUBLIC__static/admin/crm/images/eachstudentinfo/menuBg.png);">
+            
+            <div class="head"><img src="__PUBLIC__static/admin/crm/images/eachstudentinfo/mayun.jpg"></div>
+            <p class="glyphicon glyphicon-asterisk xuehua xuehua-first"></p>
+             <p class="glyphicon glyphicon-asterisk xuehua xuehua-second"></p>
+              <p class="glyphicon glyphicon-asterisk xuehua xuehua-third"></p>
+               <p class="glyphicon glyphicon-asterisk xuehua xuehua-fourth"></p>
+                <p class="glyphicon glyphicon-asterisk xuehua xuehua-fifth"></p>
+            <div class="info" style="overflow: hidden;">
+                <div class="leftbtn pull-left" @click="info1">个人信息</div>
+                <transition name="left-p">
+                    <p v-if="info" class="glyphicon glyphicon-hand-right" style="font-size: 30px;"></p>
+                </transition>
+            </div>
+            <div class="achievement" style="overflow: hidden;">
+                <div class="pull-left leftbtn" @click="achievement1">平时成绩</div>
+                <transition name="left-p">
+                    <p v-if="achievement" class="glyphicon glyphicon-hand-right" style="font-size: 30px;"></p>
+                </transition>
+            </div>
+            <div class="evaluate" style="overflow: hidden;">
+                <div class="pull-left leftbtn" @click="evaluate1">老师评价</div>
+                <transition name="left-p">
+                    <p v-if="evaluate" class="glyphicon glyphicon-hand-right" style="font-size: 30px;"></p>
+                </transition>
+            </div>
+            <div class="evaluate" style="overflow: hidden;">
+                <div class="pull-left leftbtn" @click="Schedule1">课表安排</div>
+                <transition name="left-p">
+                    <p v-if="Schedule" class="glyphicon glyphicon-hand-right" style="font-size: 30px;"></p>
+                </transition>
+            </div>
+
+        </div>
+        <!-- 右边开始 -->
+        <div class="right pull-right"  style="background-image: url(__PUBLIC__static/admin/crm/images/eachstudentinfo/bg.gif);">
+            <h1 class="text-center">个人信息详情</h1>
+            <transition enter-active-class="animated bounceInDown">
+                <div v-show="info" class="info kuang" style="background-image: url(__PUBLIC__static/admin/crm/images/eachstudentinfo/firstBg.png);">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img class="rightimg" src="__PUBLIC__static/admin/crm/images/eachstudentinfo/name.png">姓名: {$info.name}</div>
+                        <div class="col-md-6">
+                            <img class="rightimg" src="__PUBLIC__static/admin/crm/images/eachstudentinfo/id.png"> 学号: {$info.id}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img class="rightimg" src="__PUBLIC__static/admin/crm/images/eachstudentinfo/phone.png">手机: {$info.phone}</div>
+                        <div class="col-md-6">
+                            <img class="rightimg" src="__PUBLIC__static/admin/crm/images/eachstudentinfo/wecate.png">微信:{$info.wecat}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img class="rightimg" src="__PUBLIC__static/admin/crm/images/eachstudentinfo/school.png">学校: {$info.phone}</div>
+                        <div class="col-md-6">
+                            <img class="rightimg" src="__PUBLIC__static/admin/crm/images/eachstudentinfo/zhuanyei.png">专业:{$info.id}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img class="rightimg" src="__PUBLIC__static/admin/crm/images/eachstudentinfo/teacher.png">老师: {$info.phone}</div>
+                        <div class="col-md-6">
+                            <img class="rightimg" src="__PUBLIC__static/admin/crm/images/eachstudentinfo/lesson.png">课程:{$info.id}</div>
+                    </div>
+                </div>
+            </transition>
+            <transition enter-active-class="animated bounceInDown">
+                <div v-show="achievement" class="achievement kuang" style="background-image: url(__PUBLIC__static/admin/crm/images/eachstudentinfo/listBg.png);">111</div>
+            </transition>
+            <transition enter-active-class="animated bounceInDown">
+                <div v-show="evaluate" class="evaluate kuang" style="background-image: url(__PUBLIC__static/admin/crm/images/eachstudentinfo/listBg.png);"></div>
+            </transition>
+            <transition enter-active-class="animated bounceInDown">
+                <div v-show="Schedule" class="Schedule kuang" style="background-image: url(__PUBLIC__static/admin/crm/images/eachstudentinfo/listBg.png);"></div>
+            </transition>
+        </div>
+    </div>
+    <div class="Kanshan-container">
+        <div class="Kanshan--dynamic" style="background-image: url(https://static.zhihu.com/heifetz/kanshan_array.074a2fd6bb36d3c29a39.png);"></div>
+    </div>
+
+</body>
+<script type="text/javascript">
+new Vue({
+    el: "#app",
+    data: {
+        info: false,
+        achievement: false,
+        evaluate: false,
+        Schedule: false,
+    },
+    /*mounted:{
+    	//init()
+    }*/
+    methods: {
+        info1: function() {
+            console.log(1);
+            this.info = true
+        },
+        achievement1() {
+            this.achievement = true
+        },
+        evaluate1() {
+            this.evaluate = true
+        },
+        Schedule1() {
+            this.Schedule = true
+        }
+       /* init(){
+        	this.info = true,
+        	this.achievement = true,
+        	 this.evaluate = true,
+        	 this.Schedule = true
+        }*/
+    }
+})
+</script>
+
+</html>

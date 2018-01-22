@@ -35,7 +35,42 @@
                     <a href="{:url('index/index')}">
                         <img src="__STATIC__/admin/index/images/logo.png" alt=""></a>
                 </div>
+                {if $Think.session.user_cate=='学生'}
                 <div class="title pull-left">
+                    <div class="dropdown">
+                        <button type="button" class="btn dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+                            <span>123</span>
+                            <span class="caret"></span>
+                        </button>
+                        
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="{:url('task/index')}">
+                                    <div>
+                                        <span class="glyphicon glyphicon-list-alt pull-left"></span>
+                                        <div class="pull-left">
+                                            <h4>Task作业管理</h4>
+                                            <p>学生作业批改</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation" tabindex="-1" href="#">
+                                <a role="menuitem" tabindex="-1" href="{:url('build/index')}">
+                                    <div>
+                                        <span class="glyphicon glyphicon-globe pull-left"></span>
+                                        <div class="pull-left">
+                                            <h4>集客</h4>
+                                            <p>自动化生成H5页面,用集客为自己扩展客源</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+
+                        </ul>
+                        {/if}
+                         {if $Think.session.user_cate!='学生'}
+                         <div class="title pull-left">
                     <div class="dropdown">
                         <button type="button" class="btn dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
                             <span>{{cur}}</span>
@@ -86,7 +121,7 @@
                                     </div>
                                 </a>
                             </li>
-                            <li role="presentation" tabindex="-1" href="#">
+<!--                             <li role="presentation" tabindex="-1" href="#">
                                 <a role="menuitem" tabindex="-1" href="#">
                                     <div>
                                         <span class="glyphicon glyphicon-phone pull-left"></span>
@@ -96,7 +131,7 @@
                                         </div>
                                     </div>
                                 </a>
-                            </li>
+                            </li> -->
                             <li role="presentation" tabindex="-1" href="#">
                                 <a role="menuitem" tabindex="-1" href="{:url('build/index')}">
                                     <div>
@@ -108,7 +143,7 @@
                                     </div>
                                 </a>
                             </li>
-                            <li role="presentation" tabindex="-1" href="#">
+<!--                             <li role="presentation" tabindex="-1" href="#">
                                 <a role="menuitem" tabindex="-1" href="#">
                                     <div>
                                         <span class="glyphicon glyphicon-asterisk pull-left"></span>
@@ -118,8 +153,9 @@
                                         </div>
                                     </div>
                                 </a>
-                            </li>
+                            </li> -->
                         </ul>
+                         {/if}
                     </div>
                 </div>
                 <div class="breach pull-left col-lg-3" v-if="controller=='Index' || controller=='Crm'">
@@ -158,7 +194,7 @@
         el:'#top_menu',
         data:{
            controller:"Index",
-           cur:'CRM'
+           cur:''
         },
         created(){
             this.init();
