@@ -34,7 +34,7 @@ class Crm extends \app\admin\Auth
             $where_data['company_name'] = ['like','%'.input('company_name').'%'];
         }
         $list = db('userinfo')->alias('u')//给userinfo表设置简写u
-                              ->field('u.id, u.companycate_id, u.company_name, u.user_name, u.user_phone, u.remark, u.time, c.company_cate')//解决ID排序问题
+                              ->field('u.id, u.companycate_id, u.company_name, u.user_name, u.user_phone, u.remark, u.time, c.company_cate')//查询
                               ->join('companycate c','u.companycate_id=c.id','left')//设置公司分类表简写为c，用u的id和c的id比较
                               ->where($where_data)
                               ->join('companystage s','u.companystage_id=s.id','left')
@@ -47,8 +47,58 @@ class Crm extends \app\admin\Auth
        
         return $this->fetch();
     }
+
+
+    //查询学生表
+    public function Studentsinfo(){
+       //查询学校
+        $schoolname_list = db('school')->select();
+        $this->assign('schoolname_list',$schoolname_list);
+         $where_data=[];
+          if(input('schoolname_id')>0){
+            $where_data['schoolname_id'] = input('schoolname_id');
+        }
+
+        //查询专业课程
+        $lessonname_list = db('lessname')->select();
+        $this->assign('lessonname_list',$lessonname_list);
+        $where_data=[];
+        if(input('lessonname_id')>0){
+            $where_data['lessonname_id'] = input('lessonname_id');
+        }
+        //模糊查询
+        $where_data=[];
+        if(input('school_name')){
+            $where_data['school_name'] = ['like','%'.input('school_name').'%'];
+        }
+
+        $list = db('studentsinfo')->alias('si')
+                                   ->field('si.id, si.lessonname_id, si.schoolname_id, si.name, si.phone, si.wecat, si.time, si.professio, sc.school_name,les.lesson_name')//查询
+                                   ->join('school sc','si.schoolname_id=sc.id','left')
+                                   ->join('lessname les','si.lessonname_id=les.id','left')
+                                   ->where($where_data)                           
+                                  ->order('si.id desc')
+                                  ->paginate(10);
+          //查询专业                        
+        $lesson_name = db('lessname')->select();
+        $this->assign('lesson_name',$lesson_name);                         
+        $this->assign('list',$list);      
+        return $this->fetch();
+    }
+    //编辑学生页面
+    public function editstudentinfo(){
+      return $this->fetch();
+    }
+//查看学生页面
+    public function eachstudentinfo(){
+        $id = input('id');
+        $info = db('studentsinfo')->where("id=$id")->find();
+        $this->assign('info',$info);
+      return $this->fetch();
+    }
+
     //保存客户信息
-    public function save(){
+    public function Customersave(){
         db('userinfo')->insert(input());
     }
     //删除客户
@@ -99,6 +149,29 @@ class Crm extends \app\admin\Auth
             db('companycate')->where("id=$key")->update(['company_cate'=>$value]);
         }
      $this->success('','companycate');
+       
+ }
+ //学生学校
+ public function school(){
+      $list = db('school')->paginate(10);
+     $this->assign('list',$list);
+     return $this->fetch();
+ }
+ //添加学校
+ public function addschool(){
+  return $this->fetch();
+ }
+ 
+ public function addschool1(){
+       db('school')->insert(input());
+        $this->success('添加成功','school');
+ }
+ //更改学校
+  public function update_school(){
+        foreach ($_REQUEST['school'] as $key => $value) {
+            db('school')->where("id=$key")->update(['school_name'=>$value]);
+        }
+     $this->success('','index/index');
        
  }
 
