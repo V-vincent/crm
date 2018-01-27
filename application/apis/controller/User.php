@@ -42,4 +42,20 @@ class User extends \think\Controller
         db('userinfo')->where("id=$id")->update(['qybeizhu'=>$beizhu]);
       }
     }
+
+
+    public function getUsernews(){
+      $id=input("id");
+      $user=db("user")->where("id",$id)->
+        select();
+      $user_name=$user["user_name"];
+      $company_name=$user["company_name"];
+      $password=$user["password"];
+      $user_cate=$user["user_cate"];
+      $user_mark=$user["user_mark"];
+
+      return json(array('status'=>1,'msg'=>'显示成功','user_name'=> $user_name,'company_name'=> $company_name,'password'=> $password,'user_cate'=> $user_cate,'user_mark'=> $user_mark));
+   
+    }
+
 }

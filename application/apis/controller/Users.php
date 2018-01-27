@@ -71,7 +71,19 @@ class Users extends \think\Controller
         }
     }
 
-   
+   public function getUsernews(){
+      $id=input("id");
+      $user=db("user")->where("id",$id)->
+        find();//切记这里不能用select
+      $user_name=$user["user_name"];
+      $company_name=$user["company_name"];
+      $password=$user["password"];
+      $user_cate=$user["user_cate"];
+      $user_mark=$user["mark"];
+
+      return json(array('status'=>1,'msg'=>'显示成功','user_name'=> $user_name,'company_name'=> $company_name,'password'=> $password,'user_cate'=> $user_cate,'user_mark'=> $user_mark));
+    //根据ID访问出用户的信息
+    }
    
 
 }
