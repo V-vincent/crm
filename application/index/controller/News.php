@@ -12,7 +12,7 @@ class News extends \think\Controller
             $news_list  =  db('newslist')->where("cate_id=$cate")->order('id desc')->paginate(8,false,['query' => input()]);
         }else{
             $news_list2 = db('newslist')->select();
-            $news_list  =  db('newslist')->order('id desc')->paginate(8);
+            $news_list  =  db('newslist')->order('id desc')->paginate(5);
         }
         $this->assign('news_list',$news_list);
         $this->assign('news_list2',$news_list2);
@@ -20,8 +20,6 @@ class News extends \think\Controller
         $news_cate  =  db('newscate')->select();
         $this->assign('news_cate',$news_cate);
         return $this->fetch();
-
-        
     }
     
     public function news()
@@ -33,5 +31,10 @@ class News extends \think\Controller
         $news_cate  =  db('newscate')->select();
         $this->assign('news_cate',$news_cate);
         return $this->fetch();
+    }
+    public function news2(){
+        $news = db('newslist')->select(['id'=>$_REQUEST['id']]);
+        $news[0]['thumb'] = str_replace("\\",'/',$news[0]['thumb']);
+        print_r( json_encode($news) );
     }
 }

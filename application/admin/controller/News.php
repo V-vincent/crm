@@ -9,9 +9,20 @@ class News extends \app\admin\Auth
         $this->assign('news_list',$news_list);
         $news_cate  =  db('newscate')->select();
         $this->assign('news_cate',$news_cate);
-        return $this->fetch();
-    }
+        if(!empty($_REQUEST['wap'])){
+            $data=[];
+            $news_list2=db('newslist')->select();
+            foreach ($news_list2 as $key =>$item){
+                $news_list2[$key]['thumb'] = str_replace("\\",'/',$item['thumb']);
 
+            }
+            $data[0]=$news_list2;
+            $data[1]=$news_cate;
+            print_r(json_encode($data));
+        }else{
+            return $this->fetch();
+        }
+    }
     public function add()
     {
         $cate_list = db('newscate')->select();

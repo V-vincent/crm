@@ -21,7 +21,7 @@
 }
 .content_left{
     float: left;
-    width: 645px;
+    width: 800px;
     height: auto;
     overflow: hidden;
     padding-bottom: 30px;
@@ -47,6 +47,10 @@
     width: 221px;
     height: 147px;
     box-shadow: 1px 1px 1px #ccc;
+    transition:all 0.25s ease;
+}
+.content_left .new .left img:hover{
+    transform: scale(1.1);
 }
 .content_left .new .right{
     float: left;
@@ -68,7 +72,7 @@
     -webkit-box-orient: vertical;
 }
 .content_left .new .right .title:hover{
-    color: #4b6ea8;
+    color: red;
 }
 .content_left .new .right .time{
     font-size: 12px;
@@ -104,6 +108,10 @@
     border: 0;
     width: 100px;
     height: 67px;
+    transition:all 0.25s ease;
+}
+.hotspot .left img:hover{
+    transform: scale(1.1);
 }
 .hotspot .right{
     float: right;
