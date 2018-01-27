@@ -35,6 +35,6 @@ class Index extends \app\admin\Auth
         $data=input();
         $data['time']=$time;
         db('studentsinfo')->insert($data);
-        $this->success('添加成功','index');
+        $this->success('添加成功',"index");
     }
 }

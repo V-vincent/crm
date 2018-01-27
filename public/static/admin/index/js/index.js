@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	// $("#client1").modal('show');
 	//点击新建弹出速建选择框
 	$(".container .add").click(function(event) {
 		event.preventDefault();

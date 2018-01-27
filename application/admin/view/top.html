@@ -121,6 +121,17 @@
                                     </div>
                                 </a>
                             </li>
+                            <li role="presentation" tabindex="-1" href="#">
+                                <a role="menuitem" tabindex="-1" href="{:url('draw/index')}">
+                                    <div>
+                                        <span class="glyphicon glyphicon-asterisk pull-left"></span>
+                                        <div class="pull-left">
+                                            <h4>玩转抽奖</h4>
+                                            <p>设置抽奖规则，查看中奖信息</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
 <!--                             <li role="presentation" tabindex="-1" href="#">
                                 <a role="menuitem" tabindex="-1" href="#">
                                     <div>
@@ -180,12 +191,15 @@
                         <input type="text" class="form-control" aria-label="..." placeholder="支持拼音字头"></div>
                 </div>
             </div>
-            <div class="col-md-2 pull-left user_info">
+            <div class="col-md-2 pull-left user_info" style="margin-top: 0px;">
                 <div class="user">
                     <span class="glyphicon glyphicon-user"></span>
                 </div>
-               <form action="{:url('index/login/logout')}" method="post" class="form"> <span class="user_name">{$Think.session.user_name}({$Think.session.user_cate})  &nbsp;&nbsp;&nbsp;积分:{$Think.session.u_mark}  <input id="exit" type="submit" value="退出登录"></input>  </span>
+               <form action="{:url('index/login/logout')}" method="post" class="form">
+                <span class="user_name">{$Think.session.user_name}({$Think.session.user_cate})  &nbsp;&nbsp;&nbsp;积分:{$Think.session.u_mark}</span>
+                <input id="exit" type="submit" value="安全退出" class="btn btn-default" style="width: 68px;height: 28px;font-size: 8px;"></input>
                </form>
+
             </div>
         </div>
     </header>
@@ -214,6 +228,8 @@
                     this.cur='集客';
                 }else if(this.controller=='News' ){
                     this.cur='News';
+                }else if(this.controller=='Draw' ){
+                    this.cur='抽奖';
                 }
             }
         }
