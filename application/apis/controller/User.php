@@ -5,7 +5,12 @@ class User extends \think\Controller
 {
 	
       public function getUserinfo(){
-       $id=input('id'); 
+       $uid=input("user_id");
+       $user_info=db('user')->where(['id'=>$uid])->find();
+       $user_cate=$user_info["user_cate"];
+       if($user_cate=="老板"||$user_cate=="员工")
+       {
+       /*$id=input('id'); */
        //查询公司类型
        $companycate_list = db('companycate')->select();
         $this->assign('companycate_list',$companycate_list);
@@ -29,7 +34,13 @@ class User extends \think\Controller
                         ->where($where_data2)
                         ->select();
                         $this->assign('info',$info);
-        return json(['status'=>1,'data'=>$info]);
+        return json(['status'=>1,'user_cate'=>$user_cate,'data'=>$info]);
+      }
+      else
+      {
+        $info = db('studentsinfo')->where(['u_id'=>$uid])->find();
+        return json(['status'=>1,'user_cate'=>$user_cate,'data'=>$info]);
+      }
     }
     //编辑用户签约信息
     public function updateqianyue(){
@@ -44,18 +55,6 @@ class User extends \think\Controller
     }
 
 
-    public function getUsernews(){
-      $id=input("id");
-      $user=db("user")->where("id",$id)->
-        select();
-      $user_name=$user["user_name"];
-      $company_name=$user["company_name"];
-      $password=$user["password"];
-      $user_cate=$user["user_cate"];
-      $user_mark=$user["user_mark"];
-
-      return json(array('status'=>1,'msg'=>'显示成功','user_name'=> $user_name,'company_name'=> $company_name,'password'=> $password,'user_cate'=> $user_cate,'user_mark'=> $user_mark));
-   
-    }
+    
 
 }
