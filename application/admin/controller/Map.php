@@ -50,11 +50,22 @@ class Map extends \app\admin\Auth
     }
     public function addmap(){
         $addData = input();
-        print_r($addData);
     	$addData['time'] = time();
-    	db('sign')->insert($addData);
-        session('u_mark', session('u_mark')+15);
-        db('user')->where('id',session('u_id'))->update(['mark' => session('u_mark')]);
+        $year = date('Y',time());
+        $month = date('m',time());
+        $day = date('d',time());
+        $havesign=db('sign')->where(" YEAR(FROM_UNIXTIME(time)) = $year AND MONTH(FROM_UNIXTIME(time)) = $month AND DAY(FROM_UNIXTIME(time)) = $day")->find();
+
+        if($havesign){
+            return false;
+        }
+        else{
+
+            db('sign')->insert($addData);
+            session('u_mark', session('u_mark')+15);
+            db('user')->where('id',session('u_id'))->update(['mark' => session('u_mark')]);
+        }
+    	
     }
     public function business(){
     	return $this->fetch();
