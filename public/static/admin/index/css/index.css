@@ -1,8 +1,17 @@
 .container .item{background: #fff;overflow: hidden;padding: 10px;0;border-radius: 15px;margin-bottom: 15px;}
 .container .item ul li{float: left;margin-left: 50px;}
-.container .item ul li a{width: 100px;height: 100px;display: 
-	block;background: #7490E0;
-	border-radius: 50%;text-align: center;line-height: 100px;}
+.container .item ul li a{width: 285px;height: 170px;display: 
+	block;background: #7490E0;position:relative;
+	text-align: center;overflow:hidden;border:2px solid rgba(255,255,255,0.3)}
+	.container .item ul li a img:hover{
+		transform:scale(1.2);
+	}
+	.container .item ul li a img{transition:all 1s ease;width:285px;height:170px;}
+	.container .item ul li a div{position:absolute;top:50%;left:16%;height:65px;
+		padding:10px 10px;background:rgba(255,255,255,0.9);text-align:center;
+		width:200px;border:2px solid rgba(250,128,10,0.3);}
+    .container .item ul li a div h1{font-size:14px;margin:0 0 5px 0;padding:0;}
+    .container .item ul li a div p{font-size:10px;margin:0;padding:0;color:rgb(0,0,0);height:15px;}
 	.container .item ul li a p{color: white;}
 	.container .add{right: 50px;bottom: 50px;width: 80px;height: 80px;position: fixed;background: #4c5667;
 	border-radius: 50%;text-align: center;line-height: 80px;font-size: 30px;color: white;

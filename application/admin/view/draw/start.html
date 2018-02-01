@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="__STATIC__/admin/draw/css/index.css?199">
+	<link rel="stylesheet" type="text/css" href="http://www.douchaoyang.com/public/reset.pc.css">
+</head>
+<body>
+	<div id="lottery">
+		 {foreach $list as $info}
+		 <h1 style="color:red;">{$info.ninetitle}</h1>
+		<table cellpadding="0" cellspacing="0">
+			<tr>
+				<td class="lottery-unit lottery-unit-1">{$info.nineone}</td>
+				<td class="lottery-unit lottery-unit-2">{$info.ninetwo}</td>
+				<td class="lottery-unit lottery-unit-3">{$info.ninethree}</td>
+			</tr>
+			<tr>
+				<td class="lottery-unit lottery-unit-8">{$info.ninefour}</td>
+				<td><a href="javascript:;" id="begin">开始</a></td>
+				<td class="lottery-unit lottery-unit-4">{$info.ninefive}</td>
+			</tr>
+			<tr>
+				<td class="lottery-unit lottery-unit-7">{$info.ninesix}</td>
+				<td class="lottery-unit lottery-unit-6">{$info.nineseven}</td>
+				<td class="lottery-unit lottery-unit-5">{$info.nineeight}</td>
+			</tr>
+		</table>
+		<p style="font-size:10px;color:gray;">{$info.ninecontent}</p>
+		{/foreach}
+	</div>
+	<script type="text/javascript" src="http://www.douchaoyang.com/public/core.lib.js" charset="utf-8"></script>
+	<script type="text/javascript">
+	(function($){
+		$.loadScript("__STATIC__/admin/draw/js/index.js?199",function(){
+			var ward=[
+				"{$info.nineone}",
+				"{$info.ninetwo}",
+				"{$info.ninethree}",
+				"{$info.ninefour}",
+				"{$info.ninefive}",
+				"{$info.nineseven}",
+				"{$info.ninesix}",
+				"{$info.nineeight}"
+				];
+			var lottery=new Lottery({
+				loop:3,
+				speed:90
+			});
+			g("begin").onclick=function(){
+				var n=$.randomInt(7);
+				lottery.run(n+1,function(){
+					alert("恭喜您中了"+ward[n]+"！");
+
+				});
+			}
+		});
+	})(core);
+	</script>
+</body>
+</html>

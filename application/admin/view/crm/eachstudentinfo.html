@@ -172,7 +172,11 @@
                 </div>
             </transition>
             <transition enter-active-class="animated bounceInDown">
-                <div v-show="achievement" class="achievement kuang" style="background-image: url(__PUBLIC__static/admin/crm/images/eachstudentinfo/listBg.png);">111</div>
+                <div v-show="achievement" class="achievement kuang" style="background-image: url(__PUBLIC__static/admin/crm/images/eachstudentinfo/listBg.png);"><ul>
+                        {foreach $mark as $list}
+                        <li>{$list.courses}</li>
+                        {/foreach}
+                    </ul></div>
             </transition>
             <transition enter-active-class="animated bounceInDown">
                 <div v-show="evaluate" class="evaluate kuang" style="background-image: url(__PUBLIC__static/admin/crm/images/eachstudentinfo/listBg.png);"></div>

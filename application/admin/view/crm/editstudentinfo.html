@@ -1,10 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title></title>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="https://cdn.bootcss.com/vue/2.5.13/vue.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__static/admin/crm/css/editstudentinfo.css?299">
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
 </head>
+
 <body>
-	
+    <div class="title">
+        <h1>{$info.name}</h1></div>
+    <div class="container">
+    	<form action="{:url('score')}" class="form" method="post">
+        <h1 class="text-center">分数</h1>
+        <div class="fraction">
+            <div class="edit" id="element1">
+                <div class="title form-inline">
+                    <input type="text" class="form-control" placeholder="课程名称" style="width: 40%; height: 40px;" name="courses">
+                    <input type="text" class="form-control" placeholder="分数" style="width: 40%; height: 40px;" name="mark">
+                    <div class="form-group">
+                        <template>
+                            <div class="block">
+                                <el-date-picker style="width: 150px;" v-model="value1" type="date" placeholder="选择日期" name="time">
+                                </el-date-picker>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+                        <input type="hidden" name="user_id" value="{$info.id}">
+                        <input type="submit" class="btn btn-primary btn-block"></div>
+                    </div>
+                </form>
+    </div>
+    </div>
 </body>
+<script type="text/javascript">
+new Vue({
+    el: ".container",
+    data: {
+        value1: '',
+        value2: '',
+        dinxin: '不确定'
+    },
+
+})
+
+UE.getEditor("myEditor")
+</script>
+
 </html>

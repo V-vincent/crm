@@ -192,16 +192,17 @@
                 </div>
             </div>
             <div class="col-md-2 pull-left user_info" style="margin-top: 0px;">
-            <div class="col-md-3 pull-left user_info">
+
+            <div class="user_info">
                 <div class="user">
                     <span class="glyphicon glyphicon-user"></span>
                 </div>
                <form action="{:url('index/login/logout')}" method="post" class="form">
                 <span class="user_name">{$Think.session.user_name}({$Think.session.user_cate})  &nbsp;&nbsp;&nbsp;积分:{$Think.session.u_mark}</span>
-                <input id="exit" type="submit" value="安全退出" class="btn btn-default" style="width: 68px;height: 28px;font-size: 8px;"></input>
+                <input id="exit" type="submit" value="安全退出" class="btn btn-default" style="margin-left:0px;margin-bottom: 5px;padding:0;"></input>
                </form>
-
             </div>
+
         </div>
     </header>
     <div class="top" style="height: 60px;width: 100%;"></div>

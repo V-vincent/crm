@@ -87,6 +87,9 @@ class Crm extends \app\admin\Auth
     }
     //编辑学生页面
     public function editstudentinfo(){
+      $id = input('id');
+        $info = db('studentsinfo')->where("id=$id")->find();
+        $this->assign('info',$info);
       return $this->fetch();
     }
 //查看学生页面
@@ -94,9 +97,23 @@ class Crm extends \app\admin\Auth
         $id = input('id');
         $info = db('studentsinfo')->where("id=$id")->find();
         $this->assign('info',$info);
+        $mark = db('mark')->alias('m')
+                        ->join('studentsinfo s','m.user_id=s.id','left')
+                        ->field('m.courses,m.mark,m.time,m.user_id,s.id')
+                        ->where("m.user_id=$id")
+                        ->order('m.id desc')
+                        ->select();
+                        $this->assign('mark',$mark);
       return $this->fetch();
     }
-
+    //保存每个学生分数
+    public function score(){
+      $id = input('id');
+      $data = input();
+      db('mark')->insert($data);
+      $this->success('','index');
+ }
+    
     //保存客户信息
     public function Customersave(){
         db('userinfo')->insert(input());
@@ -122,7 +139,6 @@ class Crm extends \app\admin\Auth
       db('userinfo')->where("id=$id")->update($info);
       $this->success('','index');
     }
-    
     //客户来源数据词典
     public function usersource(){
         $list = db('usersource')->paginate(10);

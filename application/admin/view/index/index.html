@@ -1,381 +1,440 @@
-
-{include file="top"}
-<link rel="stylesheet" type="text/css" href="__STATIC__/admin/index/css/index.css?9">
-{include file="left"}
-{if $Think.session.user_cate=='学生'}
+ {include file="top"}
+<link rel="stylesheet" type="text/css" href="__STATIC__/admin/index/css/index.css?9"> {include file="left"} {if $Think.session.user_cate=='学生'}
 <div class="container">
-	<div class="" style="height: 80px;background: #fff;margin-bottom: 10px 0px;text-align: center;line-height: 80px;color: red;font-size: 18px;"><p>提示:第一次登陆请尽快完善信息及修改密码</p></div>
-	<div class="title">
-		<h3 style="display: inline-block;">工作台</h3>
-		<br>
-		<p style="display: inline-block;">欢迎您</p><span>{$Think.session.user_name}!</span>
-		<p style="font-size: 10px;display: inline-block;">请完善个人信息</p>
-	</div>
-	<div class="item">
-	<ul>
-		<li>
-			<a href="javascript:;"><p class="glyphicon glyphicon-user"><br>客户</p></a>
-			<p style="font-size: 8px;color: #ccc;text-align: center;line-height: 30px;">客户请选择</p>
-		</li>
-		<li>
-			<a href="javascript:;" data-toggle="modal" data-target="#client1"><p class="glyphicon glyphicon-user"><br>学生</p></a>
-			<p style="font-size: 8px;color: #ccc;text-align: center;line-height: 30px;">学生请选择</p>
-		</li>
-	</ul>
+    <div class="" style="height: 80px;background: #fff;margin-bottom: 10px 0px;text-align: center;line-height: 80px;color: red;font-size: 18px;">
+        <p>提示:第一次登陆请尽快完善信息及修改密码</p>
+    </div>
+    <div class="title">
+        <h3 style="display: inline-block;">工作台</h3>
+        <br>
+        <p style="display: inline-block;">欢迎您</p><span>{$Think.session.user_name}!</span>
+        <p style="font-size: 10px;display: inline-block;">请完善个人信息</p>
+    </div>
+    <div class="item">
+        <ul>
+            <li>
+                <a href="javascript:;" data-toggle="modal" data-target="#client1">
+                    <img src="__STATIC__/admin/index/images/edit.jpg">
+                       <div>
+                        <h1>编辑信息</h1>
+                        <p>做人要做一个有身份的人</p>
+                    </div>
+                </a>
+                <p style="font-size: 8px;color: #ccc;text-align: center;line-height: 30px;">学生请选择</p>
+            </li>
+            <li>
+                <a href="{:url('draw/start',['id'=>$Think.session.u_id])}">
+                     <img src="__STATIC__/admin/index/images/draw.jpg">
+                       <div>
+                        <h1>参与抽奖</h1>
+                        <p>奖还是要抽的，万一中了呢</p>
+                    </div>
+                </a>
+                <p style="font-size: 8px;color: #ccc;text-align: center;line-height: 30px;">试试手气</p>
+            </li>
+            <li>
+                <a href="{:url('crm/eachstudentinfo',['id'=>$Think.session.u_id])}">
+                  <img src="__STATIC__/admin/index/images/info.jpg">
+                       <div>
+                        <h1>个人信息</h1>
+                        <p>你的全部信息都在这里</p>
+                    </div>
+                        
+                </a>
+                <p style="font-size: 8px;color: #ccc;text-align: center;line-height: 30px;">试试手气</p>
+            </li>
+            <li>
+                <a href="{:url('weekly/index',['id'=>$Think.session.u_id])}">
+                  <img src="__STATIC__/admin/index/images/record.jpg">
+                       <div>
+                        <h1>日报/周报</h1>
+                        <p>把你的经历心得都记录下来</p>
+                    </div>
+                        
+                </a>
+                <p style="font-size: 8px;color: #ccc;text-align: center;line-height: 30px;">试试手气</p>
+            </li>
+        </ul>
+    </div>
+    <div class="content row">
+        <div class="news col-md-3">
+            <div class="title">
+                <h3>消息</h3>
+                <p class="bz pull-left" style="margin:8px 0 0 3px;"><a href="#" class="glyphicon glyphicon-list-alt"></a></p>
+                <a href="#" class="glyphicon glyphicon-repeat"></a>
+            </div>
+            <div class="cont">
+                {foreach $notice_info as $notice}
+                <div class="text" style="width:100%;text-align:left;">
+                    <h6>发布时间:{$notice.time}</h6>
+                    <p>{$notice.author}<span style="font-size:18px;">:{$notice.content}</span></p>
+                    <div class="split" style="height:2px;width:100%;background:#ccc"></div>
+                </div>
+                {/foreach}
+            </div>
+        </div>
+        <div class="task col-md-3 col-md-offset-1">
+            <div class="title">成绩</div>
+            <ul>
+                <li><span class="glyphicon glyphicon-star"></span></li>
+                <li><span class="glyphicon glyphicon-search"></span></li>
+            </ul>
+        </div>
+        <div class="remind col-md-3 col-md-offset-1">
+            <div class="title">任务活动</div>
+            <ul>
+            </ul>
+            <div class="left">
+                <span class="glyphicon glyphicon-cog"></span>
+                <span class="glyphicon glyphicon-repeat"></span>
+            </div>
+        </div>
+    </div>
+    <div class="add_info">
+        <div class="top">
+            <h5>速建</h5><a href="#" class="glyphicon glyphicon-minus"></a></div>
+        <a href="#client1" data-toggle="modal" class="btn btn-primary">学生</a>
+    </div>
 </div>
-<div class="content row">
-	<div class="news col-md-3">
-		<div class="title">
-			<h3>消息</h3>
-			<a href="#" class="glyphicon glyphicon-repeat"></a>
-		</div>
-		<div class="cont">
-			<p class="bz"><a href="#" class="glyphicon glyphicon-list-alt"></a></p>
-			<div class="text">
-				<h6>业务消息：日报</h6>
-				<p>boos:主观总结和分析 满意度自我评价：.....</p>
-			</div>
-		</div>
-	</div>
-	<div class="task col-md-3 col-md-offset-1">
-		<div class="title">代办任务</div>
-		<ul>
-			<li>最近沟通</li>
-			<li>to我</li>
-			<li><span class="glyphicon glyphicon-star"></span></li>
-			<li>超期</li>
-			<li><span class="glyphicon glyphicon-search"></span></li>
-		</ul>
-	</div>
-	<div class="remind col-md-3 col-md-offset-1">
-		<div class="title">提醒</div>
-		<ul>
-			<li>销售</li>
-			<li>客户</li>
-			<li>财务</li>
-			<li>采购</li>
-			<li>库管</li>
-			<li>维修</li>
-		</ul>
-		<div class="left">
-			<span class="glyphicon glyphicon-cog"></span>
-			<span class="glyphicon glyphicon-repeat"></span>
-		</div>
-	</div>
-</div>
-<div class="add">
-	<a href=""><p class="glyphicon glyphicon-plus"><br><span style="font-size: 12px;">速建</span></p></a>
-</div>
-<div class="add_info">
-	<div class="top"><h5>速建</h5><a href="#" class="glyphicon glyphicon-minus"></a></div>
-	<a href="#client1" data-toggle="modal" class="btn btn-primary">学生</a>
-	</div>
-</div>
-
 <!-- 学生模态框开始 -->
 <div class="modal fade" id="client1" style="padding: 30px;">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">请完善个人信息</div>
-			<div class="modal-body">
-				<form action="{:url('studentsave')}" class="form" method="post" enctype="multipart/form-data">
-			<div class="input-group">
-				<span class="input-group-addon" id="basic-addon1">学校</span>
-                <select name="schoolname_id" class="form-control" style="width: 95%;">
-                    <option value="index.html">请选择学校</option>
-                    {foreach $school_name as $info}
-                    <option value="{$info.id}">{$info.school_name}</option>
-                    {/foreach}
-                </select>
-    
-                <a class="glyphicon glyphicon-book" title="数据字典" data-placement="bottom" href="{:url('crm/school')}"></a>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">请完善个人信息</div>
+            <div class="modal-body">
+                <form action="{:url('studentsave')}" class="form" method="post" enctype="multipart/form-data">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">学校</span>
+                        <select name="schoolname_id" class="form-control" style="width: 95%;">
+                            <option value="index.html">请选择学校</option>
+                            {foreach $school_name as $info}
+                            <option value="{$info.id}">{$info.school_name}</option>
+                            {/foreach}
+                        </select>
+                        <a class="glyphicon glyphicon-book" title="数据字典" data-placement="bottom" href="{:url('crm/school')}"></a>
+                    </div>
+                    <div class="row" style="margin-top: 25px;">
+                        <div class="col-md-5">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">姓名</span>
+                                <input type="text" class="form-control" placeholder="姓名" aria-describedby="basic-addon1" name="name" value="{$Think.session.user_name}">
+                            </div>
+                        </div>
+                        <div class="col-md-5 pull-right">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">专业</span>
+                                <input type="text" class="form-control" placeholder="学校专业" aria-describedby="basic-addon1" name="professio">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 25px;">
+                        <div class="col-md-5">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">手机</span>
+                                <input type="text" class="form-control" placeholder="手机号码" aria-describedby="basic-addon1" name="phone">
+                            </div>
+                        </div>
+                        <div class="col-md-5 pull-right">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">微信</span>
+                                <input type="text" class="form-control" placeholder="微信号" aria-describedby="basic-addon1" name="wecat">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group" style="margin:25px 0;">
+                        <span class="input-group-addon" id="basic-addon1">修改密码</span>
+                        <input type="text" class="form-control" placeholder="输入密码" aria-describedby="basic-addon1" name="password">
+                    </div>
+                    <div class="input-group" style="margin-top: 25px;">
+                        <span class="input-group-addon" id="basic-addon1">课程</span>
+                        <select name="lessonname_id" class="form-control">
+                            <option value="index.html">请选择所报课程</option>
+                            {foreach $lesson_name as $info}
+                            <option value="{$info.id}">{$info.lesson_name}</option>
+                            {/foreach}
+                        </select>
+                    </div>
+                    <div class="form-group" style="margin:25px 0 0 220px;">
+                        <a href="https://y.qq.com/portal/player.html" id="true_tj">
+                            <input type="submit" class="btn btn-primary">
+                        </a>
+                        <a href="" class="btn btn-danger">取消</a>
+                    </div>
+                </form>
             </div>
-<div class="row" style="margin-top: 25px;">
-	<div class="col-md-5">
-             <div class="input-group">
-               <span class="input-group-addon" id="basic-addon1">姓名</span>
-                <input type="text" class="form-control" placeholder="姓名" aria-describedby="basic-addon1" name="name" value="{$Think.session.user_name}">
-             </div>
-             </div>
-
-             <div class="col-md-5 pull-right">
-
- <div class="input-group">
-               <span class="input-group-addon" id="basic-addon1">专业</span>
-                <input type="text" class="form-control" placeholder="学校专业" aria-describedby="basic-addon1" name="professio">
-             </div>
-
-
-           
-             </div>
+        </div>
+    </div>
 </div>
-<div class="row" style="margin-top: 25px;">
-	<div class="col-md-5">
-             <div class="input-group">
-               <span class="input-group-addon" id="basic-addon1">手机</span>
-                <input type="text" class="form-control" placeholder="手机号码" aria-describedby="basic-addon1" name="phone">
-             </div>
-             </div>
-
-             <div class="col-md-5 pull-right">
-             <div class="input-group">
-               <span class="input-group-addon" id="basic-addon1">微信</span>
-                <input type="text" class="form-control" placeholder="微信号" aria-describedby="basic-addon1" name="wecat">
-             </div>
-             </div>
-</div>
-<div class="input-group" style="margin:25px 0;">
-               <span class="input-group-addon" id="basic-addon1">修改密码</span>
-                <input type="text" class="form-control" placeholder="输入密码" aria-describedby="basic-addon1" name="password">
-             </div>
-            <div class="input-group" style="margin-top: 25px;">
-				<span class="input-group-addon" id="basic-addon1">课程</span>
-                <select name="lessonname_id" class="form-control">
-                    <option value="index.html">请选择所报课程</option>
-                    {foreach $lesson_name as $info}
-                    <option value="{$info.id}">{$info.lesson_name}</option>
-                    {/foreach}
-                </select>
-            </div>
-            <div class="form-group" style="margin:25px 0 0 220px;">
-				<a href="javascript:;" id="true_tj"><input type="submit" class="btn btn-primary"></a>
-				<a href="" class="btn btn-danger">取消</a>
-			</div>
-             </form>
-			</div>
-		</div>
-</div>
-{/if}
-{if $Think.session.user_cate!='学生'}
+{/if} {if $Think.session.user_cate!='学生'}
 <div class="container">
-	<div class="title">
-		<h3 style="display: inline-block;">工作台</h3>
-		<p style="display: inline-block;">欢迎您</p><span>XX公司老板.Boss</span>
-	</div>
-	<div class="item">
-	<ul>
-		<li>
-			<a href=""><p class="glyphicon glyphicon-tags"><br>XTools漫游</p></a>
-		</li>
-		<li>
-			<a href="{:url('crm/index')}"><p class="glyphicon glyphicon-user"><br>客户</p></a>
-		</li>
-		<li>
-			<a href="{:url('crm/studentsinfo')}"><p class="glyphicon glyphicon-user"><br>学生</p></a>
-		</li>
-		<li>
-			<a href=""><p class="glyphicon glyphicon-list-alt"><br>日报/周报/月报</p></a>
-		</li>
-		<li>
-			<a href=""><p class="glyphicon glyphicon-hand-right"><br>任务行动</p></a>
-		</li>
-	</ul>
+    <div class="title">
+        <h3 style="display: inline-block;">工作台</h3>
+        <p style="display: inline-block;">欢迎您</p><span>XX公司老板.Boss</span>
+    </div>
+    <div class="item">
+        <ul>
+            <li>
+                <a href="javascript:;" data-toggle="modal" data-target="#client3">
+                     <img src="__STATIC__/admin/crm/images/index/notice.jpg">
+                       <div>
+                        <h1>发布公告</h1>
+                        <p>发布公告给所有学生</p>
+                    </div>
+                </a>
+                <p style="font-size: 8px;color: #ccc;text-align: center;line-height: 30px;">试试手气</p>
+            </li>
+            <li>
+                <a href="{:url('crm/index')}">
+                     <img src="__STATIC__/admin/crm/images/index/user.jpg">
+                       <div>
+                        <h1>客户</h1>
+                        <p>查看所有客户信息</p>
+                    </div>
+                </a>
+                <p style="font-size: 8px;color: #ccc;text-align: center;line-height: 30px;">试试手气</p>
+            </li>
+            <li> 
+                     <a href="{:url('crm/studentsinfo')}">
+                     <img src="__STATIC__/admin/crm/images/index/student.jpg">
+                       <div>
+                        <h1>学生</h1>
+                        <p>查看所有学生信息</p>
+                    </div>
+                </a>
+                <p style="font-size: 8px;color: #ccc;text-align: center;line-height: 30px;">试试手气</p>
+            </li>
+            <li>
+                
+                     <a href="{:url('crm/studentsinfo')}">
+                     <img src="__STATIC__/admin/crm/images/index/active.jpg">
+                       <div>
+                        <h1>任务活动</h1>
+                        <p>发布任务活动</p>
+                    </div>
+                </a>
+                <p style="font-size: 8px;color: #ccc;text-align: center;line-height: 30px;">试试手气</p>
+            </li>
+        </ul>
+    </div>
+<!-- 公告模态框开始 -->
+<div class="modal fade" id="client3" style="padding: 30px;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">发布公告</div>
+            <div class="modal-body">
+                <form action="{:url('noticesave')}" class="form" method="post" enctype="multipart/form-data">
+                    <div class="input-group" style="margin:25px 0;">
+                        <span class="input-group-addon" id="basic-addon1">公告</span>
+                        <textarea class="form-control" name="content"></textarea>
+                    </div>
+                    <div class="form-group" style="margin:25px 0 0 220px;">
+                        <a href="" id="true_tj">
+                            <input type="hidden" name="author" value="{$Think.session.user_name}">
+                            <input type="submit" class="btn btn-primary">
+                        </a>
+                        <a href="" class="btn btn-danger">取消</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="content row">
-	<div class="news col-md-3">
-		<div class="title">
-			<h3>消息</h3>
-			<a href="#" class="glyphicon glyphicon-repeat"></a>
-		</div>
-		<div class="cont">
-			<p class="bz"><a href="#" class="glyphicon glyphicon-list-alt"></a></p>
-			<div class="text">
-				<h6>业务消息：日报</h6>
-				<p>boos:主观总结和分析 满意度自我评价：.....</p>
-			</div>
-		</div>
-	</div>
-	<div class="task col-md-3 col-md-offset-1">
-		<div class="title">代办任务</div>
-		<ul>
-			<li>最近沟通</li>
-			<li>to我</li>
-			<li><span class="glyphicon glyphicon-star"></span></li>
-			<li>超期</li>
-			<li><span class="glyphicon glyphicon-search"></span></li>
-		</ul>
-	</div>
-	<div class="remind col-md-3 col-md-offset-1">
-		<div class="title">提醒</div>
-		<ul>
-			<li>销售</li>
-			<li>客户</li>
-			<li>财务</li>
-			<li>采购</li>
-			<li>库管</li>
-			<li>维修</li>
-		</ul>
-		<div class="left">
-			<span class="glyphicon glyphicon-cog"></span>
-			<span class="glyphicon glyphicon-repeat"></span>
-		</div>
-	</div>
+    <div class="news col-md-3">
+        <div class="title">
+            <h3>消息</h3>
+            <a href="#" class="glyphicon glyphicon-repeat"></a>
+        </div>
+        <div class="cont">
+            <p class="bz"><a href="#" class="glyphicon glyphicon-list-alt"></a></p>
+            <div class="text">
+                <h6>业务消息：日报</h6>
+                <p>boos:主观总结和分析 满意度自我评价：.....</p>
+            </div>
+        </div>
+    </div>
+    <div class="task col-md-3 col-md-offset-1">
+        <div class="title">代办任务</div>
+        <ul>
+            <li>最近沟通</li>
+            <li>to我</li>
+            <li><span class="glyphicon glyphicon-star"></span></li>
+            <li>超期</li>
+            <li><span class="glyphicon glyphicon-search"></span></li>
+        </ul>
+    </div>
+    <div class="remind col-md-3 col-md-offset-1">
+        <div class="title">提醒</div>
+        <ul>
+            <li>销售</li>
+            <li>客户</li>
+            <li>财务</li>
+            <li>采购</li>
+            <li>库管</li>
+            <li>维修</li>
+        </ul>
+        <div class="left">
+            <span class="glyphicon glyphicon-cog"></span>
+            <span class="glyphicon glyphicon-repeat"></span>
+        </div>
+    </div>
 </div>
 <div class="add">
-	<a href=""><p class="glyphicon glyphicon-plus"><br><span style="font-size: 12px;">速建</span></p></a>
+    <a href="">
+        <p class="glyphicon glyphicon-plus">
+            <br><span style="font-size: 12px;">速建</span></p>
+    </a>
 </div>
 <div class="add_info">
-	<div class="top"><h5>速建</h5><a href="#" class="glyphicon glyphicon-minus"></a></div>
-	<a href="#client" data-toggle="modal" class="btn btn-primary">客户</a>
-	<a href="#client1" data-toggle="modal" class="btn btn-primary">学生</a>
-	</div>
+    <div class="top">
+        <h5>速建</h5><a href="#" class="glyphicon glyphicon-minus"></a></div>
+    <a href="#client" data-toggle="modal" class="btn btn-primary">客户</a>
+    <a href="#client1" data-toggle="modal" class="btn btn-primary">学生</a>
 </div>
-
+</div>
 <!-- 客户模态框开始 -->
 <div class="modal fade" id="client" style="padding: 30px;">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">创建客户</div>
-			<div class="modal-body">
-				<form action="{:url('customersave')}" class="form" method="post" enctype="multipart/form-data">
-				<div class="input-group spacing" style="margin-top: 25px;">
-               <span class="input-group-addon" id="basic-addon1">公司</span>
-                <input type="text" class="form-control" placeholder="公司名称" aria-describedby="basic-addon1" name="company_name">
-             </div>
-
-<div class="row" style="margin-top: 25px;">
-	<div class="col-md-5">
-             <div class="input-group">
-               <span class="input-group-addon" id="basic-addon1">姓名</span>
-                <input type="text" class="form-control" placeholder="客户姓名" aria-describedby="basic-addon1" name="user_name">
-             </div>
-             </div>
-
-             <div class="col-md-5 pull-right">
-
-<div class="form-inline">
-                <select name="usersource_id" class="form-control" style="width: 90%;">
-                    <option value="index.html">客户来源</option>
-                    {foreach $user_source as $info}
-                    <option value="{$info.id}">{$info.user_source}</option>
-                    {/foreach}
-                </select>
-                <a class="glyphicon glyphicon-book" title="数据字典" data-placement="bottom" href="{:url('crm/usersource')}"></a>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">创建客户</div>
+            <div class="modal-body">
+                <form action="{:url('customersave')}" class="form" method="post" enctype="multipart/form-data">
+                    <div class="input-group spacing" style="margin-top: 25px;">
+                        <span class="input-group-addon" id="basic-addon1">公司</span>
+                        <input type="text" class="form-control" placeholder="公司名称" aria-describedby="basic-addon1" name="company_name">
+                    </div>
+                    <div class="row" style="margin-top: 25px;">
+                        <div class="col-md-5">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">姓名</span>
+                                <input type="text" class="form-control" placeholder="客户姓名" aria-describedby="basic-addon1" name="user_name">
+                            </div>
+                        </div>
+                        <div class="col-md-5 pull-right">
+                            <div class="form-inline">
+                                <select name="usersource_id" class="form-control" style="width: 90%;">
+                                    <option value="index.html">客户来源</option>
+                                    {foreach $user_source as $info}
+                                    <option value="{$info.id}">{$info.user_source}</option>
+                                    {/foreach}
+                                </select>
+                                <a class="glyphicon glyphicon-book" title="数据字典" data-placement="bottom" href="{:url('crm/usersource')}"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 25px;">
+                        <div class="col-md-5">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">手机</span>
+                                <input type="text" class="form-control" placeholder="手机号码" aria-describedby="basic-addon1" name="user_phone">
+                            </div>
+                        </div>
+                        <div class="col-md-5 pull-right">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">电话</span>
+                                <input type="text" class="form-control" placeholder="电话号码" aria-describedby="basic-addon1" name="user_telephone">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group" style="margin:25px 0;">
+                        <span class="input-group-addon" id="basic-addon1">备注</span>
+                        <input type="text" class="form-control" placeholder="备注" aria-describedby="basic-addon1" name="remark">
+                    </div>
+                    <!-- 选择客户类型 -->
+                    <div class="form-inline">
+                        <label>选择客户类型</label>
+                        <select name="companycate_id" class="form-control" style="width: 95%;">
+                            <option value="index.html">请选择</option>
+                            {foreach $list as $info}
+                            <option value="{$info.id}">{$info.company_cate}</option>
+                            {/foreach}
+                        </select>
+                        <a class="glyphicon glyphicon-book" title="数据字典" data-placement="bottom" href="{:url('crm/companycate')}"></a>
+                    </div>
+                    <div class="form-group" style="margin:25px 0 0 220px;">
+                        <a href="" id="true_tj">
+                            <input type="submit" class="btn btn-primary">
+                        </a>
+                        <a href="" class="btn btn-danger">取消</a>
+                    </div>
+                </form>
             </div>
-
-
-           
-             </div>
+        </div>
+    </div>
 </div>
-<div class="row" style="margin-top: 25px;">
-	<div class="col-md-5">
-             <div class="input-group">
-               <span class="input-group-addon" id="basic-addon1">手机</span>
-                <input type="text" class="form-control" placeholder="手机号码" aria-describedby="basic-addon1" name="user_phone">
-             </div>
-             </div>
-
-             <div class="col-md-5 pull-right">
-             <div class="input-group">
-               <span class="input-group-addon" id="basic-addon1">电话</span>
-                <input type="text" class="form-control" placeholder="电话号码" aria-describedby="basic-addon1" name="user_telephone">
-             </div>
-             </div>
-</div>
-<div class="input-group" style="margin:25px 0;">
-               <span class="input-group-addon" id="basic-addon1">备注</span>
-                <input type="text" class="form-control" placeholder="备注" aria-describedby="basic-addon1" name="remark">
-             </div>
-<!-- 选择客户类型 -->
-            <div class="form-inline">
-            	
-                <label>选择客户类型</label>
-                <select name="companycate_id" class="form-control" style="width: 95%;">
-                    <option value="index.html">请选择</option>
-                    {foreach $list as $info}
-                    <option value="{$info.id}">{$info.company_cate}</option>
-                    {/foreach}
-                </select>
-    
-                <a class="glyphicon glyphicon-book" title="数据字典" data-placement="bottom" href="{:url('crm/companycate')}"></a>
-            </div>
-            <div class="form-group" style="margin:25px 0 0 220px;">
-				<a href="" id="true_tj"><input type="submit" class="btn btn-primary"></a>
-				<a href="" class="btn btn-danger">取消</a>
-			</div>
-             </form>
-			</div>
-		</div>
-	</div>
 </div>
 <!-- 模态框结束 -->
-
-
-
 <!-- 学生模态框开始 -->
 <div class="modal fade" id="client1" style="padding: 30px;">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">录入学生</div>
-			<div class="modal-body">
-				<form action="{:url('studentsave')}" class="form" method="post" enctype="multipart/form-data">
-			<div class="input-group">
-				<span class="input-group-addon" id="basic-addon1">学校</span>
-                <select name="schoolname_id" class="form-control" style="width: 95%;">
-                    <option value="index.html">请选择学校</option>
-                    {foreach $school_name as $info}
-                    <option value="{$info.id}">{$info.school_name}</option>
-                    {/foreach}
-                </select>
-    
-                <a class="glyphicon glyphicon-book" title="数据字典" data-placement="bottom" href="{:url('crm/school')}"></a>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">录入学生</div>
+            <div class="modal-body">
+                <form action="{:url('studentsave')}" class="form" method="post" enctype="multipart/form-data">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">学校</span>
+                        <select name="schoolname_id" class="form-control" style="width: 95%;">
+                            <option value="index.html">请选择学校</option>
+                            {foreach $school_name as $info}
+                            <option value="{$info.id}">{$info.school_name}</option>
+                            {/foreach}
+                        </select>
+                        <a class="glyphicon glyphicon-book" title="数据字典" data-placement="bottom" href="{:url('crm/school')}"></a>
+                    </div>
+                    <div class="row" style="margin-top: 25px;">
+                        <div class="col-md-5">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">姓名</span>
+                                <input type="text" class="form-control" placeholder="姓名" aria-describedby="basic-addon1" name="name">
+                            </div>
+                        </div>
+                        <div class="col-md-5 pull-right">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">专业</span>
+                                <input type="text" class="form-control" placeholder="学校专业" aria-describedby="basic-addon1" name="professio">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 25px;">
+                        <div class="col-md-5">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">手机</span>
+                                <input type="text" class="form-control" placeholder="手机号码" aria-describedby="basic-addon1" name="phone">
+                            </div>
+                        </div>
+                        <div class="col-md-5 pull-right">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">微信</span>
+                                <input type="text" class="form-control" placeholder="微信号" aria-describedby="basic-addon1" name="wecat">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group" style="margin:25px 0;">
+                        <span class="input-group-addon" id="basic-addon1">备注</span>
+                        <input type="text" class="form-control" placeholder="备注" aria-describedby="basic-addon1" name="remark">
+                    </div>
+                    <div class="input-group" style="margin-top: 25px;">
+                        <span class="input-group-addon" id="basic-addon1">课程</span>
+                        <select name="lessonname_id" class="form-control">
+                            <option value="index.html">请选择所报课程</option>
+                            {foreach $lesson_name as $info}
+                            <option value="{$info.id}">{$info.lesson_name}</option>
+                            {/foreach}
+                        </select>
+                    </div>
+                    <div class="form-group" style="margin:25px 0 0 220px;">
+                        <a href="" id="true_tj">
+                            <input type="submit" class="btn btn-primary">
+                        </a>
+                        <a href="" class="btn btn-danger">取消</a>
+                    </div>
+                </form>
             </div>
-<div class="row" style="margin-top: 25px;">
-	<div class="col-md-5">
-             <div class="input-group">
-               <span class="input-group-addon" id="basic-addon1">姓名</span>
-                <input type="text" class="form-control" placeholder="姓名" aria-describedby="basic-addon1" name="name">
-             </div>
-             </div>
-
-             <div class="col-md-5 pull-right">
-
- <div class="input-group">
-               <span class="input-group-addon" id="basic-addon1">专业</span>
-                <input type="text" class="form-control" placeholder="学校专业" aria-describedby="basic-addon1" name="professio">
-             </div>
-
-
-           
-             </div>
+        </div>
+    </div>
 </div>
-<div class="row" style="margin-top: 25px;">
-	<div class="col-md-5">
-             <div class="input-group">
-               <span class="input-group-addon" id="basic-addon1">手机</span>
-                <input type="text" class="form-control" placeholder="手机号码" aria-describedby="basic-addon1" name="phone">
-             </div>
-             </div>
-
-             <div class="col-md-5 pull-right">
-             <div class="input-group">
-               <span class="input-group-addon" id="basic-addon1">微信</span>
-                <input type="text" class="form-control" placeholder="微信号" aria-describedby="basic-addon1" name="wecat">
-             </div>
-             </div>
 </div>
-<div class="input-group" style="margin:25px 0;">
-               <span class="input-group-addon" id="basic-addon1">备注</span>
-                <input type="text" class="form-control" placeholder="备注" aria-describedby="basic-addon1" name="remark">
-             </div>
-            <div class="input-group" style="margin-top: 25px;">
-				<span class="input-group-addon" id="basic-addon1">课程</span>
-                <select name="lessonname_id" class="form-control">
-                    <option value="index.html">请选择所报课程</option>
-                    {foreach $lesson_name as $info}
-                    <option value="{$info.id}">{$info.lesson_name}</option>
-                    {/foreach}
-                </select>
-            </div>
-            <div class="form-group" style="margin:25px 0 0 220px;">
-				<a href="" id="true_tj"><input type="submit" class="btn btn-primary"></a>
-				<a href="" class="btn btn-danger">取消</a>
-			</div>
-             </form>
-			</div>
-		</div>
-	</div>
-	{/if}
+{/if}
 <!-- 模态框结束 -->
 <script type="text/javascript" src="__STATIC__/admin/index/js/index.js?126"></script>
 {include file="foot"}

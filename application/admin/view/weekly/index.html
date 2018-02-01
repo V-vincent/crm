@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script type="text/javascript" src="https://cdn.bootcss.com/vue/2.5.13/vue.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__static/admin/crm/css/userinfo.css?199">
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
+	<title>Document</title>
+</head>
+<body style="background:#ccc">
+	<div class="title"><h1 class="text-center">周报</h1></div>
+	<div id="container" class="container">
+	<form action="{:url('weeklysave')}" class="form" method="post">
+                    <div class="edit" id="element1">
+                        <div class="title form-inline text-center">
+                            <input type="text" class="form-control" placeholder="标题" style="width: 69%; height: 40px;" name="weekly_title">
+                            <div class="form-group">
+                                <template>
+                                    <div class="block">
+                                        <el-date-picker style="width: 150px;" v-model="value1" type="date" placeholder="选择日期" name="weekly_time">
+                                        </el-date-picker>
+                                    </div>
+                                </template>
+                            </div>
+                        </div>
+                        <textarea name="weekly_content" id="myEditor" placeholder="输入内容" style="height:400px;">
+                        </textarea>
+                        <div class="form-group">
+                        <input type="hidden" name="student_id" value="{$Think.session.u_id}">
+                        <input type="submit" class="btn btn-primary btn-block"></div>
+                    </div>
+                </form>
+                </div>
+</body>
+<script type="text/javascript" src="__STATIC__/library/ueditor/ueditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="__STATIC__/library/ueditor/ueditor.all.min.js"></script>
+<script type="text/javascript">
+new Vue({
+    el: "#container",
+    data: {
+        value1: '',
+        value2: '',
+        dinxin:'不确定'
+    },
+
+})
+
+UE.getEditor("myEditor")
+</script>
+</html>
