@@ -73,7 +73,7 @@ class Crm extends \app\admin\Auth
         }
 
         $list = db('studentsinfo')->alias('si')
-                                   ->field('si.id, si.lessonname_id, si.schoolname_id, si.name, si.phone, si.wecat, si.time, si.professio, sc.school_name,les.lesson_name')//查询
+                                   ->field('si.id, si.lessonname_id, si.schoolname_id, si.name, si.phone, si.wecat, si.time, si.professio, sc.school_name,les.lesson_name,si.uid')//查询
                                    ->join('school sc','si.schoolname_id=sc.id','left')
                                    ->join('lessname les','si.lessonname_id=les.id','left')
                                    ->where($where_data)                           
@@ -88,18 +88,18 @@ class Crm extends \app\admin\Auth
     //编辑学生页面
     public function editstudentinfo(){
       $id = input('id');
-        $info = db('studentsinfo')->where("id=$id")->find();
+        $info = db('studentsinfo')->where("uid=$id")->find();
         $this->assign('info',$info);
       return $this->fetch();
     }
 //查看学生页面
     public function eachstudentinfo(){
         $id = input('id');
-        $info = db('studentsinfo')->where("id=$id")->find();
+        $info = db('studentsinfo')->where("uid=$id")->find();
         $this->assign('info',$info);
         $mark = db('mark')->alias('m')
-                        ->join('studentsinfo s','m.user_id=s.id','left')
-                        ->field('m.courses,m.mark,m.time,m.user_id,s.id')
+                        ->join('studentsinfo s','m.user_id=s.uid','left')
+                        ->field('m.courses,m.mark,m.time,m.user_id,s.id,s.uid')
                         ->where("m.user_id=$id")
                         ->order('m.id desc')
                         ->select();
@@ -111,7 +111,7 @@ class Crm extends \app\admin\Auth
       $id = input('id');
       $data = input();
       db('mark')->insert($data);
-      $this->success('','index');
+      $this->success('','studentsinfo');
  }
     
     //保存客户信息
