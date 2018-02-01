@@ -91,7 +91,7 @@ class Task extends \app\admin\Auth
             $where_data=[];
         }
         //查询当年当月的数据（临时）
-        $t_work_list  = db('work')->field("DATE_FORMAT(time, '%d') d,u_id")
+        $t_work_list  = db('work')->field("DATE_FORMAT(time, '%d') d,u_id,result")
                                 ->where($where_data)
                                 ->where("DATE_FORMAT(time, '%Y%m') = ".$year.$month)
                                 ->select();

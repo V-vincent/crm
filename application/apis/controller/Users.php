@@ -84,6 +84,21 @@ class Users extends \think\Controller
       return json(array('status'=>1,'msg'=>'显示成功','user_name'=> $user_name,'company_name'=> $company_name,'password'=> $password,'user_cate'=> $user_cate,'user_mark'=> $user_mark));
     //根据ID访问出用户的信息
     }
+
+    public function sign(){
+    	
+        $addData = input();
+        print_r($addData);
+    	$addData['time'] = time();
+    	db('sign')->insert($addData);
+        $user=db('user')->where("id", $addData['uid'])->find();
+        db('user')->where('id',$addData['uid'])->update(['mark' => $user["mark"]+15]);
+
+        return json(array('status'=>1,'msg'=>'增加积分成功','user_name'=> $user["user_name"],'user_mark'=> $user["mark"]+15));
+
+    }
+
+
    
 
 }

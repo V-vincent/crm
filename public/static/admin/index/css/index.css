@@ -27,11 +27,11 @@
 	border:1px #ccc solid;text-align: center;margin-top: 10px;}
 	.container .content .news .cont p a{margin-top: 5px;}
 	.container .content .news .cont .text{float: right;font-size: 8px;}
-	.container .content .task{background: #fff;overflow: hidden;height: 400px;padding: 15px;0}
+	.container .content .task{background: #fff;overflow: hidden;height: 400px;padding: 15px 0;}
 	.container .content .task .title{float: left;}
 	.container .content .task ul{float:right;overflow: hidden;}
 	.container .content .task ul li{float: left;padding: 0 5px;font-size: 8px;}
-	.container .content .remind{overflow: hidden;background: #fff;height: 400px;padding: 15px;0}
+	.container .content .remind{overflow: hidden;background: #fff;height: 400px;padding: 15px 0;}
 	.container .content .remind .title{float: left;}
 	.container .content .remind ul{float: left;overflow: hidden;margin-left: 30px;}
 	.container .content .remind ul li{float: left;margin-left: 2px;font-size: 8px;}
@@ -42,6 +42,45 @@
     .container .add_info .top h5{font-size: 20px;float: left;}
     .container .add_info .top a{float: right;}
     .container .add_info .top a:hover{text-decoration: none;}
+@keyframes fadeInDown {
+	0% {
+		opacity: 0;
+		-webkit-transform: translate3d(0, -100%, 0);
+		-ms-transform: translate3d(0, -100%, 0);
+		transform: translate3d(0, -100%, 0);
+	}
+	100% {
+		opacity: 1;
+		-webkit-transform: none;
+		-ms-transform: none;
+		transform: none;
+	}
+}
+@keyframes rotateIn {
+    0% {
+        -webkit-transform-origin: center;
+        -ms-transform-origin: center;
+        transform-origin: center;
+        -webkit-transform: rotate3d(0, 0, 1, -200deg);
+        -ms-transform: rotate3d(0, 0, 1, -200deg);
+        transform: rotate3d(0, 0, 1, -200deg);
+        opacity: 0;
+    }
+
+    100% {
+        -webkit-transform-origin: center;
+        -ms-transform-origin: center;
+        transform-origin: center;
+        -webkit-transform: none;
+        -ms-transform: none;
+        transform: none;
+        opacity: 1;
+    }
+}
+.animated{
+	-webkit-animation-duration: 2s;
+	animation-duration:1s;
+}
 
 
 

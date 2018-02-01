@@ -1,6 +1,7 @@
  {include file="top"}
 <link rel="stylesheet" type="text/css" href="__STATIC__/admin/index/css/index.css?9"> {include file="left"} {if $Think.session.user_cate=='学生'}
 <div class="container">
+<<<<<<< HEAD
     <div class="" style="height: 80px;background: #fff;margin-bottom: 10px 0px;text-align: center;line-height: 80px;color: red;font-size: 18px;">
         <p>提示:第一次登陆请尽快完善信息及修改密码</p>
     </div>
@@ -95,6 +96,74 @@
             <h5>速建</h5><a href="#" class="glyphicon glyphicon-minus"></a></div>
         <a href="#client1" data-toggle="modal" class="btn btn-primary">学生</a>
     </div>
+=======
+	<div class="" style="height: 80px;background: #fff;margin-bottom: 10px 0px;text-align: center;line-height: 80px;color: red;font-size: 18px;"><p>提示:第一次登陆请尽快完善信息及修改密码</p></div>
+	<div class="title">
+		<h3 style="display: inline-block;">工作台</h3>
+		<br>
+		<p style="display: inline-block;">欢迎您</p><span>{$Think.session.user_name}!</span>
+		<p style="font-size: 10px;display: inline-block;">请完善个人信息</p>
+	</div>
+	<div class="item">
+	<ul>
+		<li class="animated" style="animation-name:rotateIn">
+			<a href="javascript:;"><p class="glyphicon glyphicon-user"><br>客户</p></a>
+			<p style="font-size: 8px;color: #ccc;text-align: center;line-height: 30px;">客户请选择</p>
+		</li>
+		<li class="animated" style="animation-name:rotateIn">
+			<a href="javascript:;" data-toggle="modal" data-target="#client1"><p class="glyphicon glyphicon-user"><br>学生</p></a>
+			<p style="font-size: 8px;color: #ccc;text-align: center;line-height: 30px;">学生请选择</p>
+		</li>
+	</ul>
+</div>
+<div class="content row">
+	<div class="news col-md-3 animated" style="animation-name:fadeInDown">
+		<div class="title">
+			<h3>消息</h3>
+			<a href="#" class="glyphicon glyphicon-repeat"></a>
+		</div>
+		<div class="cont">
+			<p class="bz"><a href="#" class="glyphicon glyphicon-list-alt"></a></p>
+			<div class="text">
+				<h6>业务消息：日报</h6>
+				<p>boos:主观总结和分析 满意度自我评价：.....</p>
+			</div>
+		</div>
+	</div>
+	<div class="task col-md-3 col-md-offset-1 animated" style="animation-name:fadeInDown">
+		<div class="title">代办任务</div>
+		<ul>
+			<li>最近沟通</li>
+			<li>to我</li>
+			<li><span class="glyphicon glyphicon-star"></span></li>
+			<li>超期</li>
+			<li><span class="glyphicon glyphicon-search"></span></li>
+		</ul>
+	</div>
+	<div class="remind col-md-3 col-md-offset-1 animated" style="animation-name:fadeInDown">
+		<div class="title">提醒</div>
+		<ul>
+			<li>销售</li>
+			<li>客户</li>
+			<li>财务</li>
+			<li>采购</li>
+			<li>库管</li>
+			<li>维修</li>
+		</ul>
+		<div class="left">
+			<span class="glyphicon glyphicon-cog"></span>
+			<span class="glyphicon glyphicon-repeat"></span>
+		</div>
+	</div>
+</div>
+<div class="add">
+	<a href=""><p class="glyphicon glyphicon-plus"><br><span style="font-size: 12px;">速建</span></p></a>
+</div>
+<div class="add_info">
+	<div class="top"><h5>速建</h5><a href="#" class="glyphicon glyphicon-minus"></a></div>
+	<a href="#client1" data-toggle="modal" class="btn btn-primary">学生</a>
+	</div>
+>>>>>>> 36d64ef6645bf6ae8cd6969baad8a3524e97dab1
 </div>
 <!-- 学生模态框开始 -->
 <div class="modal fade" id="client1" style="padding: 30px;">
@@ -167,6 +236,7 @@
 </div>
 {/if} {if $Think.session.user_cate!='学生'}
 <div class="container">
+<<<<<<< HEAD
     <div class="title">
         <h3 style="display: inline-block;">工作台</h3>
         <p style="display: inline-block;">欢迎您</p><span>XX公司老板.Boss</span>
@@ -278,6 +348,70 @@
             <span class="glyphicon glyphicon-repeat"></span>
         </div>
     </div>
+=======
+	<div class="title">
+		<h3 style="display: inline-block;">工作台</h3>
+		<p style="display: inline-block;">欢迎您</p><span>XX公司老板.Boss</span>
+	</div>
+	<div class="item">
+	<ul>
+		<li class="animated" style="animation-name:rotateIn">
+			<a href=""><p class="glyphicon glyphicon-tags"><br>XTools漫游</p></a>
+		</li>
+		<li class="animated" style="animation-name:rotateIn">
+			<a href="{:url('crm/index')}"><p class="glyphicon glyphicon-user"><br>客户</p></a>
+		</li>
+		<li class="animated" style="animation-name:rotateIn">
+			<a href="{:url('crm/studentsinfo')}"><p class="glyphicon glyphicon-user"><br>学生</p></a>
+		</li>
+		<li class="animated" style="animation-name:rotateIn">
+			<a href=""><p class="glyphicon glyphicon-list-alt"><br>日报/周报/月报</p></a>
+		</li>
+		<li class="animated" style="animation-name:rotateIn">
+			<a href=""><p class="glyphicon glyphicon-hand-right"><br>任务行动</p></a>
+		</li>
+	</ul>
+</div>
+<div class="content row">
+	<div class="news col-md-3 animated" style="animation-name:fadeInDown">
+		<div class="title">
+			<h3>消息</h3>
+			<a href="#" class="glyphicon glyphicon-repeat"></a>
+		</div>
+		<div class="cont">
+			<p class="bz"><a href="#" class="glyphicon glyphicon-list-alt"></a></p>
+			<div class="text">
+				<h6>业务消息：日报</h6>
+				<p>boos:主观总结和分析 满意度自我评价：.....</p>
+			</div>
+		</div>
+	</div>
+	<div class="task col-md-3 col-md-offset-1 animated" style="animation-name:fadeInDown">
+		<div class="title">代办任务</div>
+		<ul>
+			<li>最近沟通</li>
+			<li>to我</li>
+			<li><span class="glyphicon glyphicon-star"></span></li>
+			<li>超期</li>
+			<li><span class="glyphicon glyphicon-search"></span></li>
+		</ul>
+	</div>
+	<div class="remind col-md-3 col-md-offset-1 animated" style="animation-name:fadeInDown">
+		<div class="title">提醒</div>
+		<ul>
+			<li>销售</li>
+			<li>客户</li>
+			<li>财务</li>
+			<li>采购</li>
+			<li>库管</li>
+			<li>维修</li>
+		</ul>
+		<div class="left">
+			<span class="glyphicon glyphicon-cog"></span>
+			<span class="glyphicon glyphicon-repeat"></span>
+		</div>
+	</div>
+>>>>>>> 36d64ef6645bf6ae8cd6969baad8a3524e97dab1
 </div>
 <div class="add">
     <a href="">

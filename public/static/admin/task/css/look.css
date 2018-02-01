@@ -12,6 +12,9 @@
 	margin: auto;
 	text-align: center;
 }
+.mid_but a{
+	color:#fff;
+}
 #title{
 	margin-top: 22.5px;
 	text-align: center;
