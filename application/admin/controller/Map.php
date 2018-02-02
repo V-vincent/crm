@@ -1,5 +1,6 @@
 <?php
 namespace app\admin\controller;
+use \think\Session;
 
 class Map extends \app\admin\Auth
 {
@@ -49,21 +50,23 @@ class Map extends \app\admin\Auth
         print_r($data);
     }
     public function addmap(){
+        $uid=Session::get('u_id');
         $addData = input();
     	$addData['time'] = time();
         $year = date('Y',time());
         $month = date('m',time());
         $day = date('d',time());
-        $havesign=db('sign')->where(" YEAR(FROM_UNIXTIME(time)) = $year AND MONTH(FROM_UNIXTIME(time)) = $month AND DAY(FROM_UNIXTIME(time)) = $day")->find();
+        $havesign=db('sign')->where(" YEAR(FROM_UNIXTIME(time)) = $year AND MONTH(FROM_UNIXTIME(time)) = $month AND DAY(FROM_UNIXTIME(time)) = $day AND uid= $uid")->find();
 
         if($havesign){
             return false;
         }
-        else{
 
+        else{
             db('sign')->insert($addData);
             session('u_mark', session('u_mark')+15);
             db('user')->where('id',session('u_id'))->update(['mark' => session('u_mark')]);
+            return true;
         }
     	
     }
